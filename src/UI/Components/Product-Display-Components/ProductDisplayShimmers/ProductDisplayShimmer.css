@@ -1,0 +1,337 @@
+.product-display-shimmer-main-contianer {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+    justify-content: center;
+    gap: 32px;
+    height: auto;
+}
+
+.product-display-slider-and-gallery-shimmer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 70%;
+    gap: 32px;
+
+}
+
+.product-display-slider-shimmer-sec {
+    display: flex;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 32px;
+}
+
+.display-product-sliderthumbnail-shimmer-sec {
+    width: 20%;
+    height: 515px;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+.display-product-sliderthumbnail-shimmer-sec::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%; /* Start off-screen */
+    height: 100%;
+    width: 150%; /* Width of the shimmer gradient */
+    background: linear-gradient(90deg, rgba(240, 240, 240, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(240, 240, 240, 0) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+.display-product-slider-main-image-shimmer-sec {
+    width: 80%;
+    height: 515px;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+.display-product-slider-main-image-shimmer-sec::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%; /* Start off-screen */
+    height: 100%;
+    width: 150%; /* Width of the shimmer gradient */
+    background: linear-gradient(90deg, rgba(240, 240, 240, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(240, 240, 240, 0) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+.product-display-gallery-sec {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+.product-display-gallery-single-col-shimmer {
+    position: relative;
+    width: 50%;
+    height: 85px;
+    background-color: #f0f0f0;
+}
+
+.product-display-gallery-single-col-shimmer::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%; /* Start off-screen */
+    height: 100%;
+    width: 150%; /* Width of the shimmer gradient */
+    background: linear-gradient(90deg, rgba(240, 240, 240, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(240, 240, 240, 0) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+
+/* Details sec shimmer */
+.product-display-details-shimmer-section {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 8px;
+}
+
+.product-name-and-rating-section {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    flex-direction: column;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 16px;
+}
+
+.product-tag-shimmer{
+    position: relative;
+    background-color: #f0f0f0;
+    width: 95px;
+    height: 18px;
+}
+
+.product-name-shimmer{
+    position: relative;
+    background-color: #f0f0f0;
+    width: 315px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.product-sku-shimmer{
+    position: relative;
+    background-color: #f0f0f0;
+    width: 105px;
+    height: 18px;
+    margin-top: 10px;
+}
+
+.product-rating-shimmer{
+    position: relative;
+    background-color: #f0f0f0;
+    width: 120px;
+    height: 20px;
+    margin-top: 10px;
+}
+
+.product-price-shimmer{
+    position: relative;
+    background-color: #f0f0f0;
+    width: 150px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.product-display-variations-and-add-to-cart {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 32px;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 16px 0;
+}
+
+.product-sidplay-variations {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+
+.color-name-shimmer {
+    position: relative;
+    background-color: #f0f0f0;
+    width: 75px;
+    height: 18px;
+}
+
+.color-box-shimmer {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background-color: #f0f0f0;
+    margin-top: 10px;
+}
+
+.type-name-shimmer {
+    position: relative;
+    width: 90px;
+    height: 18px;
+    background-color: #f0f0f0;
+    margin-top: 25px;
+}
+
+.type-box-shimmer {
+    position: relative;
+    background-color: #f0f0f0;
+    width: 120px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.product-display-add-to-cart {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 16px;
+    flex-direction: row !important;
+}
+
+.product-inc-des-shimmer {
+    width: 135px;
+    height: 45px;
+    position: relative;
+    background-color: #f0f0f0;
+}
+
+.product-wishlist-shimmer {
+    width: 45px;
+    height: 45px;
+    position: relative;
+    background-color: #f0f0f0;
+}
+
+.product-add-to-cart-shimmer {
+    width: 220px;
+    height: 45px;
+    position: relative;
+    background-color: #f0f0f0;
+}
+
+.might-also-need-shimmer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 16px;
+    align-items: start;
+    justify-content: start;
+}
+
+.might-also-need-shimmer-heading {
+    width: 130px;
+    height: 30px;
+    position: relative;
+    background-color: #f0f0f0;
+}
+
+.might-also-need-shimmer-card {
+    position: relative;
+    background-color: #f0f0f0;
+    width: 100%;
+    height: 120px;
+}
+
+/* Mobile Shimmer */
+.product-display-mobile-shimmer {
+    display: none;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+   
+
+.mobile-product-sidplay-tag-shimmer {
+    position: relative;
+    background-color: #f0f0f0;
+    width: 90px;
+    height: 18px;
+    margin-bottom: 10px;
+}
+
+
+.mobile-product-sidplay-name-shimmer {
+    position: relative;
+    background-color: #f0f0f0;
+    width: 90%;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.mobile-product-sidplay-sku-shimmer {
+    position: relative;
+    background-color: #f0f0f0;
+    width: 120px;
+    height: 18px;
+    margin-bottom: 10px;
+}
+.mobile-product-sidplay-price-shimmer {
+    position: relative;
+    background-color: #f0f0f0;
+    width: 250px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.mobile-product-sidplay-rating-shimmer {
+    position: relative;
+    background-color: #f0f0f0;
+    width: 220px;
+    height: 20px;
+    margin-bottom: 25px;
+}
+
+
+.mobile-product-sidplay-image-shimmer {
+    position: relative;
+    background-color: #f0f0f0;
+    width: 100%;
+    height: 190px;
+    margin-bottom: 25px;
+}
+
+.mobile-product-sidplay-gallery-shimmer-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 16px;
+}
+
+.mobile-shimmer-gallry-single-sec-shimmer {
+    position: relative;
+    background-color: #f0f0f0;
+    width: 50%;
+    height: 60px;
+    margin-bottom: 16px;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+    .product-display-shimmer-main-contianer {
+        display: none;
+    }
+    .product-display-mobile-shimmer {
+        display: flex;
+    }
+}

@@ -1,0 +1,74 @@
+.credit-card-type-main-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+    border-top: 1px solid var(--border-color);
+    padding: 15px 0 10px 0;
+    gap: 15px;
+}
+
+.credit-card-type-head{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    gap: 5px;
+}
+.credit-card-type-head img{
+    height: 40px ;
+    width: auto;
+}
+
+.credit-card-type-body{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.credit-card-inputs{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 30px;
+}
+
+.credit-card-expiry-and-code-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    gap: 30px;
+}
+
+.error-border {
+  border: 1px solid var(--text-red) !important;
+}
+
+
+.error-message {
+    color: var(--text-red) !important;
+}
+
+@media only screen and (max-width: 480px){
+    .credit-card-inputs {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .credit-card-expiry-and-code-inputs {
+        gap: 15px;
+    }
+
+    .credit-card-type-head {
+        justify-content: space-between;
+    }
+}
+

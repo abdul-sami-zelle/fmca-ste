@@ -1,0 +1,95 @@
+.blog-card-main-container-shimmer{
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 1px 3px 0px #0000001A;
+    height: auto;
+}
+
+.blog-card-mai-image-shimmer{
+    width: 100%;
+    height: 295px;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+.blog-card-mai-image-shimmer::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%; /* Start off-screen */
+    height: 100%;
+    width: 150%; /* Width of the shimmer gradient */
+    background: linear-gradient(90deg, rgba(240, 240, 240, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(240, 240, 240, 0) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+.blog-card-content-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-card-category-shimmer{
+    width: 180px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.blog-card-title-shimmer{
+    width: 80%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.blog-card-rating-and-comment-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.blog-cart-rating-shimmer{
+    width: 120px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.blog-card-comment-shimmer{
+    width: 120px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.blog-card-para-shimmer{
+    width: 80%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.blog-card-button-shimmer{
+    width: 100px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+

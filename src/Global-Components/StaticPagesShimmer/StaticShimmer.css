@@ -1,0 +1,167 @@
+.static-pages-shimmer-main-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 35px;
+}
+
+.static-shimmer-head {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.static-shimmer-heading {
+    display: flex;
+    position: relative;
+    width: 320px;
+    height: 36px;
+    border-radius: 25px;
+    background-color: var(--secondary-background);
+    overflow: hidden;
+}
+
+.static-shimmer-heading::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    height: 100%;
+    width: 150%;
+    background: linear-gradient(90deg, var(--secondary-background) 0%, #FFFFFF 50%, var(--secondary-background) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+.static-shimmer-body-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+}
+
+.static-shimmer-body-heading {
+    position: relative;
+    overflow: hidden;
+    width: 220px;
+    height: 25px;
+    border-radius: 25px;
+    background-color: var(--secondary-background);
+}
+
+.static-shimmer-body-heading::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    height: 100%;
+    width: 150%;
+    background: linear-gradient(90deg, var(--secondary-background) 0%, #FFFFFF 50%, var(--secondary-background) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+.static-shimmer-body-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+}
+
+.static-shimmer-content-line {
+    position: relative;
+    width: 480px;
+    height: 15px;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: var(--secondary-background);
+}
+
+.static-shimmer-content-line:nth-child(2) {
+    width: 390px;
+}
+
+.static-shimmer-content-line:nth-child(3) {
+    width: 450px;
+}
+
+.static-shimmer-content-line:nth-child(4) {
+    width: 580px;
+}
+
+.static-shimmer-content-line:nth-child(5) {
+    width: 410px;
+}
+
+
+.static-shimmer-content-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    height: 100%;
+    width: 150%;
+    background: linear-gradient(90deg, var(--secondary-background) 0%, #FFFFFF 50%, var(--secondary-background) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .static-shimmer-heading {
+        display: flex;
+        position: relative;
+        width: 250px;
+        height: 25px;
+        border-radius: 25px;
+        background-color: var(--secondary-background);
+        overflow: hidden;
+    }
+
+    .static-shimmer-body-heading {
+        position: relative;
+        overflow: hidden;
+        width: 180px;
+        height: 20px;
+        border-radius: 25px;
+        background-color: var(--secondary-background);
+    }
+
+    .static-shimmer-content-line {
+        position: relative;
+        width: 290px;
+        height: 15px;
+        border-radius: 25px;
+        overflow: hidden;
+        background-color: var(--secondary-background);
+    }
+
+    .static-shimmer-content-line:nth-child(2) {
+        width: 260px;
+    }
+
+    .static-shimmer-content-line:nth-child(3) {
+        width: 220px;
+    }
+
+    .static-shimmer-content-line:nth-child(4) {
+        width: 300px;
+    }
+
+    .static-shimmer-content-line:nth-child(5) {
+        width: 240px;
+    }
+}

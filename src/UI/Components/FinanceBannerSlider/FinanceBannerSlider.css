@@ -1,0 +1,158 @@
+/* .carousel-container{
+    position: relative;
+    width: 100%;
+    height: max-content;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.carousel-wrapper{
+    display: flex;
+    transition: transform 1s ease-in-out;
+    width: 100%;
+}
+
+.carousel-slide{
+    min-width: 100%;
+    height: 100%;
+    cursor: grab;
+}
+
+.carousel-slide > img{
+    width: 100%;
+    height: auto;
+}
+
+.finance_banner_2_desktop{
+    width: 100%;
+    padding: 0;
+    gap: 25px;
+    display: flex;
+}
+.finance_banner_2_desktop img{
+    cursor: pointer;
+}
+
+.finance_banner_2_mobile{
+    display: none;
+}
+
+@media only screen and (min-width:481px) and (max-width: 767px) {
+    .finance_banner_2 {
+        margin: 10px 0;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .carousel-slide{
+        height: auto;
+    }
+    .carousel-container{
+        display: none;
+    }
+    .finance_banner_2_desktop{
+        display: none;
+    }
+    .finance_banner_2_mobile{
+        display: flex;
+        margin: 10px 0;
+    }
+    
+}
+
+.finance_banner_2{
+    width: 100%;
+    height: auto;
+}
+
+.finance_banner_2_desktop img{
+    width: 100%;
+    height: auto;
+}
+.finance_banner_2_mobile img{
+    width: 100%;
+    height: auto;
+} */
+
+
+.carousel-container{
+    position: relative;
+    width: 100%;
+    height: max-content;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.carousel-wrapper{
+    display: flex;
+    transition: transform 1s ease-in-out;
+    width: 100%;
+}
+
+.carousel-slide{
+    min-width: 100%;
+    height: 100%;
+    cursor: grab;
+}
+
+.carousel-slide > img{
+    width: 100%;
+    height: auto;
+    /* object-fit: contain; */
+}
+
+.finance_banner_2_desktop{
+    width: 100%;
+    /* padding: var(--global-padding); */
+    /* padding: 0 0 35px 0; */
+    padding: 0;
+    gap: 25px;
+    display: flex;
+}
+.finance_banner_2_desktop img{
+    cursor: pointer;
+}
+
+.finance_banner_2_mobile{
+    display: none;
+}
+
+@media only screen and (min-width:481px) and (max-width: 767px) {
+    .finance_banner_2 {
+        margin: 10px 0;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .carousel-slide{
+        height: auto;
+    }
+    .carousel-container{
+        display: none;
+    }
+    .finance_banner_2_desktop{
+        display: none;
+    }
+    .finance_banner_2_mobile{
+        display: flex;
+        margin: 10px 0;
+    }
+    
+}
+
+.finance_banner_2{
+    width: 100%;
+    height: auto;
+    /* padding-bottom: 15px; */
+}
+
+.finance_banner_2_desktop img{
+    width: 100%;
+    height: auto;
+    /* border-radius: 10px; */
+}
+.finance_banner_2_mobile img{
+    width: 100%;
+    height: auto;
+    /* border-radius: 5px; */
+}

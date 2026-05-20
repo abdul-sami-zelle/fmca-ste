@@ -1,0 +1,97 @@
+.frequently-bought-main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    gap: 25px;
+}
+
+.frequently-bought-main.add-padding {
+    padding: var(--global-padding);
+}
+
+.frequently-bought-main h3{
+    font-size: var(--section-size);
+    line-height: var(--section-height);
+    font-weight: var(--section-weight);
+    color: var(--text-primary);
+}
+
+.frequently-bought-card{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 5px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .frequently-bought-card {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .frequently-bought-main {
+        gap: 15px;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+    .frequently-bought-main {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+    .slick-slider{
+        margin-bottom: 0 !important;
+    }
+    .frequently-bought-main.add-padding{
+        padding: 20px 10px;
+    }
+    .frequently-bought-card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .frequently-bought-main h3 {
+        /* font-size: var(--sub-section-size);
+        line-height: var(--sub-section-height); */
+        font-size: 18px;
+        line-height: 1.2;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+    .stock-label{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .frequently-bought-main {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+    .slick-slider{
+        margin-bottom: 0 !important;
+    }
+    .frequently-bought-main.add-padding{
+        padding: 20px 10px;
+    }
+    .frequently-bought-card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .frequently-bought-main h3 {
+        /* font-size: var(--sub-section-size);
+        line-height: var(--sub-section-height); */
+        font-size: 18px;
+        line-height: 1.2;
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+    .stock-label{
+        display: none;
+    }
+}

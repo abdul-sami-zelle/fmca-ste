@@ -1,0 +1,122 @@
+.why-fm-protection-main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.why-fm-protection-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+}
+
+.why-protection-heading-icon {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.why-fm-protection-heading>h3 {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #595959;
+}
+
+.why-fm-protection-options-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 15px;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.why-fm-protection-options-main-container::-webkit-scrollbar {
+    display: none;
+}
+
+.why-fm-protection-single-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 260px;
+    padding: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+    border: 1px solid #d7d7d7;
+    background-color: #d9d9d9;
+    color: #595959;
+    border-radius: 2px;
+}
+
+.why-fm-protection-single-option>p {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #595959;
+}
+
+.why-fm-protection-single-option:hover {
+    background-color: #595959;
+
+}
+
+.why-fm-protection-single-option.highlight-protection-single-option {
+    background-color: #595959;
+}
+
+.why-fm-protection-single-option.highlight-protection-single-option>p {
+    color: #FFF;
+}
+
+.show-protection-plan-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #FFF;
+}
+
+.why-fm-protection-single-option:hover>p {
+    color: #FFF;
+}
+
+.why-fm-protection-single-option:hover .protection-hover-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #FFF;
+}
+
+@media only screen and (max-width: 480px) {
+    .why-fm-protection-heading {
+        gap: 10px;
+    }
+
+    .why-protection-heading-icon {
+        display: flex;
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+    }
+
+    .why-fm-protection-heading>h3 {
+        font-size: 18px;
+    }
+
+    .why-fm-protection-single-option {
+        width: 170px;
+        padding: 10px 15px;
+    }
+    .why-fm-protection-single-option>p {
+        font-size: 11px;
+    }
+}

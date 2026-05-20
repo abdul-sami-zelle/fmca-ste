@@ -1,0 +1,9 @@
+.blogs_shimmer_container{
+        display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-self: center;
+    cursor: pointer;
+}

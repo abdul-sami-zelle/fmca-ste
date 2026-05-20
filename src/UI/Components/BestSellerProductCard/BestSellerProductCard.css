@@ -1,0 +1,391 @@
+.category-product-card {
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 15px;
+    margin: 0;
+    padding: 15px;
+    cursor: pointer;
+    align-items: start;
+    justify-content: space-evenly;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    position: relative;
+    box-shadow: 0px 1px 3px 0px #0000001A;
+    text-decoration: none;
+    /* height: 340px !important; */
+    /* height: max-content; */
+}
+
+@media only screen and (max-width: 480px) {
+    .category-product-card {
+        margin: 0 10px 0 10px;
+    }
+}
+
+.show-on-mobile {
+    display: none;
+}
+
+.category-product-card:hover {
+    transform: scale(1.02);
+}
+
+.category-product-image {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.category-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+}
+
+.category-containt-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    width: 100%;
+}
+
+.best-seller-rating-and-review {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+}
+
+.best-seller-rating-and-review span {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 2px;
+}
+
+.best-seller-rating-and-review p {
+    font-size: 10px;
+    line-height: 15px;
+    font-weight: 300;
+    color: var(--text-primary);
+}
+
+.category-product-rating-and-name {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.category-product-rating-section {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+}
+
+.category-product-rating-stars {
+    display: flex;
+}
+
+.category-product-rating-stars img {
+    width: auto;
+    height: 14px;
+    object-fit: contain;
+}
+
+.category-product-rating-stars p {
+    color: #50BED3;
+}
+
+.category-product-rating-section p {
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 300;
+}
+
+.category-product-name {
+    display: flex;
+    width: 100%;
+}
+
+.category-product-name h3 {
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+
+    display: -webkit-box !important;
+    /* Enables multi-line ellipsis */
+    -webkit-line-clamp: 2 !important;
+    /* Limits to 2 lines */
+    -webkit-box-orient: vertical !important;
+    /* Ensures vertical layout */
+    overflow: hidden !important;
+    /* Hides overflow text */
+    text-overflow: ellipsis !important;
+    /* Adds "..." at the cutoff */
+}
+
+
+
+.category-product-price-and-heart {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.category-product-price {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.category-product-price del {
+    font-size: 15px;
+    line-height: 30px;
+    font-weight: 500;
+    color: var(--text-gray);
+    opacity: 0.6;
+}
+
+.category-product-price p {
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--text-red);
+}
+
+.category-product-price-and-heart img {
+    width: auto;
+    height: 22px;
+    object-fit: contain;
+}
+
+/* Best Seller Banner Section */
+/* .category-best-seller-banners-section{
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+    height: auto;
+}
+
+.category-best-seller-banners-section img{
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+} */
+
+@media only screen and (max-width: 480px) {
+    .show-on-mobile {
+        display: flex;
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        position: absolute;
+        right: 20px;
+        top: 10px;
+    }
+
+    .hide-on-mobile {
+        display: none;
+    }
+
+    .category-product-rating-section p {
+        font-size: 10px;
+        line-height: 15px;
+        font-weight: 300;
+    }
+
+    .category-product-name h3 {
+        font-size: 15px;
+        line-height: 18px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .category-product-price del {
+        font-size: 12px;
+        line-height: 14px;
+        font-weight: 600;
+    }
+
+    .category-product-price p {
+        font-size: 15px;
+        line-height: 18px;
+        font-weight: 600;
+        color: var(--text-red);
+    }
+}
+
+.bestSellerCardShimmer {
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 1px 3px 0px #0000001A;
+}
+
+.bestSellerCardImgShimmer {
+    height: 140px;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+.best-seller-main-cover-shimmer {
+    height: 100%;
+    width: 100%;
+    background-color: #f0f0f0;
+}
+
+.bestSellerCardNameShimmer {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.bestSellerCardPriceShimmer {
+    width: 50%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
+
+.bestSellerCardImgShimmer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    /* Start off-screen */
+    height: 100%;
+    width: 150%;
+    /* Width of the shimmer gradient */
+    background: linear-gradient(90deg, rgba(240, 240, 240, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(240, 240, 240, 0) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+
+.best-seller-main-cover-shimmer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    /* Start off-screen */
+    height: 100%;
+    width: 150%;
+    /* Width of the shimmer gradient */
+    background: linear-gradient(90deg, rgba(240, 240, 240, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(240, 240, 240, 0) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+.best-seller-mobile-card-shimmer {
+    height: 220px;
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    z-index: 999999999;
+}
+
+.best-seller-mobile-card-shimmer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    /* Start off-screen */
+    height: 100%;
+    width: 150%;
+    /* Width of the shimmer gradient */
+    background: linear-gradient(90deg, rgba(240, 240, 240, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(240, 240, 240, 0) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+.mobile-best-seller-cart-shimmer-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background-color: #FFFFFF;
+    border-top: 3px solid #FFFFFF;
+    border-left: 3px solid #ffffff;
+    border-radius: 1.25rem 0 0 0;
+    /* border-radius: 0.645rem 0 0 0; */
+
+    padding: 0.3125rem 0.3125rem 0 0.3125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+}
+
+
+.mobile-best-seller-cart-shimmer-container::after {
+    position: absolute;
+    top: -1.310rem;
+    right: 0px;
+    content: '';
+    width: 1.125rem;
+    height: 1.125rem;
+    background-color: transparent;
+    border-bottom-right-radius: 0.625rem;
+    box-shadow: 0.375rem 0.375rem #FFFFFF;
+}
+
+.mobile-best-seller-cart-shimmer-container::before {
+    width: 2.125rem;
+    height: 2.125rem;
+    bottom: 0;
+    left: -2.310rem;
+    background-color: transparent;
+    position: absolute;
+    content: '';
+    border-bottom-right-radius: 0.645rem;
+    box-shadow: 0.375rem 0.375rem #FFFFFF;
+}
+
+
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    .category-product-name h3 {
+        font-size: 14px;
+    }
+
+    .category-product-price del {
+        font-size: 13px;
+        line-height: 1.2;
+    }
+
+    .category-product-price p {
+        font-size: 11px;
+        line-height: 1.2;
+    }
+}

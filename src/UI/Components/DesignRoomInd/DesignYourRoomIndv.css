@@ -1,0 +1,149 @@
+.design_room_indv {
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+  gap: 25px;
+  /* padding: 35px 24px; */
+  padding: 0 24px;
+}
+
+.design_room_indv > h3 {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
+}
+
+.design_room_main_indv {
+  width: 100%;
+  aspect-ratio: 1440 / 700;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: 10px;
+  /* overflow: hidden; */
+}
+
+.temp-design-room-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  /* max-height: 400px; */
+}
+
+.iframe-container {
+  width: 100%;
+  aspect-ratio: 1440 / 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--orange-outline);
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* dark transparent overlay */
+  z-index: 1;
+}
+
+/* Text on top of image */
+.overlay-content-dri {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.overlay-content-dri h2 {
+  font-size: 32px;
+  margin: 0;
+  line-height: 34px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.overlay-content-dri p {
+  font-size: 16px;
+  margin-top: 8px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+
+.overlay-content-dri button {
+  width: 200px;
+  padding: 8px 0;
+  border: 1px solid var(--orange-outline);
+  border-radius: 5px;
+  background-color: var(--orange-fill);
+  color: var(--text-oposite);
+  margin-top: 5px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  transition: transform 0.3s ease; /* Smooth scaling */
+  cursor: pointer;
+}
+
+/* Add this */
+.overlay-content-dri button:hover {
+  transform: scale(1.05); /* Scales up by 5% */
+}
+
+
+ 
+@media only screen and (max-width: 1000px){
+    .overlay-content-dri h2 {
+  font-size: 28px;
+  line-height: 30px;
+}
+
+.overlay-content-dri p {
+  font-size: 14px;
+  margin-top: 6px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+}
+
+
+@media only screen and (max-width: 600px){
+    .overlay-content-dri h2 {
+  font-size: 18px;
+        line-height: 18px;
+}
+
+.overlay-content-dri p {
+  font-size: 12px;
+  margin-top: 4px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.design_room_indv {
+  gap: 10px;
+  padding: 15px 0 0 0 ;
+}
+
+.design_room_indv > h3 {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+}

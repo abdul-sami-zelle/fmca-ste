@@ -1,0 +1,134 @@
+.apply-for-main{
+    display: flex;
+    flex-direction: column;
+    width: 370px;
+    height: auto;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 1px 4px 0px #00000026;
+    gap: 10px;
+}
+
+.career-form-first-and-last-name-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.career-form-zip-and-city{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.career-form-zip-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+}
+
+.apply-for-input-labels{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 3px;
+    color: var(--text-primary);
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 400;
+    align-items: start;
+    justify-content: start;
+}
+
+.apply-for-input-labels input{
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    background-color: #fff;
+    border-radius: 3px;
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    outline: none;
+}
+
+.apply-for-chose-file{
+    padding: 5px 10px;
+    width: max-content;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+.apply-for-career-button{
+    font-size: var(--sub-section-size);
+    line-height: var(--sub-section-height);
+    font-weight: var(--sub-section-weight);
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    width: max-content;
+    background-color: var(--orange-fill);
+    border: 1px solid var(--orange-outline);
+    color: var(--text-oposite);
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.apply-for-career-button > img {
+    width: 20px;
+    height: auto;
+}
+
+.select-file-icon{
+    color: var(--text-oposite);
+    transition: all 0.3s ease-in-out;
+}
+
+.apply-for-career-button:hover{
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.apply-for-career-button:hover .select-file-icon{
+    color: #ffff;
+}
+
+.selected-file-name {
+    align-items: start;
+    justify-content: start;
+    font-size: 12px;
+    line-height: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    margin-top: -8px;
+    margin-bottom: 5px;
+}
+
+@media only screen and (max-width: 480px){
+    .apply-for-main{
+        width: 100%;
+        padding: 10px;
+    }
+    .apply-for-input-labels input {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+    .career-form-first-and-last-name-container {
+        gap: 10px;
+    }
+}
+

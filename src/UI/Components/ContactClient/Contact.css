@@ -1,0 +1,403 @@
+.contact-us-main-container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    padding: var(--global-padding);
+}
+
+/* contact us head */
+.contact-us-head{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.contact-us-main-heading{
+    font-size: 30px;
+    line-height: 34px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.contact-para{
+    width: 80%;
+}
+
+.contact-para p{
+    text-align: center;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+}
+
+.contact-head-phone-number-sec{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    gap: 15px;
+    padding: 5px 10px;
+    border-bottom: 2px solid var(--text-primary);
+}
+
+.contact-head-phone-number-sec > p > a {
+    font-size: var(--sub-section-size);
+    line-height: var(--sub-section-height);
+    font-weight: var(--sub-section-weight);
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+/* Contact us body section */
+.contact-us-body{
+    display: flex;
+    width: 100%;
+    gap: 40px;
+}
+
+/* services offer */
+.contact-us-services{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 0 0 20px 0;
+    gap: 30px;
+}
+
+.contact-us-service-card{
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: start;
+    justify-content: start;
+    background-color: #FFFFFF;
+    box-shadow: 0px 1px 4px 0px #00000026;
+    border-radius: 10px;
+}
+
+.costumer-care-service-icon{
+    width: 30px;
+    height: auto;
+}
+
+.costumer-care-service-details{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 8px;
+}
+
+.costumer-care-service-details h3{
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.costumer-care-service-details p{
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
+.costumer-care-service-details p:nth-child(3){
+    font-weight: 500;
+}
+.costumer-care-service-details p:nth-child(4){
+    font-weight: 500;
+}
+
+/* contact form styling */
+.contact-us-contact-form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: max-content;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 4px 0px #00000026;
+    gap: 30px;
+    background-color: #FFFFFF;
+}
+
+/* contact form head */
+.contact-form-head{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    align-items: start;
+    justify-content: start;
+}
+
+.contact-form-head h3{
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.contact-form-head p{
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
+/* contact form inputs */
+.contact-form-input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.contact-form-combined-inputs{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 3px;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+input {
+    width: 100%;
+    background-color: #FDFDFD;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 400;
+    color: var(--text-primary);
+    outline: none;
+}
+
+/* Send data button */
+.form-submit-button-div{
+    display: flex;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+}
+
+.form-submit-button-div > button{
+    font-size: var(--sub-section-size);
+    line-height: var(--sub-section-height);
+    font-weight: var(--sub-section-weight);
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    width: max-content;
+    background-color: #FFF;
+    border: 1px solid var(--orange-outline);
+    color: var(--orange-outline);
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.send-file-icon{
+    color: var(--orange-outline);
+    transition: all 0.3s ease-in-out;
+}
+
+.form-submit-button-div > button:hover{
+    background-color: var(--orange-fill);
+    color: #fff;
+}
+
+.form-submit-button-div > button:hover .send-file-icon{
+    color: #FFF;
+}
+
+/* contact form payment and faq */
+.contact-us-payment-and-FAQ{
+    display: flex;
+    width: 100%;
+    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contact-us-pay-and-faq-details{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: 0px 1px 4px 0px #00000026;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-us-pay-and-faq-details img{
+    width: 60px;
+    height: auto;
+}
+
+.contact-us-pay-and-faq-details h3{
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.contact-us-pay-and-faq-details p{
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
+textarea {
+    width: 100% !important;
+    background-color: #FDFDFD;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 400;
+    color: var(--text-primary);
+    outline: none;
+}
+
+@media only screen and (max-width: 480px){
+    .contact-us-main-container{
+        padding: 20px 10px;
+        gap: 15px;
+    }
+    
+    .contact-us-body{
+        flex-direction: column;
+        gap: 0;
+    }
+    .contact-us-head{
+        gap: 5px;
+    }
+    .contact-us-services{
+        width: 100%;
+        gap: 15px;
+    }
+
+    .contact-us-contact-form{
+        width: 100%;
+        padding: 15px;
+        gap: 10px;
+    }
+    .contact-form-combined-inputs{
+        gap: 10px;
+    }
+    label{
+        gap: 0;
+        font-size: var(--content-one-size);
+        line-height: var(--content-one-height);
+        font-weight: var(--content-two-weight);
+    }
+    input{
+        font-size: var(--content-one-size);
+        line-height: var(--content-one-height);
+        font-weight: var(--content-two-weight);
+    }
+
+    .contact-us-payment-and-FAQ{
+        gap: 10px;
+        flex-direction: column;
+    }
+    .contact-us-pay-and-faq-details{
+        gap: 5px;
+        padding: 10px;
+        width: 100%;
+    }
+
+    /* All Typo */
+    .costumer-care-service-details{
+        gap: 5px;
+    }
+    .contact-form-head{
+        gap: 5px;
+    }
+    .contact-us-main-heading{
+        font-size: var(--section-size);
+        line-height: var(--section-height);
+        font-weight: var(--section-weight);
+    }
+
+    .contact-para > p {
+        font-size: var(--content-one-size);
+        line-height: var(--content-one-height);
+        font-weight: var(--content-two-weight);
+    }
+
+    .costumer-care-service-icon{
+        width: 20px;
+    }
+
+    .costumer-care-service-details > h3{
+        font-size: var(--sub-section-size);
+        line-height: var(--sub-section-height);
+        font-weight: var(--sub-section-weight);
+    }
+    .costumer-care-service-details > p {
+        font-size: var(--content-one-size);
+        line-height: var(--content-one-height);
+        font-weight: var(--content-two-weight);
+    }
+
+    .contact-form-head > h3 {
+        font-size: var(--sub-section-size);
+        line-height: var(--sub-section-height);
+        font-weight: var(--sub-section-weight);
+    }
+
+    .contact-form-head > p {
+        font-size: var(--content-one-size);
+        line-height: var(--content-one-height);
+        font-weight: var(--content-two-weight);
+    }
+
+    .form-submit-button-div button{
+        font-size: var(--sub-section-size);
+        line-height: var(--sub-section-height);
+        font-weight: var(--sub-section-weight);
+        /* height: 25px; */
+    }
+
+    .contact-us-pay-and-faq-details img{
+        width: 40px;
+    }
+    .contact-us-pay-and-faq-details > h3 {
+        font-size: var(--sub-section-size);
+        line-height: var(--sub-section-height);
+        font-weight: var(--sub-section-weight);
+    }
+    .contact-us-pay-and-faq-details p{
+        font-size: var(--content-one-size);
+        line-height: var(--content-one-height);
+        font-weight: var(--content-two-weight);
+    }
+}

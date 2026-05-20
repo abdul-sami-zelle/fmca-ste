@@ -1,0 +1,105 @@
+.apply-for-financing-modal-main-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    visibility: hidden;
+    z-index: 999999;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.apply-for-financing-modal-main-container.show-financing-modal {
+    visibility: visible;
+    opacity: 1;
+}
+
+.financing-modal-inner-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 30%;
+    height: auto;
+    padding: 30px 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.financing-modal-inner-container > h3 {
+    font-size: var(--section-size);
+    line-height: var(--section-height);
+    font-weight: var(--section-weight);
+}
+
+.financing-modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: max-content;
+    height: max-content;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+}
+
+.financing-option-button {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 15px;
+    width: 80%;
+    background-color: transparent;
+    border: 1px solid var(--orange-outline);
+    color:  var(--text-gray);
+    height: 50px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: var(--sub-section-size);
+    line-height: var(--sub-section-height);
+    font-weight: var(--sub-section-weight);
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+    padding: 0 20px;
+}
+
+.financing-option-button:hover {
+    /* font-size: 17px; */
+    transform: scale(1.05);
+}
+
+
+
+.financing-option-button > img {
+    width: 70px;
+    height: auto;
+    object-fit: contain;
+}
+
+@media only screen and (max-width: 480px) {
+    .apply-for-financing-modal-main-container {
+        padding: 15px;
+    }
+    .financing-modal-inner-container {
+        width: 100%;
+    }
+    .financing-option-button {
+        font-size: 12px;
+    line-height: 1.2;
+    font-weight: 600;
+    padding: 0 10px;
+    }
+}

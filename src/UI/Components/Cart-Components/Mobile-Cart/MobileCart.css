@@ -1,0 +1,316 @@
+/* .mobile-cart{
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 1px 6px 0px #00000026;
+    position: relative;
+    padding: 10px;
+    gap: 10px;
+    height: max-content;
+}
+
+.mobile-delete-product{
+    position: absolute;
+    background-color: transparent;
+    width: max-content;
+    height: max-content;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    top: 12px;
+    right: 12px;
+}
+
+.mobile-priduct-name{
+    display: flex;
+    width: 85%;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.mobile-cart-product-image-and-containt{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.mobile-cart-product-main-image{
+    width: 90px;
+    height: 65px;
+    object-fit: contain;
+    border: 1px solid var(--border-color);
+}
+
+.mobile-cart-product-containt{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.mobile-cart-product-containt p{
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    color: var(--text-red);
+}
+
+.mobile-cart-product-count-and-total-price{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-cart-product-count{
+    display: flex;
+    align-items: center;
+    height: 30px;
+    border: 1px solid var(--orange-outline);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.mobile-cart-product-count button{
+    border: none;
+    outline: none;
+    background-color: #fff;
+    width: max-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+}
+
+.mobile-cart-product-count button img{
+    width: auto;
+    height: 15px;
+    object-fit: contain;
+}
+
+.mobile-cart-product-count p{
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border-left: 1px solid var(--orange-outline);
+    border-right: 1px solid var(--orange-outline);
+    padding: 0 10px;
+    color: var(--text-gray);
+}
+
+.mobile-card-protection-div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+}
+
+.mobile-guard-title-and-details{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.mobile-guard-title-and-details > span{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: max-content;
+    flex-shrink: 0;
+}
+
+.mobile-guard-title-and-details > span > p {
+    font-size: 9px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.mobile-protection-btns-accept-and-cancel{
+    display: flex;
+    width: max-content;
+    gap: 10px;
+    align-items: center;
+}
+
+@media only screen and (max-width: 480px){
+    .mobile-cart{
+        display: flex;
+    }
+} */
+
+
+.mobile-cart{
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 1px 6px 0px #00000026;
+    position: relative;
+    padding: 10px;
+    gap: 10px;
+    height: max-content;
+}
+
+.mobile-delete-product{
+    position: absolute;
+    background-color: transparent;
+    width: max-content;
+    height: max-content;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    top: 12px;
+    right: 12px;
+}
+
+.mobile-priduct-name{
+    display: flex;
+    width: 85%;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.mobile-cart-product-image-and-containt{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.mobile-cart-product-main-image{
+    /* width: 118px; */
+    width: 90px;
+    /* height: 90px; */
+    height: 65px;
+    object-fit: contain;
+    border: 1px solid var(--border-color);
+}
+
+.mobile-cart-product-containt{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.mobile-cart-product-containt p{
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    color: var(--text-red);
+}
+
+.mobile-cart-product-count-and-total-price{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-cart-product-count{
+    display: flex;
+    align-items: center;
+    height: 30px;
+    border: 1px solid var(--orange-outline);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.mobile-cart-product-count button{
+    border: none;
+    outline: none;
+    background-color: #fff;
+    width: max-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+}
+
+.mobile-cart-product-count button img{
+    width: auto;
+    height: 15px;
+    object-fit: contain;
+}
+
+.mobile-cart-product-count p{
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border-left: 1px solid var(--orange-outline);
+    border-right: 1px solid var(--orange-outline);
+    padding: 0 10px;
+    color: var(--text-gray);
+}
+
+.mobile-card-protection-div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+}
+
+.mobile-guard-title-and-details{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.mobile-guard-title-and-details > span{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: max-content;
+    flex-shrink: 0;
+}
+
+.mobile-guard-title-and-details > span > p {
+    font-size: 9px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.mobile-protection-btns-accept-and-cancel{
+    display: flex;
+    width: max-content;
+    gap: 10px;
+    align-items: center;
+    position: relative;
+}
+
+/* .mobile-protection-overlay {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    z-index: 999999;
+    top: 0;
+    left: 0;
+} */
+
+@media only screen and (max-width: 599px){
+    .mobile-cart{
+        display: flex;
+    }
+}

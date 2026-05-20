@@ -1,0 +1,73 @@
+.payment-type-financing-main-container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+    border-top: 1px solid var(--border-color);
+    padding: 15px 0;
+}
+
+.payment-type-financing-heading{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.payment-type-financing-heading img{
+    height: 35px;
+    width: auto;
+}
+
+.payment-type-financing-heading > h3 {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.payment-type-financing-inputs-main{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.acima-method-input-dual-fields {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.acima-method-single-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 49%;
+
+}
+
+.payment-type-financing-apply{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
+.payment-type-financing-apply > p {
+    color: var(--tertiary-color);
+    font-weight: 500;
+    text-decoration: underline;
+    cursor: pointer;
+}
+

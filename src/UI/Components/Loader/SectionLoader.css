@@ -1,0 +1,24 @@
+.section-loader-overlay{
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px); /* This adds the blur effect */
+  z-index: 999999999;
+  flex-direction: column;
+}
+
+.section-loader-overlay img {
+  width: auto;
+  height: 70px;
+  object-fit: contain;
+}
+
+.loader-overlay p{
+  font-size: 16px;
+}

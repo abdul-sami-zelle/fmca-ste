@@ -1,0 +1,48 @@
+.favorites-main-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 0 60px;
+    background-color: #f8f8f8;
+}
+
+.favorites-cards-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 15px;
+    row-gap: 15px;
+    width: 100%;
+}
+
+.empty-wishlist-in-fav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+}
+
+.empty-wishlist-in-fav > img {
+    width: 200px;
+    height: auto;
+}
+
+.empty-wishlist-in-fav > h3 {
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #595959;
+}
+
+@media only screen and (max-width: 480px) {
+    .favorites-main-container {
+        padding: 10px;
+        margin: 0 !important;
+    }
+
+    .favorites-cards-container {
+        grid-template-columns: auto auto;
+    }
+}

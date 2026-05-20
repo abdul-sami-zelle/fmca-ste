@@ -1,0 +1,765 @@
+
+
+.content {
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+
+.main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 0px 0 0;
+  position: relative;
+}
+.arrow{
+  position: absolute;
+  left: 44.7%;
+  /* left: calc(50% - 15px); */
+  /* width: 0px; */
+  height: 70px;
+  width: 60px;
+  top: -13px;
+  /* border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 30px solid #FFAA00; */
+  z-index: 999999;
+  /* rotate: -180deg; */
+  display: flex;
+}
+
+.arrow.display_none{
+  display: none;
+}
+
+
+
+.wheel-canvas{
+  color: white !important;
+  display: flex;
+  /* background-color: red; */
+  
+}
+
+.wheel-canvas.display_none{
+  display: none;
+}
+
+.central_circle {
+  height: 240px;
+  width: 240px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%; /* Move to 50% from the top */
+  left: 50%; /* Move to 50% from the left */
+  transform: translate(-50%, -50%); /* Offset by half the width and height to center */
+  z-index: 999999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(255, 196, 0, 0.8) 0px 0px 90px;
+  opacity: 1;
+  animation: surpriseAnimation2 2s forwards; 
+  
+}
+
+
+@keyframes surpriseAnimation2 {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8); /* Start small and centered */
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1); /* End at full size and centered */
+  }
+}
+
+
+
+.central_circle_progress{
+  height: 240px;
+  width: 240px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the element */
+  z-index: 999999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(255, 255, 255, 0.8) 0px 0px 90px;
+  display: flex;
+  background: #252B31;
+}
+
+.central_circle_progress.display_none{
+  display: none;
+}
+
+.central_circle_0 {
+  height: 125px;
+  width: 125px;
+  background: radial-gradient(circle at 30% 30%, 
+  #fff8e1,   /* Light golden highlight */
+  #ffd54f,   /* Golden yellow */
+  #ffb300,   /* Rich gold */
+  #ff8f00);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%) rotateX(20deg) rotateY(20deg);  */
+  z-index: 999999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0px 10px 20px rgba(0, 0, 0, 0.3), /* Main shadow */
+    inset 0px -5px 10px rgba(0, 0, 0, 0.2), /* Inner shadow for depth */
+    inset 0px 5px 10px rgba(255, 255, 255, 0.6); /* Inner highlight */
+  border: 0px solid #252B31;
+  cursor: pointer;
+}
+
+
+.central_circle_0_1 {
+  height: 105px;
+  width: 105px;
+  background-color: #252B31;
+  border-radius: 50%;
+  box-shadow: 
+  0px 8px 15px rgba(0, 0, 0, 0.1),  /* Main shadow below the circle */
+  inset 0px 4px 6px rgba(255, 255, 255, 0.1), /* Inner top highlight */
+  inset 0px -4px 6px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.central_circle_0_1 h2{
+  font-size: 30px;
+  background: linear-gradient(90deg, #ffd54f, #fff, #fff, #ffd54f); /* Multi-color gradient */
+  -webkit-background-clip: text; /* Clip gradient to text */
+  -webkit-text-fill-color: transparent; /* Make the rest transparent */
+  text-align: center;
+margin: 0;
+text-align: center;
+}
+
+
+.central_circle_0.display_none{
+  display: none;
+}
+
+
+.central_circle.display_none{
+  display: none;
+}
+
+.central_circle_progress h2{
+  color: #fff;
+  font-size: 26px;
+  line-height: 26px;
+  text-align: center;
+}
+.central_circle_progress .span2{
+  color: #FFAA00;
+  font-size: 46px;
+  line-height: 26px;
+  text-align: center;
+  font-weight: 600;
+}
+.central_circle_progress span{
+  color: #fff;
+  font-size: 26px;
+  line-height: 31px;
+  text-align: center;
+}
+
+
+
+.central_circle h2{
+  position: absolute;
+  top: 0px;
+  color: #bc0022;
+  font-size: 50px;
+  line-height: 18px;
+  text-align: center;
+  
+}
+.central_circle span{
+  font-size: 18px;
+}
+
+
+.central_circle button{
+position: absolute;
+bottom: 40px;
+left: calc(50% - 70px);
+width: 140px;
+height: 40px;
+border-radius: 7px;
+z-index: 1;
+background-color: #006dbc;
+color: #fff;
+font-size: 16px;
+border: none;
+cursor: pointer;
+}
+/* 
+.spinner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+} */
+.spinner{
+  position: relative;
+  padding: 30px;
+  background-color: #252B31;
+  border-radius: 50%;
+  z-index: 99;
+  
+  /* Add gradient border */
+  border: 4px solid transparent; /* Transparent border for gradient */
+  background-image: linear-gradient(#252B31, #252B31), /* Inner background */
+    radial-gradient(circle, #fff, #fff); /* Gradient border */
+  background-origin: border-box; /* Ensures border-box respects padding */
+  background-clip: padding-box, border-box; /* Clips the border gradient */
+}
+
+.dotted-circle{
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: -4px;
+  /* bottom: 0; */
+}
+
+
+
+.central_circle_2 {
+  
+  height: 500px;
+  width: 500px;
+  background-color: #F5F5F5;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99999999999;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.central_circle_2 h2{
+  position: absolute;
+  top: 60px;
+  color: #bc0022;
+  font-size: 30px;
+}
+
+.central_circle_2.display_none{
+  display: flex !important;
+}
+
+.main-dotted {
+  display: flex;
+}
+.main-dotted-580,
+.main-dotted-410,
+.main-dotted-350 {
+  display: none;
+}
+
+
+
+.up1{
+  position: absolute;
+  height: 160px;
+  width: auto;
+  top: -38px;
+  left: 18%;
+}
+.up2 {
+  position: absolute;
+  height: 100px;
+  width: auto;
+  right: 22%;
+  transform: rotate(3deg);
+  top: -33px;
+}
+
+.backbottomsnow1{
+  width: 140%;
+  height: auto;
+  position: absolute;
+  bottom: -60px;
+  left: -186px;
+  z-index: 0;
+}
+
+.frontbottomsnow1{
+  width: 200%;
+  height: auto;
+  position: absolute;
+  bottom: -85px;
+  /* left: -313px; */
+  z-index: 9999;
+}
+
+@media (max-width: 580px) {
+  .wheel-canvas {
+    width: 350px;
+    height: 350px;
+    /* padding: 20px; */
+  }
+  .spinner button {
+    width: 80px;
+    height: 30px;
+    font-size: 14px;
+  }
+  .spinner{
+    width: 350px !important;
+    height: 350px !important;
+    padding: 20px;
+  }
+  .central_circle{
+    height: 300px;
+    width: 300px;
+  }
+  .central_circle h2 {
+    font-size: 38px;
+  }
+  .arrow {
+    left: 42.4%;
+}
+
+.main-dotted {
+  display: none;
+}
+.main-dotted-580 {
+  display: flex !important;
+}
+.main-dotted-410,
+.main-dotted-350 {
+  display: none;
+}
+
+
+.central_circle_progress{
+  height: 180px;
+    width: 180px;
+}
+.central_circle_2{
+  height: 350px;
+  width: 350px;
+}
+.couponCard{
+  width: 290px !important;
+  height: auto !important;
+  padding: 8px 0 0 0 !important;
+}
+.right_cut{
+  height: 25px !important;
+  width: 25px !important;
+}
+.left_cut{
+  height: 25px !important;
+  width: 25px !important;
+}
+.couponCard h4{
+  font-size: 28px !important;
+  margin: 0 0 5px 0 !important;
+}
+.couponCard p{
+  font-size: 12px !important;
+}
+.couponCard h3 {
+  font-size: 16px !important;
+}
+.couponCard button{
+  display: none !important;
+}
+.central_circle_2 h2{
+  top: 45px !important;
+  font-size: 25px !important;
+}
+.spinner button{
+  left: auto !important;
+}
+.up2 {
+  position: absolute;
+  height: 55px;
+  width: auto;
+  right: 20%;
+  transform: rotate(14deg);
+  top: -18px;
+}
+
+.up1 {
+  position: absolute;
+  height: 70px;
+  width: auto;
+  top: -15px;
+  left: 22%;
+  transform: rotate(-4deg);
+}
+.backbottomsnow1 {
+  width: 87%;
+  height: auto;
+  position: absolute;
+  bottom: -32px;
+  left: -4px;
+  z-index: 0;
+}
+
+.frontbottomsnow1 {
+  width: 105%;
+  height: 103px;
+  position: absolute;
+  bottom: -49px;
+  /* left: -313px; */
+  z-index: 9999;
+  /* opacity: 0; */
+}
+}
+
+
+
+
+
+@media (max-width: 410px) {
+  .wheel-canvas {
+    width: 300px;
+    height: 300px;
+    /* padding: 20px; */
+  }
+
+
+
+  .spinner button {
+    width: 80px;
+    height: 30px;
+    font-size: 14px;
+    left: 55px;
+  }
+  .spinner{
+    width: 300px !important;
+    height: 300px !important;
+    padding: 20px;
+  }
+  .central_circle{
+    height: 290px;
+    width: 290px;
+  }
+  .underlined-input{
+    width: 260px !important;
+  }
+  .central_circle h2 {
+    font-size: 38px;
+  }
+
+  
+
+  .arrow {
+    left: 41.4%;
+}
+
+.central_circle_progress{
+  height: 140px;
+    width: 140px;
+}
+.central_circle_progress h2{
+  font-size: 22px !important;
+}
+.central_circle_progress span{
+  font-size: 22px !important;
+}
+.central_circle_progress .span2{
+  font-size: 41px !important;
+}
+
+
+.central_circle_2{
+  height: 325px;
+  width: 325px;
+}
+.couponCard{
+  width: 260px !important;
+  height: auto !important;
+  padding: 8px 0 0 0 !important;
+}
+.couponCard h4{
+  font-size: 23px !important;
+  margin: 0 0 12px 0 !important;
+}
+.couponCard p{
+  font-size: 12px !important;
+}
+.couponCard h3 {
+  font-size: 16px !important;
+}
+.couponCard button{
+  display: none !important;
+}
+.central_circle_2 h2{
+  top: 40px !important;
+  font-size: 20px !important;
+}
+
+}
+
+
+
+@media (max-width: 350px) {
+  .wheel-canvas {
+    width: 270px;
+    height: 270px;
+    /* padding: 20px; */
+  }
+
+
+
+  .spinner button {
+    width: 80px;
+    height: 30px;
+    font-size: 14px;
+  }
+  .spinner{
+    width: 270px !important;
+    height: 270px !important;
+    padding: 20px;
+  }
+  .central_circle{
+    height: 250px;
+    width: 250px;
+  }
+  .underlined-input{
+    width: 230px !important;
+  }
+  .arrow {
+    left: 41.4%;
+}
+
+.central_circle_progress {
+  height: 130px;
+  width: 130px;
+}
+.central_circle_2{
+  height: 290px;
+  width: 290px;
+}
+.couponCard{
+  width: 240px !important;
+  height: auto !important;
+  padding: 5px 0 0 0 !important;
+}
+
+.couponCard h4{
+  font-size: 18px !important;
+  margin: 0 0 5px 0 !important;
+}
+.couponCard p{
+  font-size: 9px !important;
+}
+.couponCard h3 {
+  font-size: 16px !important;
+}
+.couponCard button{
+  display: none !important;
+}
+.central_circle_2 h2{
+  top: 30px !important;
+  font-size: 20px !important;
+}
+}
+
+
+.underlined-input {
+  border: none;
+  border-bottom: 2px solid #FFAA00;  /* Underline style */
+  outline: none; /* Removes focus outline */
+  padding: 8px 0;
+  font-size: 14px;
+  color: #252B31;
+  font-family: 'Poppins';
+}
+
+.underlined-input:focus {
+  border-bottom: 2px solid #FFAA00;  /* Change underline color on focus */
+}
+
+
+
+
+.coupon_card_pre{
+  position: absolute;
+}
+
+.couponCard {
+  
+  width: 400px;
+  height: 230px;
+  background-color: white;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  opacity: 0;
+  transform: scale(0) rotate(15deg); /* Start with a slight rotation */
+  animation: surpriseAnimation 2s forwards; /* Apply the animation */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 0 0 0;
+}
+
+@keyframes surpriseAnimation {
+  0% {
+    transform: scale(0) rotate(40deg); /* Start small with rotation */
+    opacity: 0; /* Start invisible */
+  }
+  50% {
+    transform: scale(1.05) rotate(0deg); /* Grow and remove rotation */
+    opacity: 0.5; /* Start fading in */
+  }
+  100% {
+    transform: scale(1) rotate(0deg); /* Fully grown, no rotation */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+
+.couponCard button{
+  position: absolute;
+bottom: -20px;
+left: calc(50% - 90px);
+width: 180px;
+height: 40px;
+border-radius: 7px;
+z-index: 1;
+background-color: #006dbc;
+color: #fff;
+font-size: 16px;
+border: none;
+cursor: pointer;
+}
+
+.couponCard h3{
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-size: 19px;
+  margin: 0;
+  text-align: center;
+  width: 80%;
+  color: #252B31;
+}
+.couponCard h4{
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-size: 40px;
+  margin: 0 0 30px 0;
+  text-align: center;
+  width: 80%;
+  color: #bc0022;
+}
+.couponCard p{
+  font-family: 'Poppins';
+  font-weight: 500;
+  font-size: 14px;
+  margin: 0;
+  text-align: center;
+  width: 80%;
+  color: rgb(173, 4, 4);
+}
+
+.left_cut {
+  width: 50px;
+  height: 50px;
+  background-color: #F5F5F5;
+  border-radius: 0 50% 50% 0;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.right_cut {
+  width: 50px;
+  height: 50px;
+  background-color: #F5F5F5;
+  border-radius: 50% 0% 0% 50%;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+
+
+
+
+
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3; /* Adjust for a blinking effect */
+  }
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+/* .dot-0 {
+  animation-delay: 0s;
+}
+.dot-1 {
+  animation-delay: 0.1s;
+}
+.dot-2 {
+  animation-delay: 0.2s;
+}
+.dot-3 {
+  animation-delay: 0.3s;
+} */
+
+
+
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+
+

@@ -1,0 +1,107 @@
+.conversation-list-container {
+  background: #f3691e;
+  border-radius: 16px;
+  width: 360px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  position: fixed;
+  bottom: 3%;
+  right: 1%;
+  z-index: 10000;
+}
+
+.conversation-list-header {
+  padding: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background:#f3691e;
+  color: white;
+}
+
+.new-chat-btn {
+  color: white;
+  border: none;
+  font-size:25px;
+  font-weight: bold;
+  cursor: pointer;
+  background: transparent;
+}
+
+.conversation-list-body {
+  height: 400px;
+  padding: 12px;
+  overflow-y: auto;
+  flex: 1;
+  scrollbar-width: none;
+}
+
+.conversation-card {
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.conversation-card:hover {
+  background: #f8f8f8;
+}
+
+.conv-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.conv-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.conv-title {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.timestamp {
+  font-size: 11px;
+  color: #999;
+}
+
+.conv-msg {
+  font-size: 13px;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-input-conversation {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 13px;
+  background-color: #f9f9f9;
+  outline: none;
+  box-sizing: border-box;
+}
+.search-wrapper {
+  padding: 18px 18px 10px 18px;
+}
+
+.search-with-chatlist{
+  height: 500px;
+  background-color: white;
+  border-top-right-radius: 24px;
+  border-top-left-radius: 24px;
+}

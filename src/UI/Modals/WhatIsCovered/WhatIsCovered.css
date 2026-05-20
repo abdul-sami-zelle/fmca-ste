@@ -1,0 +1,120 @@
+.what-is-covered-main-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 999999999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.what-is-covered-main-container.show-covered-modal-main {
+    visibility: visible;
+    opacity: 1;
+}
+
+.what-is-covered-container-contianer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: start;
+    justify-content: start;
+    padding: 20px;
+    width: 90%;
+    height: 90%;
+    background-color: #FFF;
+    border-radius: 10px;
+    /* overflow-x: hidden; */
+    overflow: hidden;
+    scrollbar-width: thin; /* Firefox support */
+  scrollbar-color: #595959 transparent; /* Firefox */
+    /* overflow-y: auto; */
+    gap: 20px;
+    transform: translate(0%, 0%);
+    transition: all 0.3s ease-in-out;
+}
+
+/* .what-is-covered-container-contianer::-webkit-scrollbar {
+  width: 4px;
+}
+
+.what-is-covered-container-contianer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.what-is-covered-container-contianer::-webkit-scrollbar-thumb {
+  background-color: #595959;
+  border-radius: 20px;
+  border: 1px solid transparent;
+}
+
+.what-is-covered-container-contianer::-webkit-scrollbar-thumb:hover {
+  background-color: #3f3f3f;
+} */
+
+.what-is-covered-head-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.what-is-covered-head-contianer > h3 {
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #000;
+}
+
+.what-is-covered-modal-close {
+    /* position: absolute;
+    top: 20px;
+    right: 20px; */
+    /* background-color: transparent;
+    border: none;
+    outline: none; */
+    cursor: pointer;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    /* width: max-content; */
+    z-index: 999999;
+    /* height: max-content; */
+}
+
+
+.what-is-covered-components-contianer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 35px;
+    overflow-x: hidden;
+    overflow-x: auto;
+}
+
+.what-is-covered-components-contianer::-webkit-scrollbar {
+  /* width: 4px; */
+  display: none;
+}
+
+/* .what-is-covered-components-contianer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.what-is-covered-components-contianer::-webkit-scrollbar-thumb {
+  background-color: #595959;
+  border-radius: 20px;
+  border: 1px solid transparent;
+}
+
+.what-is-covered-components-contianer::-webkit-scrollbar-thumb:hover {
+  background-color: #3f3f3f;
+} */

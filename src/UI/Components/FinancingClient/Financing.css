@@ -1,0 +1,453 @@
+.financing-main-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* padding: 0 120px; */
+
+}
+
+.financing-top-head-contianer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    height: auto;
+    gap: 10px;
+    padding: 25px 0;
+}
+
+.pay-our-way-heading {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #595959;
+    text-align: center;
+}
+
+.financing-main-heading {
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000000;
+    text-align: center;
+}
+
+.financing-para {
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #595959;
+    text-align: center;
+}
+
+.financing-page-main-banner-container {
+    display: flex;
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+
+}
+
+.financing-desktop-main-banner {
+    display: flex;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.financing-mobile-main-banner {
+    display: none;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.mobile-finance-secondBanner {
+    display: none;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.desktop-finance-secondBanner {
+    display: flex;
+    width: 70%;
+}
+
+.desktop-finance-secondBanner img {
+    width: 100%;
+    height: auto;
+}
+
+.mobile-finance-secondBanner img {
+    width: 100%;
+    height: auto;
+}
+
+/* Categories head */
+.financing-categories-main-container {
+    display: flex;
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.financing-categories-desktop-contianer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 15px 20px;
+    border-top: 1px solid #595959;
+    border-bottom: 1px solid #595959;
+    margin-top: 15px;
+}
+
+.desktop-category-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: max-content; */
+    /* height: auto; */
+    position: relative;
+    padding: 5px 20px;
+    font-size: 15px;
+    line-height: 1.2;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #595959;
+    z-index: 2;
+    transition: all 0.3s ease-in-out;
+}
+
+.desktop-category-item.active-desktop-category {
+    background-color: var(--orange-fill);
+    color: #fff;
+}
+
+.desktop-category-item.hovered-category {
+    color: #FFF;
+}
+
+.indicator {
+  position: absolute;
+  bottom: 13px;
+  height: 31px;
+  background: var(--orange-fill);
+  border-radius: 5px;
+  transition: all 0.3s ease; /* This makes it slide */
+  opacity: 0;
+  z-index: 1;
+}
+
+
+.financing-category-shimmers-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+}
+
+.financing-category-shimmer {
+    position: relative;
+    background-color: var(--secondary-background);
+    overflow: hidden;
+    width: 180px;
+    height: 31px;
+    flex-shrink: 0;
+    border-radius: 5px;
+}
+
+.financing-category-shimmer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    height: 100%;
+    width: 150%;
+    background: linear-gradient(90deg, var(--secondary-background) 0%, #FFFFFF 50%, var(--secondary-background) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+.financing-categories-mobile-contianer {
+    display: none;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 15px;
+    border-top: 1px solid #595959;
+    border-bottom: 1px solid #595959;
+    margin-top: 15px;
+
+}
+
+.financing-categories-mobile-contianer::-webkit-scrollbar {
+    display: none;
+}
+
+.mobile-category-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    padding: 5px 20px;
+    border-radius: 5px;
+    color: var(--orange-outline);
+    height: auto;
+    flex-shrink: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.mobile-category-item.active-mobile-category {
+    background-color: var(--orange-fill);
+    color: #FFF;
+}
+
+.category-mobile-shimmer-contianer {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    overflow-y: hidden;
+    overflow-x: auto;
+    gap: 15px;
+}
+
+.category-mobile-shimmer-contianer::-webkit-scrollbar {
+    display: none;
+}
+
+.payment-solutions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 70%;
+    padding: 15px 0;
+
+}
+
+.payment-solution-single-card {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid var(--orange-outline);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.payment-solution-single-card>img {
+    width: 100%;
+    height: auto;
+}
+
+.payment-solution-single-card h3 {
+    font-size: 30px;
+    line-height: 45px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.financing-services-categories {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+
+    padding: 35px;
+}
+
+.payment-solution-single-card>.desktopview {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.payment-solution-single-card>.mobileview {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+.payment-solutions.mobileview {
+    display: none;
+}
+
+
+.financing-page-main-banner-shimmer {
+    position: relative;
+    background-color: var(--secondary-background);
+    overflow: hidden;
+    width: 70%;
+    height: 100%;
+    min-height: 350px;
+}
+
+.financing-page-main-banner-shimmer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    height: 100%;
+    width: 150%;
+    background: linear-gradient(90deg, var(--secondary-background) 0%, #FFFFFF 50%, var(--secondary-background) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .financing-top-head-contianer {
+        width: 85%;
+    }
+    .financing-page-main-banner-container {
+        width: 85%;
+    }
+    .desktop-finance-secondBanner {
+        width: 85%;
+    }
+    .financing-categories-main-container {
+        width: 85%;
+    }
+    .desktopview {
+        width: 85%;
+    }
+    .financing-page-main-banner-shimmer {
+        width: 85%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    .financing-top-head-contianer {
+        width: 100%;
+        gap: 5px;
+        padding: 15px;
+    }
+    .pay-our-way-heading {
+        font-size: 15px;
+    }
+
+    .financing-main-heading {
+        text-align: center;
+        font-size: 20px;
+    }
+    .financing-para {
+        font-size: 12px;
+    }
+
+    .financing-page-main-banner-container {
+        width: 100%;
+    }
+
+    .desktop-finance-secondBanner {
+        display: none;
+    }
+
+    .financing-desktop-main-banner {
+        display: none;
+    }
+
+    .financing-mobile-main-banner {
+        display: flex;
+    }
+
+    .payment-solution-single-card>.desktopview {
+        display: none;
+    }
+
+    .payment-solution-single-card>.mobileview {
+        display: block;
+    }
+
+    .mobile-finance-secondBanner {
+        display: none;
+    }
+
+    .financing-categories-main-container {
+        width: 100%;
+
+    }
+
+    .financing-categories-desktop-contianer {
+        display: none;
+    }
+
+    .financing-categories-mobile-contianer {
+        display: flex;
+    }
+
+    .payment-solutions.desktopview {
+        display: none;
+    }
+
+    .payment-solutions.mobileview {
+        display: flex;
+        width: 100%;
+        padding: 15px 10px;
+        gap: 15px;
+    }
+
+
+
+    .payment-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .payment-solution-single-card {
+        width: 100%;
+    }
+
+    .payment-solution-single-card>h3 {
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 600;
+    }
+
+    .financing-services-categories {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .financing-page-main-banner-shimmer {
+        min-height: 320px;
+        width: 100%;
+    }
+    .financing-category-shimmer {
+        width: 90px;
+    }
+}

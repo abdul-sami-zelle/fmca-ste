@@ -1,0 +1,153 @@
+.slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.swiper-padding { 
+    padding: 2px !important;
+}
+
+.swiper {
+    height: 100%;
+}
+
+.slide {
+    /* height: 200px; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+    /* border-radius: 10px; */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    /* background: rgba(0, 0, 0, 0.5); */
+    /* background-color: var(--orange-fill); */
+    background-color: transparent;
+    color: white;
+    border: 1px solid var(--orange-outline);
+    width: 35px;
+    height: 35px;
+    font-size: 25px;
+    /* padding: 10px; */
+    cursor: pointer;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+
+.arrow.left {
+    left: -100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.arrow.right {
+    right: -100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.slider-container:hover .arrow.left {
+    left: 20px;
+}
+
+.slider-container:hover .arrow.right {
+    right: 20px;
+}
+
+/* .swiper-slide {
+    height: auto;
+    po
+} */
+
+.custom-pagination-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    gap: 8px;
+    padding: 2px 0;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--orange-outline);
+    opacity: 0.5;
+    margin: 0 !important;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.dot.active {
+    opacity: 1;
+    width: 25px;
+    background-color: var(--orange-outline) !important;
+    border-radius: 10px;
+    /* transform: scale(1.2); */
+}
+
+
+
+
+.custom-slide-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 7px;
+  background-color: var(--orange-fill); /* or your desired color */
+  width: 0%;
+}
+
+.progress-bar.animate {
+  animation: fillBar linear forwards;
+}
+
+@keyframes fillBar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+    .custom-pagination-dots {
+        margin-top: 5px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .dot.active {
+        width: 18px;
+    }
+
+    /* .swiper-backface-hidden .swiper-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 0;
+    } */
+}

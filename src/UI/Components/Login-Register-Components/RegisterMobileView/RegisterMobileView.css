@@ -1,0 +1,121 @@
+.mobile-register-main {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 30px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 00;
+    transition: all 0.3s ease-in-out;
+}
+
+.mobile-register-main.slide-register-left {
+    visibility: visible;
+    opacity: 1;
+    z-index: 9999;
+    display: flex;
+}
+
+.mobile-register-top-heading {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-register-top-heading p {
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.mobile-register-top-heading button {
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    background-color: #fff;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 500;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.mobile-register-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0px 1px 4px 0px #00000026;
+    gap: 10px;
+}
+
+.mobile-register-heading {
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.mobile-register-content p {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
+.mobile-view-register-btn {
+    padding: 5px 30px;
+    background-color: var(--orange-fill);
+    border: 1px solid var(--orange-fill);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 500;
+    width: max-content;
+    cursor: pointer;
+}
+
+
+.mobi-view-signup-check {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--orange-outline);
+    border-radius: 4px;
+    position: relative;
+    padding: 0px !important;
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.mobi-view-signup-check:checked {
+    background-color: var(--orange-fill);
+    border-color: var(--orange-outline);
+}
+
+.mobi-view-signup-check:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg) !important;
+    width: 3px;
+    height: 7px;
+    border: solid var(--text-oposite);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    display: block;
+}

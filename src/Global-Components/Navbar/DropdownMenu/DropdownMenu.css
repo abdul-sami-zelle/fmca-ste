@@ -1,0 +1,243 @@
+.mattresses-main-div{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    gap: 50px;
+    height: 100%;
+    padding: 25px 50px 25px 50px;
+    gap: 15px;
+    background-color: var(--secondary-background);
+    z-index: 99999999999; 
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-wrap: nowrap;
+}
+
+.mattresses-main-div::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-items-outer-container{
+    display: flex;
+    width: 20%;
+    max-width: 20%;
+}
+
+.menu-links{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* padding: 10px 0px; */
+    gap: 7px;
+}
+
+.see-all-heading {
+    font-size: var(--sub-section-size);
+    line-height: var(--sub-section-height);
+    font-weight: var(--sub-section-weight);
+    color: var(--text-primary);
+}
+
+.living-room-heading{
+    font-size: var(--sub-section-size);
+    font-weight: var(--section-weight);
+    line-height: var(--sub-section-height);
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 0px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.living-room-heading:hover {
+    text-decoration: underline;
+}
+
+
+.mattresses-links-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+    width: max-content;
+    flex-shrink: 0;
+}
+
+.mattress-column {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+
+.mattres-links{
+    padding: 5px 0;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: var(--text-primary);
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+}
+
+.mattres-links a{
+    font-size: clamp(10px, 1.2vw, 14px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text-primary);
+    text-decoration: none;
+    white-space: nowrap;        /* Prevents text from wrapping */
+    overflow: hidden;           /* Hides overflowing text */
+    text-overflow: ellipsis; 
+}
+
+.mattres-links a:hover{
+    color: var(--text-red);
+    text-decoration: underline;
+}
+
+.mattres-links.active a{
+    color: var(--text-red);
+    font-weight: 600;
+}
+
+.mattresses-images-div{
+    display: flex;
+    /* padding: 10px 0px; */
+    gap: 20px;
+    width: 80%;
+    justify-content: end;
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.mattress-image {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    max-width: 310px;
+    flex-grow: 1;
+    height: auto;
+    gap: 5px;
+    text-decoration: none;
+    
+}
+
+.mattress-image img{
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    object-fit: cover;
+    max-height: 315px !important;
+}
+
+.mattress-image > .pricing{
+ display: flex;
+ align-items: center;
+ justify-content: flex-start;
+}
+
+.mattress-image > .pricing >.price{
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+}
+
+@media only screen and (max-width: 1300px) {
+    .mattress-image{
+        max-width: 190px !important;
+    }
+
+    .image-title{
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 12px;
+    }
+
+    .mattress-image > .pricing >.price{
+        font-size: 8px;
+    }
+}
+
+
+.image-title{
+    padding: 0;
+    margin: 0;
+}
+
+.image-title{
+    color: var(--text-primary);
+    letter-spacing: normal !important;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;  /* Prevents text from wrapping */
+    overflow: hidden;     /* Hides overflow */
+    text-overflow: ellipsis; /* Adds "..." if text is too long */
+    max-width: 100%;      /* Ensures it doesn’t exceed the container */
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.pricing{
+    display: flex;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 5px;
+    letter-spacing: normal !important;
+}
+
+.regular-price {
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 500;
+    color: var(--text-red);
+}
+
+.price{
+    color: var(--text-primary);
+    letter-spacing: normal;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 12px;
+}
+
+.sale-price-container{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+}
+
+.price-sale-price{
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 500;
+    color: var(--text-red);
+}
+
+.price .new{
+    font-size: 16px !important;
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+@media only screen and (max-width: 480px){
+    mattresses-main-div{
+        display: none;
+    }
+}

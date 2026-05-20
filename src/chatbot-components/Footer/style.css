@@ -1,0 +1,45 @@
+
+.footer {
+  align-items: center;
+  background: #f6f7f9;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 64px;
+  justify-content: space-around;
+  padding: 0 20px;
+  position: relative;
+  z-index: 0;
+}
+.footer p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8190b1;
+}
+.home-icon {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+.footer-bottom {
+  align-items: center;
+  background: #f6f7f9;
+  border-top: 1px solid #ebedf5;
+  display: flex;
+  height: 26px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.footer-bottom p {
+  align-items: center;
+  color: #8190b1;
+  cursor: pointer;
+  display: flex;
+  font-size: 11px;
+  justify-content: center;
+  text-align: center;
+}

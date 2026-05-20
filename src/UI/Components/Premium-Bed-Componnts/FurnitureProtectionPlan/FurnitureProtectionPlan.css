@@ -1,0 +1,103 @@
+.furniture-protection-gallery-main-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.furniture-protection-gallery-content {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 60%;
+}
+
+.furniture-protection-gallery-content>h3 {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #595959;
+}
+
+.furniture-protection-gallery-content>p {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #595959;
+    opacity: 0.8;
+}
+
+.furniture-protection-gallery-content>p>span {
+    font-weight: 500;
+    color: #000000;
+}
+
+.furniture-protection-gallery-content>h3:last-of-type {
+    font-size: 16px !important;
+}
+
+.furniture-protection-gallery-content>p:first-of-type {
+    font-weight: 500;
+    font-size: 16px;
+    opacity: 1;
+}
+
+
+.furniture-protection-gallery-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: auto;
+    overflow: hidden;
+    aspect-ratio: 2 /1;
+    border-radius: 20px;
+}
+
+.furniture-protection-gallery-image-container>img {
+    width: 100%;
+    /* height: auto; */
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 480px) {
+    .furniture-protection-gallery-main-container {
+        flex-direction: column;
+    }
+
+    .furniture-protection-gallery-content {
+        width: 100%;
+    }
+
+    .furniture-protection-gallery-image-container {
+        width: 100%;
+    }
+
+    .furniture-protection-gallery-content>h3 {
+        font-size: 18px;
+    }
+
+    .furniture-protection-gallery-content>p {
+        font-size: 12px;
+    }
+
+    
+
+    .furniture-protection-gallery-content>h3:last-of-type {
+        font-size: 16px !important;
+    }
+
+    .furniture-protection-gallery-content>p:first-of-type {
+        font-weight: 500;
+        font-size: 12px;
+        opacity: 1;
+    }
+
+    .furniture-protection-gallery-image-container {
+        height: 240px;
+        border-radius: 10px;
+    }
+}

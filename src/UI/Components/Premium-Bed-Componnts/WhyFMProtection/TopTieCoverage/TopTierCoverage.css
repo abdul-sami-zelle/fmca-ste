@@ -1,0 +1,45 @@
+.why-fm-protection-details {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    padding: 35px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 20px;
+    border: 1px solid #d7d7d7;
+}
+
+.why-fm-protection-details>h3 {
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #595959;
+}
+
+.why-fm-protection-details>p {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #595959;
+    opacity: 0.8;
+    text-align: center;
+}
+
+@media only screen and (max-width: 480px) {
+    .why-fm-protection-details {
+        width: 100%;
+        gap: 5px;
+        padding: 15px;
+    }
+
+    .why-fm-protection-details>h3 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .why-fm-protection-details>p {
+        font-size: 12px;
+    }
+}

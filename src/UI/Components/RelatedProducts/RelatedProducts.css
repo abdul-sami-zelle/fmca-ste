@@ -1,0 +1,43 @@
+.related-products-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: auto;
+    gap: 15px;
+    padding: 0px 60px 35px 60px;
+}
+
+.related-products-main-container>h3 {
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+.related-crds-slider-contaner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .related-products-main-container {
+        padding: 10px 30px 20px 30px;
+        gap: 10px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .related-products-main-container {
+        padding: 10px 15px 10px 15px;
+        gap: 5px;
+    }
+
+    .related-products-main-container>h3 {
+        font-size: 18px;
+        line-height: 1.2;
+        font-weight: 600;
+    }
+}

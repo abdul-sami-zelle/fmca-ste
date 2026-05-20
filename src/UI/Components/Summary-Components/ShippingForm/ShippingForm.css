@@ -1,0 +1,520 @@
+.shipping-detail-form{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+    border: 1px solid #D7D7D7;
+    padding: 20px 30px;
+}
+
+.shipping-form-main-heading{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.shipping-form-heading{
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.shipping-form-edit-and-clear-form-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    gap: 20px;
+    flex-direction: row-reverse;
+}
+
+.shipping-form-head-tag{
+    background-color: var(--tertiary-color);
+    padding: 3px 10px;
+    font-size: 10px;
+    line-height: 15px;
+    font-weight: 600;
+    border: 1px solid var(--tertiary-color);
+    border-radius: 2px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.clear-shipping-form{
+    background-color: transparent;
+    padding: 3px 10px;
+    font-size: 10px;
+    line-height: 15px;
+    font-weight: 600;
+    border: 1px solid var(--tertiary-color);
+    border-radius: 2px;
+    color: var(--tertiary-color);
+    cursor: pointer;
+}
+
+.first-name-last-name{
+    display: flex;
+    width: 100%;
+    gap: 45px;
+}
+
+.email-container{
+    display: flex;
+    width: 100%;
+    gap: 45px;
+}
+
+.country-region{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+    gap: 45px;
+}
+
+.country-region-headings{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 0;
+}
+
+.country-region-headings p{
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+}
+
+.country-region-headings h3{
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.zipcode-enter-container{
+    display: flex;
+    width: 50%;
+}
+
+.zipcode-label-and-input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0px;
+}
+
+.zipcode-label-container{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+}
+
+.zipcode-label-container strong{
+    font-weight: 500;
+    color: var(--orange-fill);
+}
+
+.zipcode-input-container{
+    display: flex;
+    width: 100%;
+    height: 48px;
+    align-items: start;
+    justify-content: start;
+    gap: 0;
+    overflow: hidden;
+    /* border: 1px solid var(--border-color); */
+    border-radius: 5px;
+}
+
+.zipcode-input-filed{
+    width: 100%;
+    display: flex;
+    border: none;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+    height: 100%;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.zipcode-update-button{
+    background-color: var(--orange-fill);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    padding: 11px 18px;
+    height: 100%;
+    border: none;
+    /* border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px; */
+    outline: none;
+    cursor: pointer;
+    /* border: 1px solid var(--orange-fill); */
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+
+.city-state-zip{
+    display: flex;
+    width: 100%;
+    gap: 15px;
+    align-items: center;
+}
+
+.different-billing-option{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+
+.different-billing-checkox{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+    gap: 16px;
+}
+
+.different-billing-checkox input[type='checkbox']{
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #D7D7D7;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    outline: none; /* Remove outline on focus */
+    transition: background-color 0.3s, border 0.3s;
+}
+
+.different-billing-checkox input[type='checkbox']:checked{
+    background-color: var(--orange-fill);
+    border: 2px solid var(--orange-fill);
+}
+
+.different-billing-checkox input[type='checkbox']:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px; /* Adjust position of tick mark */
+    top: 0px; /* Adjust position of tick mark */
+    width: 5px; /* Width of tick mark */
+    height: 10px; /* Height of tick mark */
+    border: solid white; /* Tick mark color */
+    border-width: 0 2px 2px 0; /* Create the tick shape */
+    transform: rotate(45deg); /* Rotate to create tick shape */
+    transition: opacity 0.3s; /* Add transition for opacity */
+    opacity: 0; /* Initially hidden */
+
+}
+
+.different-billing-checkox input[type='checkbox']:checked::after {
+    opacity: 1; /* Fade in the tick mark when checked */
+}
+
+.different-billing-checkox input[type='checkbox']:not(:checked)::after{
+    display: none;
+}
+
+.different-billing-checkox label {
+    cursor: pointer; /* Make label clickable */
+}
+
+.defferent-billing-option-true{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease;
+}
+
+.defferent-billing-option-true.show-defferent-billing-option{
+    height: 370px;
+}
+
+.order-note{
+    display: flex;
+    width: 100%;
+}
+
+.form-continue-to-payment-button{
+    display: flex;
+    width: 100%;
+    align-items: end;
+    justify-content: end;
+}
+
+.desktop-billing-details-send-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 40px;
+    color: #fff;
+    background-color: var(--secondary-color);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Mobile Styling */
+.mobile-view-shipping-details-form{
+    display: none;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
+    gap: 15px;
+}
+
+.mobile-view-personal-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.mobile-delivery-details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.mobile-delivery-headings{
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 600;
+}
+
+.mobile-view-city-and-zip{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+.mobile-delivery-options-sections{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px 20px;
+    background-color: #F9FAFA;
+    gap: 20px;
+}
+
+.mobile-delivery-options-heading{
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.mobile-delivery-option-details{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 15px;
+}
+
+.mobile-delivery-option-single-detail{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: -5px;
+}
+
+.mobile-delivery-option-single-detail h3{
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.mobile-delivery-option-single-detail p{
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 400;
+}
+
+.mobile-pay-btn-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 20px 10px; */
+    width: 100%;
+}
+
+.mobile-pay-btn-section button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    color: #fff;
+    background-color: var(--orange-fill);
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 600;
+}
+
+.my-address-popup-main-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 99999999999999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.my-address-popup-main-container.show-address-modal{
+    opacity: 1;
+    visibility: visible;
+}
+
+.my-address-popup-inner-container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: max-content;
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    padding: 15px 20px;
+    gap: 10px;
+}
+
+.address-popup-head{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.address-modal-main-heading{
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+}
+
+.my-address-popup-close-button{
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.my-address-popup-close-button img {
+    width: 26px;
+    height: auto;
+}
+
+.my-address-single-address-option{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    padding: 10px;
+    /* border: 1px solid var(--tertiary-color); */
+    border: 1px solid rgba(215, 215, 215, 0.6);
+}
+
+.my-address-single-address-select{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+
+}
+
+.my-address-select-radio {
+    margin-top: 4px;
+}
+
+.my-address-single-address-select-details{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+    gap: 5px;
+}
+
+.my-address-single-address-select p {
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 500;
+}
+
+.selected-address-save-button-container{
+    display: flex;
+    width: 100%;
+    align-items: end;
+    justify-content: end;
+}
+
+.selected-address-save-button{
+    background-color: var(--secondary-color);
+    padding: 10px 30px;
+    width: max-content;
+    font-size: 15px;
+    line-height: 18px;
+    font-weight: 500;
+    color: #FFFFFF;
+    border-radius: 5px;
+    border: 1px solid var(--secondary-color);
+    outline: none;
+    cursor: pointer;
+}
+
+/* Media queries for 1024 to large screen */
+@media only screen and (min-width: 1024px) and (max-width: 1200px){
+    .first-name-last-name{
+        gap: 10px;
+    }
+    .city-state-zip{
+        gap: 10px;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .shipping-detail-form{
+        display: none;
+    }
+    .mobile-view-shipping-details-form{
+        display: flex;
+    }
+}

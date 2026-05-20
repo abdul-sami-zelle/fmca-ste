@@ -1,0 +1,42 @@
+.design_room_popup {
+  height: 95%;
+  width: 95%;
+  position: relative;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  overflow: auto;
+  box-sizing: border-box;
+  background-color: #FFF;
+  animation: popupFadeSlideIn 0.4s ease-out; /* Add animation */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+
+.close_btn_design_room_popup{
+   position: fixed;
+    top: 4%;
+    right: 3.5%;
+    /* right: 10px; */
+    z-index: 9999999;
+    cursor: pointer;
+}
+
+.close_btn_design_room_popup > svg{
+    color: var(--orange-outline);
+    
+}
+
+
+
+@keyframes popupFadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); /* or translateX for side-in */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

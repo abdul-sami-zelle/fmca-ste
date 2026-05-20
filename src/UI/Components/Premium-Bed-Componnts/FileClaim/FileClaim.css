@@ -1,0 +1,120 @@
+.file-claim-main-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.file-claim-image-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.file-claim-image-section>img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.file-claim-content-section {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    width: 60%;
+    gap: 15px;
+}
+
+.file-claim-content-section>h3 {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #595959;
+}
+
+.file-claim-span {
+    display: flex;
+    align-content: center;
+    justify-content: start;
+    width: 100%;
+    gap: 10px;
+}
+
+.file-claim-span>p {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #595959;
+    opacity: 0.8;
+}
+
+.file-claim-content-section>p {
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #595959;
+}
+
+.file-claim-content-section>button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border: 1px solid var(--orange-fill);
+    background-color: var(--orange-fill);
+    color: var(--text-oposite);
+    cursor: pointer;
+    gap: 10px;
+}
+
+@media only screen and (max-width: 480px) {
+    .file-claim-main-contianer {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+
+    .file-claim-image-section {
+        width: 100%;
+        border-radius: 10px;
+        height: 240px;
+    }
+
+    .file-claim-image-section>img {
+        width: 100%;
+        object-fit: cover;
+        height: 240px;
+    }
+
+    .file-claim-content-section {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .file-claim-content-section>h3 {
+        font-size: 18px;
+    }
+
+    .file-claim-span>p {
+        font-size: 12px;
+    }
+
+    .file-claim-content-section>p {
+        font-size: 12px;
+    }
+
+    .file-claim-content-section>button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 15px;
+        border: 1px solid var(--orange-fill);
+        background-color: var(--orange-fill);
+        color: var(--text-oposite);
+        cursor: pointer;
+        gap: 10px;
+    }
+}

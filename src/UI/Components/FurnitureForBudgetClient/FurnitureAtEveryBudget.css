@@ -1,0 +1,143 @@
+.cover_photo {
+    margin-bottom: 30px;
+}
+
+.cover_photo img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.furniture_at_every_budget {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 60px;
+    position: relative;
+}
+
+.mobile-furniture-heading-and-column-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.furniture-for-every-budget-main-heading {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+    /* margin-bottom: 5px; */
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin: 20px 0;
+
+}
+
+/* mobile view grid */
+.mobile-view-furniture-for-every-budget {
+    display: none;
+}
+
+.mobile-view-wishlist-card-grid-select {
+    display: none;
+}
+
+.mobile-view-budget-card-grid-single-col {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+}
+
+.mobile-view-budget-card-grid-single-col.grid-active {
+    background-color: var(--text-primary);
+}
+
+.mobile-view-budget-card-grid-dual-col {
+    display: flex;
+    width: max-content;
+    gap: 1px;
+    cursor: pointer;
+}
+
+.mobile-view-budget-card-grid-dual-col-inner {
+    width: 10px;
+    height: 20px;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+}
+
+.mobile-view-budget-card-grid-dual-col-inner.active-dual-col {
+    background-color: var(--text-primary);
+}
+
+
+
+
+.product-card {
+    width: 100%;
+    /* Each card takes full width of its grid cell */
+}
+
+.foeb_cover_desk{
+    display: block;
+}
+.foeb_cover_mob{
+    display: none;
+}
+@media (max-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 4 columns per row */
+
+    }
+
+    .furniture_at_every_budget {
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 1000px) {
+  .foeb_cover_desk{
+    display: none;
+}
+.foeb_cover_mob{
+    display: block;
+}
+}
+
+@media only screen and (max-width: 480px) {
+    .furniture_at_every_budget {
+        padding: 10px 20px;
+        gap: 15px;
+    }
+
+    .product-grid {
+        display: none;
+    }
+
+    .mobile-view-furniture-for-every-budget {
+        display: grid;
+    }
+
+    .mobile-view-furniture-for-every-budget.single-col {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .mobile-view-furniture-for-every-budget.two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+}

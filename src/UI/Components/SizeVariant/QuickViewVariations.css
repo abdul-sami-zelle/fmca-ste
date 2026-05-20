@@ -1,0 +1,269 @@
+.quick-view-attributes-main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0px;
+    align-items: start;
+    justify-content: start;
+}
+
+.quick-view-attribute-heading-1{
+    color: var(--text-primary) !important;
+    font-size: 14px !important;
+    line-height: 22px !important;
+    font-weight: 500 !important;
+}
+
+.quick-view-atribute-option-name{
+    font-size: 10px;
+    line-height: 18px;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+.variation-image-div.active-selected-image-variation{
+    border: 1px solid var(--text-primary);
+}
+
+/* Hide the option name by default */
+.attribute-image-type .quick-view-atribute-option-name {
+    display: none;
+    text-align: center;
+}
+
+/* Show the option name when hovering over the parent div */
+.attribute-image-type:hover .quick-view-atribute-option-name {
+    display: block;
+}
+
+/* Hide the option name by default */
+.attribute-single-color .quick-view-atribute-option-name {
+    display: none;
+    text-align: center;
+}
+
+/* Show the option name when hovering over the parent div */
+.attribute-single-color:hover .quick-view-atribute-option-name {
+    display: block;
+}
+
+
+
+.attributes-types{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    padding: 5px 0; 
+}
+
+.attribute-type{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    align-items: start;
+    justify-content: start;
+}
+
+.attribute-heading{
+    font-size: 12px !important;
+    line-height: 12px !important;
+    font-weight: 400 !important;
+    color: var(--text-primary);
+}
+
+.attribute-variations{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    align-items: start;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+/* Color Attribute */
+.attribute-single-color{
+    display: flex;
+    /* width: 100%; */
+    align-items: center;
+    justify-self: start;
+    flex-direction: column;
+    gap: 5px;
+    /* width: 60px; */
+}
+
+.attribute-color-variation-box{
+    padding: 15px !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    position: relative !important;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.attribute-color-variation-box.selected{
+    border: 1px solid var(--orange-fill);
+    padding: 5px;
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 2px inset;
+}
+
+
+.attribute-color-variation-box.selected::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    width: 18px;
+    height: 15px;
+    border-radius: 4px;
+    clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+}
+
+.attribute-color-variation-box.selected::after {
+    content: "";
+    position: absolute;
+    /* Position the tick mark roughly in the center */
+    top: 4px;
+    left: 6px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 2px;
+    height: 5px;
+    border-right: 1.75px solid var(--tick-color);
+    border-bottom: 1.75px solid var(--tick-color);
+}
+
+
+
+
+
+.show-selected-size-section{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+    padding: 10px;
+}
+
+.atribute-option-name{
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
+/* Select Type  */
+.select-type-attribute{
+    display: flex;
+    width: max-content;
+    border: 1px solid var(--border-color);
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: var(--text-primary);
+}
+
+.select-type-attribute.select-select-variation{
+    background-color: var(--orange-fill);
+    
+}
+
+.select-type-attribute.select-select-variation p{
+    color: var(--text-oposite);
+}
+
+.select-type-attribute p{
+    font-size: var(--content-one-size);
+    line-height: var(--content-one-height);
+    font-weight: var(--content-one-weight);
+    color: var(--text-primary);
+}
+
+/* attribute image */
+.attribute-image-type{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    /* width: 80px; */
+    height: max-content;
+
+}
+
+.variation-image-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.variation-image-div.active-selected-image-variation{
+    border: 1px solid var(--orange-fill);
+    /* padding: 2px; */
+    border-radius: 10px;
+}
+
+.attribute-image-type img{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.attribute-image-type p{
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    color: var(--text-primary);
+}
+
+.show-selected-size-section p{
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+.show-selected-size-section h3{
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    text-decoration: underline;
+    color: var(--secondary-color);
+}
+
+.size-variant-boxes-section{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: start;
+    padding: 10px;
+    gap: 10px;
+}
+
+.size-variant-button{
+    /* height: 34px; */
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    border: 1px solid var(--secondary-color);
+    background-color: #FFF;
+    color: var(--secondary-color);
+    font-size: 13px;
+    line-height: 19px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.size-variant-button.set-selected-size{
+    background-color: var(--orange-fill);
+    color: #FFF;
+    font-weight: 700;
+    border: 1px solid var(--orange-fill);
+}

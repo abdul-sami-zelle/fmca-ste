@@ -1,0 +1,62 @@
+.insta-two-image-gallery{
+    display: none;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+   
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    position: relative;
+    
+}
+
+.insta-two-image-gallery img{
+    width: 40px;
+    height: auto;
+    transition: transform 1.5s ease-in-out;
+}
+
+.insta-two-image-gallery > .image-wrapper > img{
+    width: 100%;
+    height: auto;
+    transition: transform 1.5s ease-in-out;
+}
+
+
+.insta-two-image-gallery:hover img{
+    transform: scale(0.8);
+}
+
+.insta-two-image-gallery img.animate{
+    animation: scaleAndReset 1.5s ease-in-out;
+    
+} 
+
+@keyframes scaleAndReset {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .insta-two-image-gallery{
+        display: grid;
+    }
+}
+
+
+
+.smallIcon{
+    position: absolute;
+    z-index: 99;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

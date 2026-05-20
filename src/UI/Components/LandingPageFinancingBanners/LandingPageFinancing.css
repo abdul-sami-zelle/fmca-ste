@@ -1,0 +1,258 @@
+.landing-page-financing-main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 25px;
+    /* padding: var(--global-padding); */
+    padding: 0 60px 35px 60px;
+}
+
+.landing-page-financing-main-heading {
+    font-size: 25px;
+    line-height: var(--heading-line-height);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.landing-page-financing-banners-main-container {
+    display: flex;
+    /* width: 100%; */
+    height: auto;
+    /* margin: 0; */
+    /* margin: 0 60px; */
+    padding: 0;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.landing-page-financing-left {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+}
+
+.landing-page-financing-left>a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.landing-page-financing-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid var(--orange-outline);
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+}
+
+.landing-page-financing-right {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--orange-outline);
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+}
+
+.landing-page-financing-right img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.financing-page-buttons-div {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    /* gap: 20px;  */
+    background-image: url('/Assets/Furniture Mecca/Landing Page/financing/btns-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.financing-page-buttons-div-column {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.financing-page-buttons-div-column a {
+    background-color: #fff;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 10px 0px;
+    width: 90%;
+    /* height: 40px; */
+    border-radius: 100px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.financing-page-buttons-div-column>a>img {
+    width: auto;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Mobile */
+.mobile-view-banners-container {
+    display: none;
+    width: 100%;
+    margin-top: 15px;
+    flex-direction: column;
+}
+
+.mobile-view-banner-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--orange-outline);
+}
+
+.combined-poster {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top: 1px solid var(--orange-outline);
+    border-left: 1px solid var(--orange-outline);
+    border-right: 1px solid var(--orange-outline);
+    overflow: hidden;
+}
+
+
+
+
+.mobile-view-banner {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.mobile-view-banner-buttons-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+    background-image: url('/Assets/Furniture Mecca/Landing Page/financing/btns-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    padding: 20px;
+    gap: 20px;
+    margin-top: -11px;
+    overflow: hidden;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: 1px solid var(--orange-outline);
+    border-right: 1px solid var(--orange-outline);
+    border-bottom: 1px solid var(--orange-outline);
+}
+
+.mobile-view-financing-page-buttons-div-column {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    /* padding: 10px; */
+}
+
+.mobile-view-financing-buttons {
+    background-color: #fff;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 5px 20px;
+    /* height: 60px; */
+    border-radius: 100px;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-view-financing-buttons img {
+    width: 80px;
+    height: auto;
+}
+
+.hide-paypal-section {
+    display: none !important;
+}
+
+.hide-gif-banner-on-phone {
+    display: flex;
+}
+
+.mobile-view-banner-container-hide-on-desktop {
+    display: none;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .landing-page-financing-main-container {
+        padding: 20px 30px 0px 30px;
+        gap: 15px;
+    }
+    .landing-page-financing-main-heading {
+        font-size: 20px;
+    }
+    .financing-page-buttons-div-column a {
+        padding: 5px 0;
+    }
+    .financing-page-buttons-div-column>a>img {
+        height: 20px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .landing-page-financing-main-container {
+        display: none;
+    }
+
+    .mobile-view-banners-container {
+        display: flex;
+        gap: 10px;
+        margin-top: 0;
+        padding: 10px 10px 10px 10px;
+    }
+
+    .hide-gif-banner-on-phone {
+        display: none;
+    }
+
+    .hide-paypal-section {
+        display: flex !important;
+    }
+
+    .mobile-view-banner-container-hide-on-desktop {
+        display: flex !important;
+        overflow: hidden;
+        border-radius: 5px;
+        border: 1px solid var(--orange-outline);
+        /* border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-left: 1px solid var(--orange-outline);
+        border-right: 1px solid var(--orange-outline);
+        border-bottom: 1px solid var(--orange-outline); */
+    }
+}

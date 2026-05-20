@@ -1,0 +1,74 @@
+.billing-modal-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.billing-modal-main-container.show-billing-modal{
+    visibility: visible;
+    opacity: 1;
+    padding: 15px;
+}
+
+.billing-modal-inner-container {
+    display: flex;
+    position: relative;
+    width: 60%;
+    height: 80%;
+    padding: 20px 30px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.billing-modal-sub-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    gap: 15px;
+}
+
+.billing-modal-sub-container::-webkit-scrollbar{
+    display: none;
+}
+
+.billing-sub-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.billing-sub-modal-head > h3 {
+    font-size: var(--section-size);
+    line-height: var(--section-height);
+    font-weight: var(--section-weight);
+    color: var(--text-primary);
+}
+
+.billing-modal-close-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: max-content;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

@@ -1,0 +1,162 @@
+.subproduct-card {
+  background: #fff;
+  border-radius: 10px;
+  width: 170px;
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.subproduct-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.subproduct-titlessss {
+  margin: 10px 10px 5px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #595959;
+}
+
+.subproduct-price {
+  font-size: 15px;
+  margin: 10px 10px 5px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.subsale-price {
+  color: #ff8416;
+  font-weight: 600;
+  margin-right: 9px;
+}
+
+.suboriginal-price {
+  text-decoration: line-through;
+  font-size: 14px;
+  color: #595959;
+  font-weight: 600;
+}
+.subproduct-card-wrapper {
+  max-width: 100%;
+  box-shadow: 0px 0px 10px 0px #0000001a;
+  height: auto;
+  border-radius: 10px;
+  position: relative;
+}
+.subcardcontainer {
+  padding: 5px;
+}
+.selected-check-icon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: #25D366;
+    border-radius: 13%;
+    padding: 4px;
+    color: white;
+    font-size: 30px;
+    height: 22px;
+    width: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    z-index: 2;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1280px) {
+  .subproduct-card {
+    width: 220px;
+  }
+
+  .subproduct-titlessss {
+    font-size: 12px;
+  }
+
+  .subproduct-price {
+    font-size: 13px;
+  }
+
+  .suboriginal-price {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 1281px) and (max-width: 1536px) {
+  .subproduct-card {
+    width: 240px;
+  }
+
+  .subproduct-titlessss {
+    font-size: 14px;
+  }
+
+  .subproduct-price {
+    font-size: 17px;
+  }
+
+  .suboriginal-price {
+    font-size: 13px;
+  }
+}
+
+@media screen and (min-width: 1537px) and (max-width: 1919px) {
+  .subproduct-card {
+    width: 265px;
+  }
+
+  .subproduct-titlessss {
+    font-size: 17px;
+  }
+
+  .subproduct-price {
+    font-size: 18px;
+  }
+
+  .suboriginal-price {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 1920px) and (max-width: 2559px) {
+  .subproduct-card {
+    width: 280px;
+  }
+
+  .subproduct-titlessss {
+    font-size: 18px;
+  }
+
+  .subproduct-price {
+    font-size: 19px;
+  }
+
+  .suboriginal-price {
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 2561px) and (max-width: 3000px) {
+  .subproduct-card {
+    width: 310px;
+  }
+
+  .subproduct-titlessss {
+    font-size: 22px;
+  }
+
+  .subproduct-price {
+    font-size: 20px;
+  }
+
+  .suboriginal-price {
+    font-size: 16px;
+  }
+}

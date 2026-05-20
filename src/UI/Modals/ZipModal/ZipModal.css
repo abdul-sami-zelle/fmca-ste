@@ -1,0 +1,127 @@
+.zip-warning-warning-modal-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999999999;
+    transition: all 0.3s ease-in-out;
+}
+
+.zip-warning-warning-modal-main-container.zip-warning-show-warining-modal {
+     visibility: visible;
+    opacity: 1;
+}
+
+.zip-warning-warning-modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 30%;
+    height: auto;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    transform: translate(-0%, 400%);
+    /* padding: 15px; */
+    gap: 0px;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.zip-warning-warning-modal-body.zip-warning-show-modal-body {
+    transform: translate(-0%, -0%);
+}
+
+.zip-warning-warning-moda-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: max-content;
+     flex-shrink: 0;
+     padding: 10px 10px 5px 15px;
+}
+
+.zip-warning-warning-moda-head > h3 {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #595959;
+}
+
+.zip-warning-warning-moda-head > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: max-content;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.zip-warning-modal-message-container {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    padding: 6px 10px 8px 10px;
+}
+
+.zip-warning-modal-message-container > p {
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #595959;
+    text-align: start;
+}
+
+.zip-warning-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: max-content;
+    padding: 10px 15px;
+    flex-shrink: 0;
+    background-color: var(--orange-fill);
+}
+
+.zip-warning-modal-footer > p {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+    width: 100%;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #FFF;
+}
+
+.zip-warning-modal-footer > p > a {
+    color: #FFF;
+    font-weight: 500;
+    
+}
+
+@media only screen and (max-width: 480px) {
+    .zip-warning-warning-modal-main-container {
+        padding: 20px;
+    }
+
+    .zip-warning-warning-modal-body {
+        width: 100%;
+    }
+}

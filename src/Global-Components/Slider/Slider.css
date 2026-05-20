@@ -1,0 +1,246 @@
+.slider {
+    position: relative;
+    width: 100%;
+    height: calc(100vw * 0.26355);
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 30px;
+}
+
+.arrow svg {
+    width: auto !important;
+    height: 25px !important;
+    color: var(--text-primary);
+}
+
+.left-arrow {
+    left: -60px !important;
+    background-color: var(--orange-fill);
+    border-radius: 30px;
+    border: 1px solid var(--orange-outline);
+    transition: all 0.3s ease-in-out;
+}
+
+.right-arrow {
+    right: -60px !important;
+    background-color: var(--orange-fill);
+    border-radius: 30px;
+    border: 1px solid var(--orange-outline);
+    transition: all 0.3s ease-in-out;
+}
+
+.slider:hover .left-arrow {
+    left: 20px !important;
+}
+
+.slider:hover .right-arrow {
+    right: 20px !important;
+}
+
+.main-slider-dots-contianer {
+    position: absolute;
+    top: 95%;
+    left: 0;
+    display: flex;
+    width: 100%;
+    background-color: orange;
+}
+
+.slider .slick-dots ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    gap: 30px;
+}
+
+.slider .slick-dots li .custom-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: blue;
+  transition: background-color 0.3s ease;
+  margin-bottom: 50px;
+}
+
+.slider .slick-dots li.slick-active .custom-dot {
+    width: 40px;
+    height: 20px;
+    border-radius: 20px;
+  background-color: orange !important;
+}
+
+
+
+/* .slider .slick-dots {
+  bottom: 10px;
+  display: flex !important;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.slider .slick-dots li button:before {
+  font-size: 12px;
+  color: var(--orange-bg);
+  opacity: 0.75;
+}
+
+.slider .slick-dots li.slick-active button:before {
+  color: #fff;
+  opacity: 1;
+} */
+
+/* mobile slider */
+.mobile-view-slider{
+    display: none;
+}
+
+.mobile-view-slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    height: auto;
+}
+
+.mobile-slide {
+    min-width: 100%;
+    height: auto; /* Ensure slides fill the container height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.mobile-arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+    z-index: 2;
+    width: 35px;
+    height: 35px;
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
+}
+
+.mobile-arrow img{
+    width: auto;
+    height: 35px;
+    object-fit: contain;
+}
+
+.mobile-left-arrow{
+    left: 20px;
+}
+
+.mobile-right-arrow{
+    right: 20px;
+}
+
+.image_preloader{
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0 ;
+    top: 0;
+}
+.image_preloader img{
+    height: 70px;
+    width: 70px;
+}
+
+.mobile-view-slider-shimmer {
+     width: 100%;
+    height: 390px;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+.mobile-view-slider-shimmer::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%; /* Start off-screen */
+    height: auto;
+    width: 150%; /* Width of the shimmer gradient */
+    background: linear-gradient(90deg, rgba(240, 240, 240, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(240, 240, 240, 0) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .slider {
+        display: none;
+    }
+    .mobile-view-slider{
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin: auto;
+        overflow: hidden;
+    }
+}

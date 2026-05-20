@@ -1,0 +1,7 @@
+.shipping-and-delivery-main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 35px;
+    padding: var(--global-padding);
+}

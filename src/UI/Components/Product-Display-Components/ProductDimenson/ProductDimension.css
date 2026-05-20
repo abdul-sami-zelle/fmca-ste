@@ -1,0 +1,102 @@
+.dimension-main-container{
+    /* display: flex; */
+    /* align-items: center;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 15px;
+    /* gap: 15px; */
+    width: 100%;
+}
+
+.dimension-3-column-container {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.dimension-card{
+    display: flex;
+    /* flex-direction: column; */
+    gap:10px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--text-primary);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.dimension-card.active-dimension{
+    background-color: #F0F0F0;
+}
+
+.dimension-card:hover{
+    background-color: #F0F0F0;
+}
+
+.dimension-card > p {
+    font-size: var(--sub-section-size);
+    /* line-height: var(--sub-section-height); */
+    line-height: 1.2;
+    font-weight: var(--sub-section-weight);
+    color: var(--text-primary);
+}
+
+.mobile-viw-dimension-main-contianer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.mobile-view-dimension-row-contianer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+
+}
+
+.mobile-view-dimension-main{
+    display: none;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 5px;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+}
+
+
+
+@media only screen and (max-width: 767px){
+    .dimension-main-container{
+        gap: 10px;
+        display: flex;
+    }
+    .dimension-card{
+        /* padding: 5px; */
+        display: none;
+    }
+
+    .mobile-view-dimension-main{
+        display: flex;
+        padding: 8px 12px;
+    }
+
+    .dimensions-detail-button-title{
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 500;
+    }
+
+    .dimension-card > p{
+        font-size: 8px;
+        line-height: 12px;
+    }
+}

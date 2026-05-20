@@ -1,0 +1,147 @@
+
+.nearby-store-set-location-modal {
+    position: absolute;
+    top: 130%;
+    left: 27%;
+    width: 280px;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    /* height: 300px; */
+    padding: 15px;
+    border-radius: 10px;
+    height: auto;
+    border: 1px solid var(--orange-outline);
+    z-index: 9999999999999;
+}
+
+.nearby-store-set-location-modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: max-content;
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--orange-outline);
+}
+
+.nearby-store-set-location-modal-head>span {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: max-content;
+    gap: 10px;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #595959;
+}
+
+.nearby-store-set-location-close-button {
+    width: max-content;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.nearby-store-set-location-modal-body {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px 0;
+}
+
+.nearby-store-set-location-modal-body>p {
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: #595959;
+    align-items: start;
+}
+
+.nearby-store-set-location-input-and-submit-button {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.nearby-store-set-location-input-and-submit-button>label {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+.nearby-store-set-location-input-and-submit-button>label>input {
+    display: flex;
+    width: 100%;
+    height: 35px;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 400;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--orange-outline);
+    background-color: #FFFF;
+
+}
+
+.nearby-store-set-location-input-and-submit-button>button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 35px;
+    background-color: var(--orange-fill);
+    color: #FFF;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .nearby-store-set-location-modal {
+        position: fixed;
+        top: 35%;
+        left: 35%;
+    }
+    
+}
+
+@media only screen and (max-width: 480px) {
+    .nearby-store-set-location-modal {
+        position: unset;
+        width: 280px;
+        background-color: #FFF;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        /* height: 300px; */
+        padding: 15px;
+        border-radius: 10px;
+        height: auto;
+        border: 1px solid var(--orange-outline);
+        z-index: 9999999999999;
+        top: 80%;
+        left: 50%;
+    }
+}

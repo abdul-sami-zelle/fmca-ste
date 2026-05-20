@@ -1,0 +1,12 @@
+.close-button-comp {
+    display: flex;
+    width: max-content;
+    height: max-content;
+    overflow: hidden;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}

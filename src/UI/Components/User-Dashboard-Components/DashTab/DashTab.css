@@ -1,0 +1,148 @@
+.dash-tab-main-container{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    background-color: #f8f8f8;
+    margin: 0 60px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.most_upper_section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.most_upper_section_left{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.most_upper_section_left > .greeting{
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.most_upper_section_left > .descri{
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 400;
+}
+.most_upper_section_right{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.most_upper_section_right > .profileAvatar{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: var(--orange-fill);
+    padding: 2px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profileAvatar img{
+    height: 100%;
+    width: auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.logoutButton button{
+    border: 0px solid transparent;
+    font-size: 25px;
+    margin: 0;
+    border-radius: 100px;
+    line-height: 25px;
+    display: flex;
+    font-weight:400;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #595959;
+
+}
+
+.logoutButton button p{
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    line-height: 25px;
+    font-weight:500;
+    color: #FFF;
+}
+
+.logout-btn-icon {
+    color: #FFF;
+}
+
+.logoutButton button:hover{
+background-color: var(--orange-fill);
+color: white;
+}
+
+/* .logoutButton button:hover .logout-btn-icon {
+    color: ;
+} */
+
+.logoutButton button:hover .logoutButton button p{
+    color: white;
+}
+.upper_tabs{
+    display: flex;
+    gap: 25px;
+}
+
+
+.lower_charts{
+    display: flex;
+    gap: 25px;
+}
+
+.lower_charts_1{
+    flex: 1;
+    box-sizing: border-box;
+
+}
+
+.lower_charts_2{
+    flex: 2;
+    box-sizing: border-box;
+   
+}
+
+.dash-user-greetings{
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+    display: flex;
+    gap: 5px;
+}
+
+.dash-user-greetings strong{
+    font-weight: 500;
+}
+
+.dash-user-can-do-details{
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+}
+
+.dash-user-can-do-details strong {
+    font-weight: 500;
+}

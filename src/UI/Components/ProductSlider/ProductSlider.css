@@ -1,0 +1,108 @@
+.products-slider-main-container{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    /* padding: var(--global-padding); */
+    padding: 0 60px 35px 60px;
+    overflow: hidden;
+}
+
+.feature-product-heading{
+    color: var(--text-primary);
+    font-size: 25px;
+    line-height: var(--heading-line-height);
+    font-weight: 600;
+    /* margin-bottom: 9px; */
+}
+
+/* @media only screen and (max-width: 1200px){
+    .products-slider-main-container{
+        padding: 20px 30px;
+    }
+} */
+
+
+
+
+
+.products-slider{
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 30px;
+    cursor: grab;
+    transition: all 0.3s ease-in-out;
+}
+
+.products-slider.dragging {
+    transition: none;
+    cursor: grabbing;
+}
+
+/* Custom scrollbar styling for Webkit browsers */
+.products-slider::-webkit-scrollbar {
+    height: 4px; 
+}
+
+.products-slider::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 10px;
+}
+
+.products-slider::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+}
+
+.products-slider::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+/* @media only screen and (max-width: 700px){
+    .products-slider{
+        display: flex;
+        width: 100%;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+} */
+
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .products-slider-main-container {
+        padding: 20px 30px 20px 30px !important;
+        gap: 15px !important;
+    }
+    .feature-product-heading {
+        font-size: 20px;
+    }
+    .products-slider {
+        gap: 15px !important;
+    }
+    .product {
+        width: 280px !important;
+    }
+    .product-img {
+        min-width: 280px !important;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .products-slider-main-container{
+        display: flex;
+        width: 100%;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .feature-product-heading{
+        color: var(--text-primary);
+        font-size: 18px;
+        line-height: 1.2;
+        font-weight: 600;
+    }
+}

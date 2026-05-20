@@ -1,0 +1,31 @@
+/* HTML: <div class="loader"></div> */
+.loader-dest {
+    width: 7px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--orange-fill);
+    box-shadow: 0 0 0 0 var(--orange-fill);
+    animation: l3 1.5s infinite linear;
+    position: relative;
+}
+
+.loader-dest:before,
+.loader-dest:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 var(--orange-fill);
+    animation: inherit;
+    animation-delay: -0.5s;
+}
+
+.loader-dest:after {
+    animation-delay: -1s;
+}
+
+@keyframes l3 {
+    100% {
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+}
