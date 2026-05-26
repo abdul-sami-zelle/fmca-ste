@@ -48,7 +48,7 @@ const Sliderr = ({ images, height, autoSlideSpeed = 5000 }) => {
                     slidesData={images && images?.desktop}
                     renderSlide={(img, index) => (
                         <Link
-                            href={`/${img.link_url}`}
+                            href={`${img.link_url}`}
                             className="slide"
                             key={index}
                             onMouseDown={handleMouseDown}
