@@ -48,7 +48,7 @@ const Sliderr = ({ images, height, autoSlideSpeed = 5000 }) => {
                     slidesData={images && images?.desktop}
                     renderSlide={(img, index) => (
                         <Link
-                            href={`/product/${img.link_url}`}
+                            href={`/${img.link_url}`}
                             className="slide"
                             key={index}
                             onMouseDown={handleMouseDown}
@@ -65,7 +65,8 @@ const Sliderr = ({ images, height, autoSlideSpeed = 5000 }) => {
                                 priority={index === 0}
                                 placeholder="blur"
                                 blurDataURL="/blur.jpg" // or generate a small blur
-                                sizes="(max-width: 768px) 100vw, 50vw"
+                                // sizes="(max-width: 768px) 100vw, 50vw"
+                                sizes="(max-width: 768px) 100vw, 100vw"
                             />
                         </Link>
                     )}
@@ -93,7 +94,7 @@ const Sliderr = ({ images, height, autoSlideSpeed = 5000 }) => {
                         slidesData={images && images?.mobile}
                         renderSlide={(img, index) => (
                             <Link
-                                href={`/product/${img.link_url}`}
+                                href={`/${img.link_url}`}
                                 className="mobile-slide"
                                 key={index}
                                 onMouseDown={handleMouseDown}
