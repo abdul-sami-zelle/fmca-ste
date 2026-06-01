@@ -28,7 +28,7 @@ const SwiperSlider = ({
     const [activeIndex, setActiveIndex] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
     const [resolvedSlidesPerView, setResolvedSlidesPerView] = useState(1);
-    const {lineIndex, setLLineIndex} = useState(0)
+    const { lineIndex, setLLineIndex } = useState(0)
 
     useEffect(() => {
         const handleResize = () => {
@@ -65,6 +65,12 @@ const SwiperSlider = ({
         swiperRef.current?.slideNext();
     };
 
+    useEffect(() => {
+        if (swiperRef.current) {
+            swiperRef.current.update(); // ✅ tells swiper to re-scan slides
+        }
+    }, [slidesData]);
+
     return (
         <div className="slider-container">
             {showArrows && (
@@ -87,8 +93,8 @@ const SwiperSlider = ({
                     if (onSlideChangeIndex) {
                         onSlideChangeIndex(newIndex); // ✅ notify parent for sync
                     }
-                    if(onSlideChangeIndex) {
-                        
+                    if (onSlideChangeIndex) {
+
                     }
                 }}
                 autoplay={

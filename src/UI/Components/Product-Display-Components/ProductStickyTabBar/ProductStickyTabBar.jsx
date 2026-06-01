@@ -185,8 +185,8 @@ const ProductStickyTabBar = (
                                 )}
                             </div>
                             <button
-                                disabled={stockCheck || isDeliveryAllowed}
-                                className={stockCheck || isDeliveryAllowed ? 'disable-sticky-add-to-cart' : ''}
+                                disabled={stockCheck || isDeliveryAllowed || productData?.status === "discontinued"}
+                                className={stockCheck || isDeliveryAllowed || productData?.status === "discontinued" ? 'disable-sticky-add-to-cart' : ''}
                                 onClick={() => {
                                     addToCart0(productData, variationData, !isProtectionCheck ? 1 : 0, quantity)
                                     handleAddToCartProduct(productData);

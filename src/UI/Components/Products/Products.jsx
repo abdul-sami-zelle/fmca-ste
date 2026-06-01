@@ -1593,7 +1593,7 @@ const Products = ({ navigationType }) => {
         <div className="mobile-view-filters-section">
           <div className="mobile-view-filter-head">
             <div className="mobile-view-product-count">
-              <p>214 items</p>
+              <p>{totalPages?.totalProducts} items</p>
               <p>
                 Starting at {formatedPrice(allFilters?.priceRange?.minPrice)}
               </p>

@@ -611,7 +611,7 @@ const ProductDetailSticky = (
               <div className='add-to-cart-and-out-of-stock-message-container'>
                 <div className='add-cart-or-add-items-div' ref={cartDivRef}>
                   <div className='item-count'>
-                    <button className={`minus-btn ${stockCheck || isDeliveryAllowed ? 'disable-quantity' : ''} ${product.quantity === 1 ? 'disabled' : ''}`} onClick={decreaseLocalQuantity} disabled={product.quantity === 1 || stockCheck || isDeliveryAllowed}>
+                    <button className={`minus-btn ${stockCheck || isDeliveryAllowed  || productData?.status === 'discontinued' ? 'disable-quantity' : ''} ${product.quantity === 1 ? 'disabled' : ''}`} onClick={decreaseLocalQuantity} disabled={product.quantity === 1 || stockCheck || isDeliveryAllowed ||  productData?.status === 'discontinued'}>
 
                       <FaWindowMinimize size={15} className='minus-icon' />
                     </button>
@@ -624,7 +624,7 @@ const ProductDetailSticky = (
                       onChange={handleQuantityChange}
                       className={stockCheck ? 'disable-quantity' : ''}
                     />
-                    <button disabled={stockCheck || isDeliveryAllowed} className={`plus-btn ${stockCheck || isDeliveryAllowed ? 'disable-quantity' : ''}`} onClick={increaseLocalQuantity}>
+                    <button disabled={stockCheck || isDeliveryAllowed || productData?.status === 'discontinued'} className={`plus-btn ${stockCheck || isDeliveryAllowed ||  productData?.status === 'discontinued' ? 'disable-quantity' : ''}`} onClick={increaseLocalQuantity}>
 
                       <FaPlus size={15} className='plus-icon' />
                     </button>
@@ -654,8 +654,8 @@ const ProductDetailSticky = (
 
 
                   <button
-                    className={`add-to-cart-btn ${stockCheck || isDeliveryAllowed ? 'disable-add-to-cart' : ''} ${isLoading ? 'loading' : ''}`}
-                    disabled={stockCheck || isDeliveryAllowed}
+                    className={`add-to-cart-btn ${stockCheck || isDeliveryAllowed || productData?.status === 'discontinued' ? 'disable-add-to-cart' : ''} ${isLoading ? 'loading' : ''}`}
+                    disabled={stockCheck || isDeliveryAllowed || productData?.status === 'discontinued'}
                     onClick={() => addToCart0(product, selectedVariationData, !isProtected ? 1 : 0, quantity)}
                   
                   >

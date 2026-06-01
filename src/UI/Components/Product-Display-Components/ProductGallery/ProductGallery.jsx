@@ -184,7 +184,11 @@ const ProductGallery = ({
             >
                 <div className='product-gallery-main-slider-images'>
                     { 
-                        stockCheck ? <span className='produt-stock-status-label'>Back Order</span>
+                        (stockCheck && productData?.status !== 'discontinued')  ? <span className='produt-stock-status-label'>Back Order</span>
+                        : <></>
+                    }
+                    { 
+                        productData?.status === 'discontinued' ? <span className='produt-stock-status-label'>Discontinued</span>
                         : <></>
                     }
                     <SwiperSlider
