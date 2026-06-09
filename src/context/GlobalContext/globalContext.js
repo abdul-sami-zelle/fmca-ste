@@ -513,7 +513,6 @@ export const GlobalContextProvider = ({ children }) => {
         : 0;
 
      const shippingCost = parseFloat(getShippingInfo(selectedOption)?.cost) || 0;
-    console.log(shippingCost)
     return (
       subTotal1 +
       calculateTotalTax(subTotal1 + deliverySetup + shippingCost, taxValue) +
