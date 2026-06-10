@@ -251,9 +251,9 @@ const ProductCardTwo = ({
                                         {tags?.text}
                                     </div> 
                                     )} */}
-                                    <div className='text-tag' style={{ backgroundColor: tags?.bg_color, color: tags?.text_color }} >
+                                    {tags && <div className='text-tag' style={{ backgroundColor: tags?.bg_color, color: tags?.text_color }} >
                                         {tags?.text}
-                                    </div>
+                                    </div>}
 
                                     {(!colTwo && showExtraLines) && <div className='text-tag extra_tag'
                                         style={{
