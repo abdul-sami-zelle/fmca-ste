@@ -6,7 +6,7 @@ export const faqData = [
       {
         "id": 1,
         "question": "How can I track my order?",
-        "answer": "Once your order ships, we’ll send you a confirmation email with a tracking number and link. You can also track your order anytime by visiting our Order Tracking page at: https://myfurnituremecca.com/order-tracking If you need further assistance, contact our Customer Care team."
+        "answer": "Once your order ships, we’ll send you a confirmation email with a tracking number and link. You can also track your order anytime by visiting our Order Tracking page at: https://track.myfurnituremecca.com If you need further assistance, contact our Customer Care team."
       },
       {
         "id": 2,
@@ -58,12 +58,12 @@ export const faqData = [
       {
         "id": 9,
         "question": "What financing options are available?",
-        "answer": "Furniture Mecca provides flexible financing options to help you furnish your home with ease. For detailed information on available plans, please visit our https://myfurnituremecca.com/financing"
+        "answer": "Furniture Mecca provides flexible financing options to help you furnish your home with ease. For detailed information on available plans, please visit our /financing"
       },
       {
         "id": 10,
         "question": "How do I apply for financing?",
-        "answer": "You can apply for financing online through our website. Simply visit the https://myfurnituremecca.com/financing and follow the application instructions."
+        "answer": "You can apply for financing online through our website. Simply visit the /financing and follow the application instructions."
       },
       {
         "id": 11,
@@ -94,7 +94,7 @@ export const faqData = [
       {
         "id": 15,
         "question": "Can I see the furniture in person?",
-        "answer": "Yes, most products listed online are on display in our showrooms. To find the nearest store, please visit our Store Locator: https://myfurnituremecca.com/store-locator"
+        "answer": "Yes, most products listed online are on display in our showrooms. To find the nearest store, please visit our Store Locator: /store-locator"
       },
       {
         "id": 16,
@@ -115,7 +115,7 @@ export const faqData = [
       {
         "id": 18,
         "question": "What is the Protection Plan?",
-        "answer": "An optional plan that covers mattress issues like stains, spills, rips, tears, bodily fluids, pet accidents, and more. Valid for a specific duration post-purchase. please visit https://myfurnituremecca.com/premium-bed-care-protection-plan/ for further details."
+        "answer": "An optional plan that covers mattress issues like stains, spills, rips, tears, bodily fluids, pet accidents, and more. Valid for a specific duration post-purchase. please visit /premium-bed-care-protection-plan/ for further details."
       },
       {
         "id": 19,
@@ -209,12 +209,12 @@ export const faqData = [
       {
         "id": 33,
         "question": "Where are your stores located?",
-        "answer": "Our showrooms are located across Pennsylvania and New Jersey. Visit https://myfurnituremecca.com/store-locator to find the nearest location."
+        "answer": "Our showrooms are located across Pennsylvania and New Jersey. Visit /store-locator to find the nearest location."
       },
        {
         "id": 34,
         "question": "What are your store hours?",
-        "answer": "Store hours vary by location. Check https://myfurnituremecca.com/store-locator for specific hours near you."
+        "answer": "Store hours vary by location. Check /store-locator for specific hours near you."
       },
        {
         "id": 35,
@@ -224,12 +224,12 @@ export const faqData = [
        {
         "id": 36,
         "question": "How do I contact customer service?",
-        "answer": "You can call us at 215-352-1600 or email us using the Contact Us form on https://myfurnituremecca.com/contact-us."
+        "answer": "You can call us at 215-352-1600 or email us using the Contact Us form on /contact-us."
       },
        {
         "id": 37,
         "question": "Do you offer special deals or promotions?",
-        "answer": "Yes! Check https://myfurnituremecca.com and sign up for emails to stay informed on the latest sales."
+        "answer": "Yes! Check  and sign up for emails to stay informed on the latest sales."
       }
     ]
   }

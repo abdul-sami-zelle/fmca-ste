@@ -270,7 +270,7 @@ const SideCart = ({ isCartOpen, handleCloseSideCart }) => {
             <div className={`side-cart-inner-container ${isCartOpen ? 'show-cart-inner-contianer' : ''}`} onClick={(e) => e.stopPropagation()}>
 
                 <div className='side-cart-head'>
-                    <span className='side-cart-bag-contianer'>
+                    <div className='side-cart-bag-contianer'>
                         <div className='side-cart-bag-and-counter'>
                             <Image src={'/Assets/icons/cart-bag-new.png'} width={45} height={45} alt='cart-bag' />
                             
@@ -282,7 +282,7 @@ const SideCart = ({ isCartOpen, handleCloseSideCart }) => {
                             )}
                         </div>
                         <h3 className='side-cart-your-cart-heading'>Your Cart</h3>
-                    </span>
+                    </div>
                     <button className='side-cart-close-btn' onClick={handleCloseSideCart}>
                         <IoIosClose size={30} color='#595959' />
                     </button>

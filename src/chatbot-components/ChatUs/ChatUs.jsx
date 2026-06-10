@@ -4,6 +4,7 @@ import { FiSend } from "react-icons/fi";
 import { RiArrowLeftSLine } from "react-icons/ri";
 import EmojiPicker from "emoji-picker-react";
 import { faqData } from "../../Data/Data";
+import { useRouter } from "next/navigation";
 import "./style.css";
 
 const ChatUs = ({ onBack, onClose }) => {
@@ -24,6 +25,10 @@ const ChatUs = ({ onBack, onClose }) => {
   const [visibleQuestions, setVisibleQuestions] = useState([]);
   const [showAnswer, setShowAnswer] = useState(false);
   const [showFollowUpFromHome, setShowFollowUpFromHome] = useState(false);
+
+
+  const router = useRouter();
+
 
   const messageEndRef = useRef(null);
   const followUpTimeoutRef = useRef(null);
@@ -350,12 +355,12 @@ const ChatUs = ({ onBack, onClose }) => {
       {
         id: prev.length + 2,
         text: (<>
-            I’m sorry, I don’t have the information you’re looking for right now. 
-      Please reach out to our Customer Care team at{" "}
-      <a href="mailto:meccacustomercare@gmail.com">
-        meccacustomercare@gmail.com
-      </a>
-      , and they’ll be happy to assist you further.
+          I’m sorry, I don’t have the information you’re looking for right now.
+          Please reach out to our Customer Care team at{" "}
+          <a href="mailto:meccacustomercare@gmail.com">
+            meccacustomercare@gmail.com
+          </a>
+          , and they’ll be happy to assist you further.
         </>),
         // `I’m sorry, I don’t have the information you’re looking for right now. Please reach out to our Customer Care team at ${<a href="mailto:meccacustomercare@gmail.com">meccacustomercare@gmail.com</a>} , and they’ll be happy to assist you further.`,
         sender: "bot",
@@ -609,7 +614,7 @@ const ChatUs = ({ onBack, onClose }) => {
 
                 {!msg.type && (
                   <>
-                    <div className="message-content">{msg.text}</div>
+                    <div className="message-content">{renderWithLinks(msg.text,router,onClose)}</div>
                     <div className="message-timestamp">
                       {formatMessageTime(msg.timestamp)}
                     </div>
@@ -747,3 +752,155 @@ const ChatUs = ({ onBack, onClose }) => {
 };
 
 export default ChatUs;
+
+
+const renderWithLinks = (text, router, onClose) => {
+  if (typeof text !== "string") return text;
+
+  const phoneRegex = /(\b\d{3}[-.]?\d{3}[-.]?\d{4}\b)/g;
+  const emailRegex = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g;
+  const externalRegex = /(https?:\/\/[^\s]+)/g;
+  const pathRegex = /(?<![:/])(\/[a-zA-Z0-9\-_/]+)/g;
+
+  const combinedRegex = new RegExp(
+    `${phoneRegex.source}|${emailRegex.source}|${externalRegex.source}|${pathRegex.source}`,
+    "g"
+  );
+
+  const parts = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = combinedRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push({ type: "text", value: text.slice(lastIndex, match.index) });
+    }
+    if (match[1]) parts.push({ type: "phone", value: match[1] });
+    else if (match[2]) parts.push({ type: "email", value: match[2] });
+    else if (match[3]) parts.push({ type: "external", value: match[3] });
+    else if (match[4]) parts.push({ type: "path", value: match[4] });
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push({ type: "text", value: text.slice(lastIndex) });
+  }
+
+  const pillStyle = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "4px",
+    borderRadius: "5px",
+    padding: "2px 8px 2px 6px",
+    fontSize: "13px",
+    lineHeight: "1",
+    fontWeight: 500,
+    whiteSpace: "nowrap",
+    verticalAlign: "middle",
+    cursor: "pointer",
+    textDecoration: "none",
+    border: "0.5px solid",
+  };
+
+  const pillStyle2 = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "4px",
+    borderRadius: "5px",
+    fontSize: "13px",
+    lineHeight: "1",
+    fontWeight: 500,
+    whiteSpace: "nowrap",
+    verticalAlign: "middle",
+    cursor: "pointer",
+    textDecoration: "none",
+    border: "0px solid",
+  };
+
+  const IconPhone = () => (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+      style={{ flexShrink: 0 }}>
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.86a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+
+  const IconMail = () => (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+      style={{ flexShrink: 0 }}>
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+  );
+
+  const IconExternal = () => (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+      style={{ flexShrink: 0 }}>
+      <path d="M15 3h6v6" />
+      <path d="M10 14 21 3" />
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    </svg>
+  );
+
+  const IconLink = () => (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+      style={{ flexShrink: 0 }}>
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+    </svg>
+  );
+
+  return parts.map((part, index) => {
+    if (part.type === "text") return part.value;
+
+    if (part.type === "phone") {
+      const digits = part.value.replace(/\D/g, "");
+      return (
+        <a key={index} href={`tel:+1${digits}`}
+          style={{ ...pillStyle2, background: "transparent", color: "#F3691E" }}>
+          <IconPhone />
+          {part.value}
+        </a>
+      );
+    }
+
+    if (part.type === "email") {
+      return (
+        <a key={index} href={`mailto:${part.value}`}
+          style={{ ...pillStyle2, background: "transparent", color: "#854d0e" }}>
+          <IconMail />
+          {part.value}
+        </a>
+      );
+    }
+
+    if (part.type === "external") {
+      // Show just the hostname as label e.g. "thefurnituredepots.com"
+      let label = part.value;
+      try {
+        label = new URL(part.value).hostname.replace(/^www\./, "");
+      } catch { }
+      return (
+        <a key={index} href={part.value} target="_blank" rel="noopener noreferrer"
+          style={{ ...pillStyle, background: "#f3e8ff", color: "#6b21a8", borderColor: "#d8b4fe" }}>
+          <IconExternal />
+          {label}
+        </a>
+      );
+    }
+
+    if (part.type === "path") {
+      const label = part.value.replace(/^\//, "").replace(/\/$/, "");
+      return (
+        <span key={index} onClick={() => { onClose(); router.push(part.value) }}
+          style={{ ...pillStyle, background: "#dbeafe", color: "#1e40af", borderColor: "#93c5fd" }}>
+          <IconLink />
+          {label}
+        </span>
+      );
+    }
+  });
+};
