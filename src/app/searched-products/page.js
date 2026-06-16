@@ -1,5 +1,6 @@
 import { Suspense } from "react";
-import ProductArchive from "../[category]/[product-archive]/page";
+import ProductArchive from "../[category]/[product-archive]/productArchive";
+// import ProductArchive from "../[category]/[product-archive]/page";
 
 export async function generateMetadata() {
     return {
