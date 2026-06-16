@@ -1,161 +1,108 @@
-'use client'
+import { notFound } from "next/navigation";
+import SingleBlog from "./SingleBlog"; // adjust path if needed
 
-import React, { useEffect } from 'react'
-import './SingleBlog.css'
-import BlogHead from '@/UI/Components/Blogs-Components/BlogsHead/BlogHead'
-import Link from 'next/link'
-import TrandingBlogs from '@/UI/Components/Blogs-Components/TrandingBlogs/TrandingBlogs';
-import FirstToKnow from '@/UI/Components/Blogs-Components/FirstToKnow/FirstToKnow';
-import SearchTag from '@/UI/Components/Blogs-Components/SearchTags/SearchTag';
-import NextUp from '@/UI/Components/Blogs-Components/NextUp/NextUp';
-import { url, formatDate } from '@/utils/api'
-import { useBlog } from '@/context/BlogsContext/blogsContext'
-import { usePathname, useRouter } from 'next/navigation'
-import Image from 'next/image'
-import axios from 'axios'
+export async function generateMetadata({ params }) {
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
 
-import { FaFacebook, FaYoutube, FaInstagramSquare , FaTiktok, FaEnvelope, } from "react-icons/fa";
+  try {
+    const res = await fetch(
+      `https://fmapi.myfurnituremecca.com/api/v1/blogs/get-blog-seo?slug=${slug}`,
+      { cache: "no-store" }
+    );
 
-const SingleBlog = () => {
-    const router = useRouter();
-    const path = usePathname();
-    const splitedPath = path.split('/');
-    const slug = splitedPath[splitedPath.length - 1]
-
-
-    const {
-        blogs,
-        blogCategories,
-        fetchBlogs,
-    } = useBlog();
-
-
-
-
-    let singleBlog = {}
-    if (!singleBlog.slug) {
-        singleBlog = blogs.find((blog) => blog.slug === slug) || {};
+    if (!res.ok) {
+      return {
+        title: `Free Delivery & Free Setup | ${slug} – Furniture Sale | Furniture Mecca`,
+        description: "Read our latest blog posts about furniture and home décor.",
+      };
     }
 
+    const { seoData } = await res.json();
 
+    if (!seoData || seoData.length === 0) {
+      return {
+        title: `Free Delivery & Free Setup | ${slug} – Furniture Sale | Furniture Mecca`,
+        description: "Read our latest blog posts about furniture and home décor.",
+      };
+    }
 
-    useEffect(() => {
-        fetchBlogs(singleBlog?.category?._id)
-    }, [])
+    const meta = seoData[0].meta;
+    const blogSlug = seoData[0].slug;
 
-    const socialLinks = [
-        { icon: FaFacebook, link: '#' },
-        { icon: FaYoutube, link: '#' },
-        { icon: FaInstagramSquare, link: '#' },
-        { icon: FaTiktok, link: '#' },
-        { icon: FaEnvelope, link: '#' },
-    ]
+    const imageUrl = meta.og_image
+      ? meta.og_image.startsWith("http")
+        ? meta.og_image
+        : `https://fmapi.myfurnituremecca.com${
+            meta.og_image.startsWith("/") ? meta.og_image : `/${meta.og_image}`
+          }`
+      : null;
 
-    const filteredBlogs = blogs.filter((item) => item.slug !== singleBlog?.[0]?.slug);
-
-    const getSurroundingBlogs = (slug) => {
-        const currentIndex = blogs.findIndex((item) => item.slug === slug); // Find the index of the current blog
-
-        if (currentIndex === -1) {
-            return { beforeId: null, afterId: null }; // If the blog is not found
-        }
-
-        const beforeSlug = currentIndex === 0 ? null : blogs[currentIndex - 1].slug;
-        const beforeIndex = beforeSlug !== null ? blogs.findIndex((item) => item.slug === beforeSlug) : null
-        const afterSlug = currentIndex + 1 < blogs.length ? blogs[currentIndex + 1].slug : null;
-        const afterIndex = afterSlug !== null ? blogs.findIndex((item) => item.slug === afterSlug) : null;
-
-        return { beforeIndex, afterIndex };
-
+    return {
+      title:
+        `Free Delivery & Free Setup | ${meta.title} – Furniture Sale | Furniture Mecca` ||
+        `Free Delivery & Free Setup | ${slug} – Furniture Sale | Furniture Mecca`,
+      description:
+        meta.description || "Read our latest blog posts about furniture and home décor.",
+      keywords: meta.keywords || undefined,
+      alternates: {
+        canonical:
+          meta.canonical_url ||
+          `https://myfurnituremecca.com/single-blog/${blogSlug}`,
+      },
+      openGraph: {
+        title: `Free Delivery & Free Setup | ${meta.og_title || meta.title} – Furniture Sale | Furniture Mecca`,
+        description: meta.og_description || meta.description,
+        url: `https://myfurnituremecca.com/single-blog/${blogSlug}`,
+        siteName: "Furniture Mecca",
+        type: "article",
+        ...(imageUrl && {
+          images: [
+            {
+              url: imageUrl,
+              width: 1200,
+              height: 630,
+              alt: meta.title || slug,
+            },
+          ],
+        }),
+      },
+      twitter: {
+        card: "summary_large_image",
+        title:
+          `Free Delivery & Free Setup | ${meta.x_title || meta.title} – Furniture Sale | Furniture Mecca`,
+        description: meta.x_description || meta.description,
+        ...(imageUrl && { images: [imageUrl] }),
+      },
     };
-
-    const { beforeIndex, afterIndex } = getSurroundingBlogs(singleBlog.slug);
-
-    const updateBlogView = async () => {
-        const api = `${url}/api/v1/blogs/${singleBlog._id}/view`
-
-        try {
-            const response = await axios.put(api);
-        } catch (error) {
-            console.error("UnExpected Server Error", error);
-        }
-    }
-
-    useEffect(() => {
-        updateBlogView()
-    }, [singleBlog?._id])
-
-
-    const navigateToSingleBlog = (item) => {
-        router.push(`/single-blog/${item.slug}`, { state: item });
-    }
-
-    return (
-        <div className='single-blog-main-container'>
-            <div className='single-blog-main-heading-div'>
-                <h3 className='single-blog-main-heading'>Exciting Blogs Created by <span> Furniture Mecca </span></h3>
-                <h3 className='mobile-view-single-blog-main-heading'>Exciting Blogs</h3>
-            </div>
-            {/* <BlogHead blogCategories={blogCategories} /> */}
-
-            <div className='single-blog-content-section'>
-
-                <div className='single-blog-left-content'>
-                    <div className='single-blog-title-and-publish-date'>
-                        <h3 className='single-blog-name'>{singleBlog.title}</h3>
-                        <p className='single-blog-post-date'>{formatDate(singleBlog.publishedDate)}</p>
-                    </div>
-                    <div className='single-blog-main-image-div'>
-                        <img src={`${url}${singleBlog?.image?.image_url}`} alt='single-blog-image' className='single-blog-main-image' />
-                    </div>
-                    <div className='single-blog-columns' dangerouslySetInnerHTML={{ __html: singleBlog.content }}>
-                    </div>
-                    <div className='single-blog-social-links-div'>
-                        <p>Share this: </p>
-                        <div className='single-blog-social-icons'>
-                            {socialLinks.map((items, index) => (
-                                <Link href={'#'} key={index} className='social-single-icon'>
-                                    {<items.icon size={30} color='#595959'/>} 
-
-                                    {/* <Image src={items.icon}
-                                        width={25}
-                                        height={25}
-                                        alt='social-icon'
-                                        className='social-icon-img'
-                                        style={{ width: 'auto', height: '20px' }}
-                                    /> */}
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                    <div className='prev-and-next-blog-section' >
-                        <div className='prev-single-blog' onClick={() => navigateToSingleBlog(blogs?.[beforeIndex])}>
-                            <p>Previous Blog</p>
-                            {beforeIndex !== null ? (
-                                <h3>{blogs?.[beforeIndex]?.title}</h3> // Show the title of the "before" blog
-                            ) : (
-                                <h3>No Prev Blog</h3>
-                            )}
-                        </div>
-                        <div className='next-single-blog' onClick={() => navigateToSingleBlog(blogs?.[afterIndex])}>
-                            <p>Next Blog</p>
-                            {afterIndex !== null ? (
-                                <h3>{blogs?.[afterIndex]?.title}</h3> // Show the title of the "before" blog
-                            ) : (
-                                <h3>No Next Blog</h3>
-                            )}
-                        </div>
-                    </div>
-                </div>
-
-                <div className='single-blog-right-content'>
-                    <TrandingBlogs blogs={filteredBlogs} />
-                    <FirstToKnow />
-                    <SearchTag />
-                </div>
-            </div>
-        </div>
-    )
+  } catch (error) {
+    console.error("Error fetching blog SEO data:", error);
+    return {
+      title: "Free Delivery & Free Setup | Blog  – Furniture Sale | Furniture Mecca",
+      description: "Read our latest blog posts about furniture and home décor.",
+    };
+  }
 }
 
-export default SingleBlog
+export default async function SingleBlogPage({ params }) {
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
+
+  // 404 check
+  const res = await fetch(
+    `https://fmapi.myfurnituremecca.com/api/v1/blogs/get-blog-seo?slug=${slug}`,
+    { cache: "no-store" }
+  );
+
+  if (!res.ok) {
+    notFound();
+  }
+
+  const { seoData } = await res.json();
+
+  if (!seoData || seoData.length === 0) {
+    notFound();
+  }
+
+  return <SingleBlog />;
+}

@@ -3,7 +3,7 @@ import StoreLocatorClient from "@/UI/Components/StoreLocatorClient/StoreLocatorC
 export async function generateMetadata() {
     return {
       title: `Store Locator  - Furniture Mecca`,
-      description: `Browse our  collection`,
+      description: `Browse our collection`,
     };
   }
   
