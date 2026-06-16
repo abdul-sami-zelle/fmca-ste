@@ -4,11 +4,11 @@ import Script from "next/script";
 export const metadata = {
   title: "Free Delivery & Free Setup | Furniture Sale – Save Up to 75% Furniture Mecca",
   description:
-    "Free Delivery & FREE Setup on all furniture during our Furniture Sale Sale! Save up to 75% on living room, bedroom & dining sets. Limited-time offer—shop now!",
+    "Free Delivery & FREE Setup on all furniture during our Furniture Sale! Save up to 75% on living room, bedroom & dining sets. Limited-time offer—shop now!",
   openGraph: {
     title: "Free Delivery & Free Setup | Furniture Sale – Save Up to 75% Furniture Mecca",
     description:
-      "Free Delivery & FREE Setup on all furniture during our Furniture Sale Sale! Save up to 75% on living room, bedroom & dining sets. Limited-time offer—shop now!",
+      "Free Delivery & FREE Setup on all furniture during our Furniture Sale! Save up to 75% on living room, bedroom & dining sets. Limited-time offer—shop now!",
     url: "https://myfurnituremecca.com/home-furniture-mecca",
     siteName: "Furniture Mecca",
     images: [
