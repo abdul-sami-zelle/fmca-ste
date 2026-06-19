@@ -10,7 +10,7 @@
     padding: var(--global-padding);
 }
 
-.frequently-bought-main h3{
+.frequently-bought-main h2{
     font-size: var(--section-size);
     line-height: var(--section-height);
     font-weight: var(--section-weight);
@@ -52,7 +52,7 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
-    .frequently-bought-main h3 {
+    .frequently-bought-main h2 {
         /* font-size: var(--sub-section-size);
         line-height: var(--sub-section-height); */
         font-size: 18px;
@@ -83,7 +83,7 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
-    .frequently-bought-main h3 {
+    .frequently-bought-main h2 {
         /* font-size: var(--sub-section-size);
         line-height: var(--sub-section-height); */
         font-size: 18px;

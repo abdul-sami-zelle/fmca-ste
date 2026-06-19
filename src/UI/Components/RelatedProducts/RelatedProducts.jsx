@@ -52,7 +52,7 @@ const RelatedProducts = ({ data }) => {
 
   return (
     <div className='related-products-main-container'>
-      <h3>Popular Items You May Like</h3>
+      <h2>Popular Items You May Like</h2>
       <div className='related-crds-slider-contaner'>
 
         <ArrowSlider

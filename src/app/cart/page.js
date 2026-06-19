@@ -458,7 +458,7 @@ const Cart = () => {
 
       {latestProducts && latestProducts?.length > 0 && (
         <div className='cart-related-products-display-section'>
-          <h3>You May Also Like</h3>
+          <h2>You May Also Like</h2>
           <div className='cart-related-products-slider-main-div'>
 
             {!noProduct && (

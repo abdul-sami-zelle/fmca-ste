@@ -40,3 +40,66 @@ a {
     color-scheme: dark;
   }
 } */
+
+
+
+.not-found-containerNOTFoundNEWoneP {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #fcfbfa;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+.not-found-icon-wrapperNOTFoundNEWoneP {
+  color: #bfa38a;
+  margin-bottom: 0px;
+  margin-bottom: -10px;
+  display: inline-block;
+}
+
+.image-furnitureNOTFoundNEWoneP {
+  width: 100px;
+}
+
+.not-found-titleNOTFoundNEWoneP {
+  font-size: 38px;
+  font-weight: 500;
+  color: #1a1917;
+  margin-bottom: 0px;
+  letter-spacing: -0.5px;
+}
+
+.not-found-descriptionNOTFoundNEWoneP {
+  font-size: 16px;
+  color: #6e685f;
+  max-width: 480px;
+  line-height: 1.6;
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+
+.not-found-btnNOTFoundNEWoneP {
+  padding: 12px 36px;
+  background-color: #FF8416; 
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px; 
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: 1px solid #FF8416;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.not-found-btnNOTFoundNEWoneP:hover {
+  background-color: transparent;
+  color: #FF8416;
+  border-color: #FF8416;
+}

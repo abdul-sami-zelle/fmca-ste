@@ -167,11 +167,11 @@ const BestSeller = () => {
                     <div className='category-best-seller-cards-section'>
 
                         <div className='category-best-seller-menu'>
-                            <h3>Best Seller</h3>
+                            <h1>Best Seller</h1>
                             {bestSelling ? (
                                 <div className='category-best-seller-menu-items'>
                                     {bestSelling.categories.map((item, index) => (
-                                        <p key={item._id} className={activeItem === index ? 'active' : ''} onClick={() => handleActiveItem(index, item)}>{item.Heading}</p>
+                                        <h2 key={item._id} className={activeItem === index ? 'active' : ''} onClick={() => handleActiveItem(index, item)}>{item.Heading}</h2>
                                     ))}
                                 </div>
                             ) : <></>}
@@ -234,10 +234,10 @@ const BestSeller = () => {
                 </div>
 
                 <div className='best-saller-mobile-container'>
-                    <h3>Best Seller</h3>
+                    <h1>Best Seller</h1>
                     <div className='mobile-card-nav-container'>
                         {bestSelling.categories.map((item, index) => (
-                            <p
+                            <h2
                                 key={index}
                                 className={`mobile-best-seller-nav-item ${mobiIndex === index ? 'mobile-seller-nav-active' : ''}`}
                                 onClick={() => {
@@ -245,7 +245,7 @@ const BestSeller = () => {
                                 }}
                             >
                                 {item.Heading}
-                            </p>
+                            </h2>
                         ))}
                     </div>
 

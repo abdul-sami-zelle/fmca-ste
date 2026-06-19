@@ -455,7 +455,7 @@ const ProductDetailSticky = (
 
 
 
-              <h3>{product?.name}</h3>
+              <h1>{product?.name}</h1>
               {/* <p>SKU : {product.sku}</p> */}
               <div className='product-detail-rating-and-share'>
                 {product.type === 'simple' ? (
@@ -553,7 +553,7 @@ const ProductDetailSticky = (
                   <Image src={`${url}/uploads/offers/offer_2.jpeg`} width={230} height={70} alt='tag-img' />
                 </div> */}
 
-                <h3>{product?.name}</h3>
+                <h1>{product?.name}</h1>
                 {/* <p>SKU : {product.sku}</p> */}
                 {product?.type === "simple" ? (
                   <p>SKU : {product.sku}</p>

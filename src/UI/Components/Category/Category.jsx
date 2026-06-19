@@ -16,7 +16,7 @@ const Category = ({ title, categoryData, handleNavigate, categorySlug, marginTop
     <div className='category-main-container' style={{marginTop: marginTop}}>
       <div className="category-bread-crumb-and-title">
         {/* <Breadcrumb /> */}
-        <h3 className='category-heading' onClick={generateInvoicePDF}>{title}</h3>
+        <h1 className='category-heading' onClick={generateInvoicePDF}>{title}</h1>
       </div>
       <div className='category-cards-container'>
         {categoryData && categoryData.length > 0 ? (

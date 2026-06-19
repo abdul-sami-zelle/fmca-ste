@@ -107,7 +107,7 @@ const FrequentlyBought = ({ isPadding, product }) => {
     return (
         data?.length > 0 && (
             <div className={`frequently-bought-main ${isPadding ? 'add-padding' : ''}`}>
-                <h3>You May Also Like</h3>
+                <h2>You May Also Like</h2>
                 <div className='frequently-bought-card'>
                     {data ? (
                         data && data?.slice(0, 4).map((item, index) => (

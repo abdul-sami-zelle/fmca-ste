@@ -336,12 +336,12 @@ const BestSellerSlider = (
 
                 {/* Mobile View  */}
                 <div className='best-saller-mobile-container'>
-                    <h3>Best Seller</h3>
+                    <h1>Best Seller</h1>
                     <div className='mobile-card-nav-container'>
                         {
                             getDisplayedCards()?.length !== 0 ? (
                                 bestSellerNav1.map((item, index) => (
-                                    <p
+                                    <h2
                                         key={index}
                                         className={`mobile-best-seller-nav-item ${mobIndex === index ? 'mobile-seller-nav-active' : ''}`}
                                         onClick={() => {
@@ -351,7 +351,7 @@ const BestSellerSlider = (
                                         }}
                                     >
                                         {item.Heading}
-                                    </p>
+                                    </h2>
                                 ))
                             ) : (
                                 <div className='mobile-best-seller-products-nav-shimmer'>

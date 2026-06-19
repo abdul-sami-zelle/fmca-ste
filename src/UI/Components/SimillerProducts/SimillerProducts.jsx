@@ -116,7 +116,7 @@ const SimillerProducts = ({ isPadding, productId }) => {
   return (
     data?.length > 0 && (
       <div className={`similler-products-main-container ${isPadding ? 'add-padding' : ''}`}>
-        <h3>Shop From This Collection</h3>
+        <h2>Shop From This Collection</h2>
 
         <div className='cart-related-products-slider-main-div'>
 

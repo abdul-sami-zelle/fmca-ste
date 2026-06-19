@@ -19,7 +19,7 @@ const ZipCodeModal = ({handleINitialLocationSetModal}) => {
         <span>
           <FaTruck size={20} color='#595959' />
 
-          Delivery Zip Zode
+          Delivery Zip Code
         </span>
 
         <button className='nearby-store-set-location-close-button' onClick={handleINitialLocationSetModal}>

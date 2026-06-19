@@ -31,6 +31,7 @@ import SwiperSlider from '@/UI/Sliders/SwiperSlider/SwiperSlider';
 // import MapComp from '../MapComp/MapComp';
 
 import dynamic from "next/dynamic";
+import StoreLocatorFAQ from '../FAQ/StoreLocatorFAQs';
 
 const MapComp = dynamic(() => import("../MapComp/MapComp"), { ssr: false });
 
@@ -229,8 +230,13 @@ const StoreLocatorClient = () => {
 
 
   return (
+    <>
     <div className='store-locator-main-container'>
-      <h3 className='store-locator-main-heading'>Store Locator</h3>
+
+      <img className='store-locator-banner' src='/storenearme.jpeg' />
+
+
+      <h1 className='store-locator-main-heading'>Find Furniture or Mattress Store Near You</h1>
 
       {/* Desktop view */}
       <div className='all-stores-side-section-and-map'>
@@ -544,33 +550,6 @@ const StoreLocatorClient = () => {
                   </span>
                 ))}
 
-                {/* <div className='mobile-view-rating-and-reviews-of-product'>
-                  <p>4.1</p>
-                  <div>
-                    {[0, 1, 2, 3, 4].map((item, index) => (
-                      <FaStar key={index} size={15} color='#50BED3' />
-                    ))}
-                  </div>
-                  <p>(1707 Reviews)</p>
-                </div> */}
-                {/* {
-                  commentData?.map((item, index) => (
-                    <div className='single-location-comment-card'>
-                      <div className='comment-user-section'>
-                        <img src={item.profile} alt='profile' className='user-profile-picture' />
-                        <div className='comment-user-name-and-rating'>
-                          <h3>{item.useName}</h3>
-                          <div className='user-rating'>
-                            {[0, 1, 2, 3, 4].map((star, index) => (
-                              <FaStar size={15} color='#F0AD4E' />
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                      <p className='comment-user-feedback'>{item.comment}</p>
-                    </div>
-                  ))
-                } */}
               </div>
             )}
 
@@ -582,7 +561,12 @@ const StoreLocatorClient = () => {
       </div>
 
 
+      
+
+
     </div >
+    <StoreLocatorFAQ/>
+    </>
   )
 }
 

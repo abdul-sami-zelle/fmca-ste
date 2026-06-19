@@ -925,13 +925,13 @@ const Products = ({ navigationType }) => {
   return (
     <div className="products-main-container">
       {loader && <Loader />}
-      <h3
+      <h1
         className={`select-your-category-products-heading ${
           currentRoute === "searched-products" ? "hide-category-heading" : ""
         }`}
       >
         Select Your {formatted}
-      </h3>
+      </h1>
       {products?.length > 0 && (
         <div
           className={`product-archive-category-wrapper  ${

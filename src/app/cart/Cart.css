@@ -1174,7 +1174,7 @@
     margin-bottom: 35px;
 }
 
-.cart-related-products-display-section>h3 {
+.cart-related-products-display-section>h2 {
     font-size: var(--section-size);
     font-weight: var(--section-weight);
     line-height: var(--section-height);
@@ -1558,7 +1558,7 @@
         font-weight: 600;
     }
 
-    .cart-related-products-display-section>h3 {
+    .cart-related-products-display-section>h2 {
         font-size: 15px;
         font-weight: 500;
         line-height: 1.2;
