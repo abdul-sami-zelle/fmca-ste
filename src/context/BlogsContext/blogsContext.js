@@ -83,7 +83,7 @@ export const BlogsProvider = ({ children }) => {
                     console.error("UnExpected Error", response.status);
                 }
             } else {
-                
+
                 response = await axios.get(`${url}${api}?category=${categoryId}&page=${page}&limit=12`);
                 setBlogs(response.data.blogs);
                 setTotalPages(response.data.totalPages)
@@ -93,13 +93,29 @@ export const BlogsProvider = ({ children }) => {
         } catch (error) {
             console.error("UnExpected Server Error", error);
             setIsBlogLoading(false)
-        } finally {setIsBlogLoading(false)}
+        } finally { setIsBlogLoading(false) }
     }
 
     useEffect(() => {
 
         fetchBlogs(null)
     }, [])
+
+    const fetchBlogBySlug = async (slug) => {
+        try {
+            const response = await axios.get(`${url}/api/v1/blogs/get-by-slug/${slug}`);
+            if (response.status === 200 && response.data.blog) {
+                return response.data.blog;
+            }
+            return null;
+        } catch (error) {
+            console.error("Error fetching blog by slug", error);
+            return null;
+        }
+    };
+
+    // Add to provider value:
+    // fetchBlogBySlug,
 
     return (
         <BlogsContext.Provider value={{
@@ -112,10 +128,11 @@ export const BlogsProvider = ({ children }) => {
             setActiveCategory,
             isBlogLoading,
             isBlogCatLoading,
-            totalPages, 
+            totalPages,
             setTotalPages,
-            currentPage, 
+            currentPage,
             setCurrentPage,
+            fetchBlogBySlug
         }}>
             {children}
         </BlogsContext.Provider>

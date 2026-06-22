@@ -220,7 +220,7 @@ const Sliderr = ({ images, height, autoSlideSpeed = 4000 }) => {
                         slidesData={images && images?.mobile}
                         renderSlide={(img, index) => (
                             <Link
-                                href={`/${img.link_url}`}
+                                href={`${img.link_url}`}
                                 className="mobile-slide"
                                 key={index}
                                 onMouseDown={handleMouseDown}
