@@ -25,7 +25,11 @@ const FAQ = () => {
 
     const params = useParams();
     const slug = params['product-archive'];
-    const [faqs, setFaqs] = useState([])
+    const [faqs, setFaqs] = useState([]);
+    const [content,setContent] = useState({
+        heading:"",
+        paragraph:""
+    })
     const getFAQs = async () => {
         const api = `https://fmapi.myfurnituremecca.com/api/v1/category-faqs/get-by-slug/${slug}`;
 
@@ -33,6 +37,12 @@ const FAQ = () => {
             const response = await axios.get(api);
             if (response.status === 200) {
                 setFaqs(response.data.data.faqs);
+                setContent(
+                    {
+                        heading:response.data.data?.content?.heading || "",
+                        paragraph:response.data.data?.content?.paragraph || ""
+                    }
+                )
             }
         } catch (error) {
             console.error("UnExpected Server Error", error);
@@ -81,14 +91,10 @@ const FAQ = () => {
             </div>
 
             <div className='f-a-q-main-container'>
-                <div className='faq-details'>
-                    <p>Stress-free Furnishing with Living Room Furniture Sets</p>
-                    <p>
-                        Unlock your living room’s full potential with a complete living room furniture set.
-                        Sofas and loveseats, ottomans and accent chairs, plus more.All perfectly paired to
-                        create your coziest living space or party place!
-                    </p>
-                </div>
+                {content.heading && content.paragraph && <div className='faq-details'>
+                    {content.heading && <p>{content.heading}</p>}
+                    {content.paragraph && <p>{content.paragraph}</p>}
+                </div>}
                 {faqs?.length > 0 && (
                     <div className={`questions-answeres ${seeMore ? 'show-all' : ''}`}>
                         <p className='faq-heading'>FAQs</p>

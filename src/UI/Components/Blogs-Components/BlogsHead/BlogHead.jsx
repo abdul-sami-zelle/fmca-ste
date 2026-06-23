@@ -9,6 +9,7 @@ const BlogHead = ({ blogCategories }) => {
     isBlogCatLoading,
     fetchBlogs,
     currentPage,
+    setCurrentPage
   } = useBlog();
 
   const [hoveredCategory, setHoveredCategory] = useState(null);
@@ -49,6 +50,7 @@ const BlogHead = ({ blogCategories }) => {
   };
 
   const handleClick = (index) => {
+    setCurrentPage(1);
     setActiveCategory(index);
     hoverIndexRef.current = null;
     lastMovedIndex.current = null; // force recalc

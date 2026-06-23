@@ -68,6 +68,7 @@ export const BlogsProvider = ({ children }) => {
     }, [blogCategoryLoading])
 
     const fetchBlogs = async (categoryId, page = 1) => {
+        console.log(`call with category id ${categoryId} and page no ${page}`)
         const api = `/api/v1/blogs/get`;
         try {
             setIsBlogLoading(true);

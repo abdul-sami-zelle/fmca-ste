@@ -1,83 +1,33 @@
-'use client'
+import BlogPage from './BlogPage';
 
-import React, { useEffect } from 'react'
-import './BlogPage.css';
-import BlogHead from '@/UI/Components/Blogs-Components/BlogsHead/BlogHead';
-import AllBlogs from '@/UI/Components/Blogs-Components/AllBlogs/AllBlogs';
-import { useBlog } from '@/context/BlogsContext/blogsContext';
-import ElipticalPagenation from '@/UI/Components/Products/ElepticalPagination';
+export async function generateMetadata() {
+  return {
+    title: "Furniture Mecca's Blogs | Furniture Sale – Save Up to 75% Furniture Mecca",
+    description:
+      "Explore Furniture Mecca's blog for furniture tips, home décor inspiration, design trends, seasonal ideas, and expert advice for every room.",
 
-const BlogPage = () => {
+    alternates: {
+      canonical: "https://myfurnituremecca.com/blogs",
+    },
 
-  const {
-    blogs,
-    blogCategories,
-    fetchBlogs,
-    activeCategory,
-    totalPages,
-    currentPage,
-    setCurrentPage,
-  } = useBlog()
-
-
-  useEffect(() => {
-    fetchBlogs(blogCategories?.[activeCategory]?._id, currentPage);
-  }, [activeCategory, currentPage, blogCategories]);
-
-  const handleActivePage = (page) => {
-    setCurrentPage(page);
-    if (typeof window !== 'undefined') {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      })
-    }
-  }
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(prev => prev - 1);
-
-      if(typeof window !== 'undefined') {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        })
-      }
-
-    }
+    openGraph: {
+      title: "Furniture Mecca's Blogs | Furniture Sale – Save Up to 75% Furniture Mecca",
+      description:
+        "Explore Furniture Mecca's blog for furniture tips, home décor inspiration, design trends, seasonal ideas, and expert advice for every room.",
+      url: "https://myfurnituremecca.com/blogs",
+      images: [
+        {
+          url: "https://myfurnituremecca.com/Assets/Logo/fm-new-logo.png",
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
   };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(prev => prev + 1);
-      if(typeof window !== 'undefined') {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        })
-      }
-    }
-  };
-
-
-  return (
-    <div className='blogs-page-main-container'>
-      <div className='blogs-page-main-heading-div'>
-        <h3 className='blogs-page-main-heading'>Exciting Blogs Created by <span> Furniture Mecca </span></h3>
-        <h3 className='mobile-view-blog-page-main-heading'>Exciting Blogs</h3>
-      </div>
-      <BlogHead blogCategories={blogCategories} />
-      <AllBlogs blogData={blogs} />
-      <ElipticalPagenation
-        activePageIndex={currentPage}
-        totalPages={totalPages}
-        onPrevPage={handlePrevPage}
-        onPageChange={handleActivePage}
-        onNextPage={handleNextPage}
-      />
-    </div>
-  )
 }
 
-export default BlogPage
+const Blogs = () => {
+  return <BlogPage />;
+};
+
+export default Blogs;

@@ -2,7 +2,7 @@ import ClientLayout from "@/Global-Components/ClientLayout/ClientLayout";
 import Script from "next/script";
 
 export const metadata = {
-  metadataBase: new URL("https://www.myfurnituremecca.com"),
+  metadataBase: new URL("https://myfurnituremecca.com"),
 
   title:
     "Free Delivery & Free Setup | Furniture Sale – Save Up to 75% Furniture Mecca",
@@ -40,7 +40,7 @@ export const metadata = {
     description:
       "Shop furniture and mattresses with Free Delivery & Free Setup. Save up to 75% on top furniture collections.",
 
-    url: "https://www.myfurnituremecca.com",
+    url: "https://myfurnituremecca.com",
 
     siteName: "Furniture Mecca",
 

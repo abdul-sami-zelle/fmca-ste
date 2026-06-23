@@ -151,6 +151,7 @@
 
 
 import ProductDisplayWrapper from "./productDisplayWrapper";
+import Head from "next/head";
 
 // ── Helper: build schema from product data ────────────────────
 function buildSchema(product, slug) {
