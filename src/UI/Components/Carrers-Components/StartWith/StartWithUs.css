@@ -16,7 +16,7 @@
     gap: 15px;
 }
 
-.career-start-with-us h3{
+.career-start-with-us h2{
     font-size: 25px;
     line-height: 37px;
     font-weight: 600;
@@ -38,7 +38,7 @@
     padding: 0 10px;
 }
 
-.career-apply-now a{
+.career-apply-now h1{
     font-size: 24px;
     font-weight: 600;
     line-height: 36px;
@@ -106,7 +106,7 @@
         justify-content: start;
         text-align: start;
     }
-    .career-start-with-us h3 {
+    .career-start-with-us h2 {
         font-size: 20px;
         line-height: 30px;  
     }
@@ -125,7 +125,7 @@
         line-height: 15px;
         text-align: start;
     }
-    .career-apply-now a {
+    .career-apply-now h1 {
         font-size: 18px;
         font-weight: 500;
         line-height: 27px;

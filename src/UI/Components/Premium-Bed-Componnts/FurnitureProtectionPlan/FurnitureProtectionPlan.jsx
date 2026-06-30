@@ -7,7 +7,7 @@ const FurnitureProtectionPlan = () => {
         <div className="furniture-protection-gallery-main-container">
             
             <div className="furniture-protection-gallery-content">
-                <h3>Furniture Protection Plans</h3>
+                <h2>Furniture Protection Plans</h2>
                 <p>Premium Care for the Furniture You Love – Because Accidents Happen</p>
                 <h3>Why Choose a Furniture Protection Plan?</h3>
 

@@ -19,9 +19,9 @@ const PremiumBedCare = () => {
             <div className="pbc_bg_container">
                 <div className="pbc_overlay_container">
                     <span>
-                        <h3 className="desktop-view-premium-heading">PREMIUM</h3>
-                        <h3 className="desktop-view-premium-heading">PROTECTION PLAN</h3>
-                        <h3 className="mobile-view-premium-heading">PREMIUM PROTECTION PLAN</h3>
+                        {/* <h3 className="desktop-view-premium-heading">PREMIUM</h3>
+                        <h3 className="desktop-view-premium-heading">PROTECTION PLAN</h3> */}
+                        <h1 className="mobile-view-premium-heading">PREMIUM PROTECTION PLAN</h1>
                     </span>
                 </div>
             </div>

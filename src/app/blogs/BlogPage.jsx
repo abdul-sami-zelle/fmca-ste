@@ -97,7 +97,7 @@ const BlogPage = () => {
     <div className='blogs-page-main-container'>
       <div className='blogs-page-main-heading-div'>
         <h1 className='blogs-page-main-heading'>Exciting Blogs Created by <span> Furniture Mecca </span></h1>
-        <h1 className='mobile-view-blog-page-main-heading'>Exciting Blogs</h1>
+        {/* <h2 className='mobile-view-blog-page-main-heading'>Exciting Blogs</h2> */}
       </div>
       <BlogHead blogCategories={blogCategories} />
       <AllBlogs blogData={blogs} />

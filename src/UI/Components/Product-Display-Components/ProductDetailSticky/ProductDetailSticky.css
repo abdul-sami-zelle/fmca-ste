@@ -39,7 +39,7 @@
     flex-direction: column;
 }
 
-.mobile-view-slider-top-details>h1 {
+.mobile-view-slider-top-details>h2 {
     font-size: var(--section-size);
     line-height: var(--section-height);
     font-weight: var(--section-weight);

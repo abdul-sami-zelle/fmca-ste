@@ -5,6 +5,9 @@ export async function generateMetadata() {
   return {
     title: "Furniture For Every Budget - Furniture Mecca",
     description: "Furniture For Every Budget - Furniture Mecca",
+     alternates: {
+      canonical: `https://myfurnituremecca.com/furniture-for-every-budget`,
+    },
     openGraph: {
       title: "Furniture For Every Budget - Furniture Mecca",
       description: "Furniture For Every Budget - Furniture Mecca",

@@ -4,6 +4,9 @@ export async function generateMetadata({ params }) {
     return {
       title: `Checkout - Furniture Mecca`,
       description: `Browse our ${params} collection`,
+      alternates: {
+      canonical: `https://myfurnituremecca.com/check-out`,
+    },
     };
   }
 

@@ -4,6 +4,9 @@ export async function generateMetadata() {
   return {
     title: "Shipping & Delivery - Furniture Mecca",
     description: "Shipping & Delivery - Furniture Mecca",
+     alternates: {
+      canonical: `https://myfurnituremecca.com/shipping-and-delivery`,
+    },
     openGraph: {
       title: "Shipping & Delivery - Furniture Mecca",
       description: "Shipping & Delivery - Furniture Mecca",

@@ -930,7 +930,7 @@ const Products = ({ navigationType }) => {
           currentRoute === "searched-products" ? "hide-category-heading" : ""
         }`}
       >
-        Select Your {formatted}
+        Shop {formatted}
       </h1>
       {products?.length > 0 && (
         <div

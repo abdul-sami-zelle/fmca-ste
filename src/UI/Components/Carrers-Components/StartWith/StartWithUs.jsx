@@ -7,11 +7,11 @@ const StartWithUs = ({setLoading}) => {
   return (
     <div className='start-with-us-main-container'>
         <div className='career-start-with-us'>
-            <h3>Start your career with us</h3>
+            <h2>Start your career with us</h2>
             <p>We Are Lot More Than Just A Furniture Store</p>
         </div>
         <div className='career-apply-now'>
-            <Link to={'#'}>Apply Now</Link>
+            <h1>Apply Now</h1>
             <p>
                 Furniture Mecca stands as the preeminent home furnishings retailer in the Northeast, 
                 distinguished by its unwavering commitment to delivering an exceptional shopping experience.

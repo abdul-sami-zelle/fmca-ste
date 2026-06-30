@@ -76,7 +76,7 @@ const DropdownMenu = (
                             onClick={() => handleNavigate(item)}
                         >
                             <img src={url + item.image} alt={item.name} />
-                            <Link className='image-title' href={"product/"+item.slug}>{item.name}</Link>
+                            <Link className='image-title' href={"/product/"+item.slug}>{item.name}</Link>
                             <div className='pricing'>
                                 {item.sale_price === "" ?
                                     <p className='regular-price'>${item.regular_price}</p>

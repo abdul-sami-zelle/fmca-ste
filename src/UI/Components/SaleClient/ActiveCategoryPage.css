@@ -2,6 +2,13 @@
     width: 100%;
 }
 
+.sale_page_heading{
+    color: var(--text-primary);
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 28px;
+}
+
 .active-sale-view-more-button-contianer {
     display: flex;
     align-items: center;
@@ -102,7 +109,7 @@
 .offer-head-and-grid-select {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: start;
     width: 100%;
 }
 
@@ -649,6 +656,15 @@
 }
 
 @media (max-width: 480px) {
+
+    .sale_page_heading{
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.offer-head-and-grid-select {
+    justify-content: space-between;
+}
     .active-sale-cards {
         display: flex;
         flex-direction: column;

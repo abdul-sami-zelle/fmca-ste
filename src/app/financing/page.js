@@ -8,6 +8,9 @@ export async function generateMetadata() {
       title: "Financing - Furniture Mecca",
       description: "Financing - Furniture Mecca",
       url: "https://myfurnituremecca.com/financing",
+       alternates: {
+      canonical: `https://myfurnituremecca.com/financing`,
+    },
       images: [
         {
           url: "/favicon.png", // ✅ static fallback image

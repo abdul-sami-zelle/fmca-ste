@@ -58,11 +58,13 @@
 }
 
 .mobile-view-premium-heading {
-    display: none;
-    font-size: 18px;
+    display: flex;
+    font-size: 52px;
     line-height: 1.2;
-    font-weight: 700;
-    color: #FFF;
+    font-weight: 600;
+    color: #FFFFFF;
+    max-width: 500px;
+    text-align: center;
 
 }
 
@@ -86,6 +88,10 @@
 
     .mobile-view-premium-heading {
         display: flex;
+          font-size: 18px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #FFF;
     }
 
     .pbc_content_contianer {

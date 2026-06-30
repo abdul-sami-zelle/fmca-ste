@@ -130,9 +130,9 @@ const FinancingClient = () => {
     return (
         <div className='financing-main-container'>
             <div className='financing-top-head-contianer'>
-                <p className='pay-our-way-heading'>PAY YOUR WAY</p>
+                <h2 className='pay-our-way-heading'>PAY YOUR WAY</h2>
                 <p className='financing-para'>Make financing easy, find the right plan for you</p>
-                <h3 className='financing-main-heading'>Payment Solutions, Leasing and Traditional Financing</h3>
+                <h1 className='financing-main-heading'>Payment Solutions, Leasing and Traditional Financing</h1>
             </div>
             {financingPageData ? (
                 financingPageData && <div className='financing-page-main-banner-container'>

@@ -274,7 +274,7 @@ const StoreLocatorClient = () => {
             {storesApiData && storesApiData?.map((item, index) => (
               <div key={index} className='store-single-card'>
                 <div className='single-store-head'>
-                  <h3>{item.name}</h3>
+                  <h2>{item.name}</h2>
                   <p>{item.distance}</p>
                 </div>
                 <div className='single-card-address-and-contact'>

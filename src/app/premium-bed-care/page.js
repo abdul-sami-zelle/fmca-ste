@@ -4,6 +4,9 @@ export async function generateMetadata() {
   return {
     title: "Premium Protection Plan  – Furniture Sale | Furniture Mecca",
     description: "Premium Protection Plan  – Furniture Sale | Furniture Mecca",
+     alternates: {
+      canonical: `https://myfurnituremecca.com/premium-bed-care`,
+    },
     openGraph: {
       title: "Premium Protection Plan  – Furniture Sale | Furniture Mecca",
       description: "Premium Protection Plan  – Furniture Sale | Furniture Mecca",

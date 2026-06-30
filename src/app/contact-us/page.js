@@ -8,6 +8,9 @@ export async function generateMetadata() {
       title: "Contact Us - Furniture Mecca",
       description: "Contact Us - Furniture Mecca",
       url: "https://myfurnituremecca.com/contact-us",
+       alternates: {
+      canonical: `https://myfurnituremecca.com/contact-us`,
+    },
       images: [
         {
           url: "/favicon.png", // ✅ static fallback image

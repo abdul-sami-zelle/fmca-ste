@@ -167,7 +167,7 @@ const BestSeller = () => {
                     <div className='category-best-seller-cards-section'>
 
                         <div className='category-best-seller-menu'>
-                            <h1>Best Seller</h1>
+                            <h2>Best Seller</h2>
                             {bestSelling ? (
                                 <div className='category-best-seller-menu-items'>
                                     {bestSelling.categories.map((item, index) => (

@@ -29,7 +29,7 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 import RatingReview from "../starRating/starRating";
 import MobileViewProductFilters from "../MobileViewProductFilters/MobileViewProductFilters";
 
-export default function SaleClient({ slug }) {
+export default function SaleClient({ slug, saleName }) {
     const router = useRouter();
     const { salesData, products, totalProducts, noProducts, setNoProducts } = useActiveSalePage();
     const [sortedProducts, setSortedProducts] = useState([])
@@ -684,11 +684,12 @@ export default function SaleClient({ slug }) {
         <>
             <div ref={salePageRef} className="activeCategoryPage">
                 {salesData && <Sliderr images={salesData?.data?.mainSlider} />}
-
+                 
                 <div className="section_1_ASP">
+                   
                     <div className="offer-head-and-grid-select">
                         {/* <h3 className='category-heading'>{salesData ? salesData?.data?.categoryData?.name : ""}</h3> */}
-
+                         {saleName && <h1 className="sale_page_heading">{saleName}</h1>}
                         <div className="offer-grid-main-container">
                             <div className={`offer-single-col-outer-container ${activeGrid === 'single-col' ? 'active-offer-single-col' : ''}`} onClick={() => handleActiveGrid('single-col')}>
                                 <div className={`offer-single-col-inner-container ${activeGrid === 'single-col' ? 'active-single-inner-col' : ''}`}></div>

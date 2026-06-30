@@ -116,7 +116,7 @@ const UserDashboardClient = ({ id }) => {
     <div className='user-dashboard-main-page'>
       {Object.keys(userData).length === 0 && <Loader />}
       <div className='user-dashboard-main-heading'>
-        <h3>My Account</h3>
+        <h1>My Account</h1>
       </div>
       <DashboardTabs data={userData} />
     </div>

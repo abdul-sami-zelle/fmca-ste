@@ -4,6 +4,9 @@ export async function generateMetadata() {
   return {
     title: "Privacy Policy  – Furniture Sale | Furniture Mecca",
     description: "Privacy Policy  – Furniture Sale | Furniture Mecca",
+     alternates: {
+      canonical: `https://myfurnituremecca.com/privacy-policy`,
+    },
     openGraph: {
       title: "Privacy Policy  – Furniture Sale | Furniture Mecca",
       description: "Privacy Policy  – Furniture Sale | Furniture Mecca",

@@ -17,6 +17,9 @@ export async function generateMetadata() {
       "dining room furniture",
       "furniture stores"
     ],
+     alternates: {
+      canonical: `https://myfurnituremecca.com/store-locator`,
+    },
   };
 }
 

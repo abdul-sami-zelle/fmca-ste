@@ -1184,7 +1184,7 @@ const ProductDetailSticky = ({
 
             {/* Mobile top details */}
             <div className='mobile-view-slider-top-details'>
-              <h1>{product?.name}</h1>
+              <h2>{product?.name}</h2>
               <div className='product-detail-rating-and-share'>
                 {product.type === 'simple'
                   ? <p>SKU : {product.sku}</p>

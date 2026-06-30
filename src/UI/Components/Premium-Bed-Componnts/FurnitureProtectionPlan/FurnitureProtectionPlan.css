@@ -15,7 +15,7 @@
     width: 60%;
 }
 
-.furniture-protection-gallery-content>h3 {
+.furniture-protection-gallery-content>h2 {
     font-size: 18px;
     line-height: 1.2;
     font-weight: 500;
@@ -35,7 +35,7 @@
     color: #000000;
 }
 
-.furniture-protection-gallery-content>h3:last-of-type {
+.furniture-protection-gallery-content>h2:last-of-type {
     font-size: 16px !important;
 }
 
@@ -76,7 +76,7 @@
         width: 100%;
     }
 
-    .furniture-protection-gallery-content>h3 {
+    .furniture-protection-gallery-content>h2 {
         font-size: 18px;
     }
 
@@ -86,7 +86,7 @@
 
     
 
-    .furniture-protection-gallery-content>h3:last-of-type {
+    .furniture-protection-gallery-content>h2:last-of-type {
         font-size: 16px !important;
     }
 

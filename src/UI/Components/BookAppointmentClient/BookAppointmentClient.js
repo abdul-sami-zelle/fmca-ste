@@ -166,8 +166,8 @@ const BookAppointmentClient = ({ params }) => {
     return (
         <div className='book-an-appointment-main-container'>
             <div className='book-appointment-head'>
-                <h3 className='book-appointment-main-container'>Book an Appointment</h3>
-                <p className='book-appointment-slogan'>Do You Want Our Expert To Give You The Advice, Book An Appointment Now</p>
+                <h1 className='book-appointment-main-container'>Book an Appointment</h1>
+                <h2 className='book-appointment-slogan'>Do You Want Our Expert To Give You The Advice, Book An Appointment Now</h2>
             </div>
 
 

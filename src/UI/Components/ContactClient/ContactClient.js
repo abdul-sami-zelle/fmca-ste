@@ -207,7 +207,7 @@ const ContactClient = () => {
         <div className='contact-us-main-container'>
             {loading && <Loader />}
             <div className='contact-us-head'>
-                <h3 className='contact-us-main-heading'>Contact Us</h3>
+                <h1 className='contact-us-main-heading'>Contact Us</h1>
                 <div className='contact-para'>
                     <p>
                         Our team can answer any questions that you might have, to reach the desired department
@@ -227,7 +227,7 @@ const ContactClient = () => {
                         <div key={index} className='contact-us-service-card'>
                             <img src={item.img} alt='costumer-care' className='costumer-care-service-icon' />
                             <div className='costumer-care-service-details'>
-                                <h3>{item.name}</h3>
+                                <h2>{item.name}</h2>
                                 <p>{item.slogan}</p>
                                 <p>{item.timing}</p>
                                 <p>{item.sundayTime}</p>
