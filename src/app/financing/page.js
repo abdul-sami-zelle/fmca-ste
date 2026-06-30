@@ -4,13 +4,14 @@ export async function generateMetadata() {
   return {
     title: "Financing - Furniture Mecca",
     description: "Financing - Furniture Mecca",
+        alternates: {
+      canonical: `https://myfurnituremecca.com/financing`,
+    },
     openGraph: {
       title: "Financing - Furniture Mecca",
       description: "Financing - Furniture Mecca",
       url: "https://myfurnituremecca.com/financing",
-       alternates: {
-      canonical: `https://myfurnituremecca.com/financing`,
-    },
+   
       images: [
         {
           url: "/favicon.png", // ✅ static fallback image
