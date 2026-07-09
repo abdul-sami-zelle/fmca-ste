@@ -57,10 +57,10 @@ const Home = () => {
   const { blogs } = useBlog()
 
   const router = useRouter();
-  const handleNavigate = (slug, item) => {
-    const queryString = new URLSearchParams(item).toString();
-    router.push(`/${slug}${queryString}`);
-  };
+  // const handleNavigate = (slug, item) => {
+  //   const queryString = new URLSearchParams(item).toString();
+  //   router.push(`/${slug}${queryString}`);
+  // };
 
   const [showSnakeBar, setShowSnakeBar] = useState(false);
     const [snakeBarMessage, setSnakeBarMessage] = useState();
@@ -79,7 +79,7 @@ const Home = () => {
       <Sliderr images={slides ? slides : []} />
       <FinanceBannerSlider images={financingBanners} borderTop={'5px solid #963A0B'} />
       <MobileFinancingSlider images={financingBanners} borderTop={'5px solid #963A0B'}  />
-      <Category title={'Shop by Category'} categoryData={landingPageCategories} handleNavigate={handleNavigate} />
+      <Category title={'Shop by Category'} categoryData={landingPageCategories} handleNavigate={()=>{}} />
 
       <LandingPageFinancing />
       <TrendingNow data={trendingNow ? trendingNow : null} />

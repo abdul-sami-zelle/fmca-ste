@@ -621,19 +621,18 @@ const Header = ({ checkoutPage }) => {
       <div className='tab-view-header'>
         <div className='tab-view-header-containt'>
           <div className='header-view-toggle-and-profile-div'>
-            <img src={navToggler} alt="togle button" onClick={handleTabMenu} className='tab-view-humburger-icon' />
-            <img src={profileIcon} alt="profile" />
+            <img src={"/Assets/icons/Union.png"} alt="togle button" onClick={handleTabMenu} className='tab-view-humburger-icon' />
+            <img src={"/Assets/icon/profile-icon.svg"} alt="profile" />
           </div>
           <div className='tab-view-logo-and-searchbar'>
-            <Link href={'/'}><img src={logo} alt='logo' /></Link>
+            <Link href={'/'}><img src={"/Assets/Logo/m_logo_360 2.png"} alt='logo' /></Link>
             <div className='tab-view-searchbar-container'>
               <input type='search' placeholder="Search all things Furniture Mecca" />
-              <img src={searchRed} alt="search" />
+              <img src={"/Assets/icons/search-red.png"} alt="search" />
             </div>
           </div>
           <div className='tab-view-card-and-location'>
-            <img src={locationIcon} alt="location" />
-            {/* <img src={cartIcon} alt="cart" /> */}
+            <img src={"/Assets/icons/location-red.png"} alt="location" />\
             <HiOutlineShoppingBag className='cartIcon' strokeWidth={1} />
           </div>
         </div>
@@ -651,7 +650,6 @@ const Header = ({ checkoutPage }) => {
             <Image className='mobile-logo' src={'/Assets/Logo/fm-new-logo.png'} width={120} height={32} alt='mobile-logo' />
           </Link>
           <div className='mobile-view-cart-and-location'>
-            {/* <img src={locationIcon} alt='location' onClick={handleNearStorePopUp} /> */}
             <IoLocationOutline strokeWidth={1.2} className='locationIcon' onClick={handleNearStorePopUp} />
             <NearStorePopUp isOpen={nearStorePopUp} handleCloseNearBy={handleCloseNearStoreModal} />
             <button className='header-cart-icon-count' onClick={handleCartSectionOpen}>
@@ -665,7 +663,7 @@ const Header = ({ checkoutPage }) => {
 
         <div className='mobile-view-search-section'>
           <div className='mobile-view-search'>
-            <Image src={searchIcon} width={32} height={32} alt='search-icon' />
+            <Image src={"/Assets/icons/search-icon-charcol.png"} width={32} height={32} alt='search-icon' />
             <input
               type='text'
               readOnly

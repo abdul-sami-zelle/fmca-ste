@@ -20,21 +20,27 @@ const SimillerProducts = ({ isPadding, productId }) => {
   const [data, setData] = useState()
 
   const fetchCollections = async () => {
-    const api = `${url}/api/v1/products/get-collection-products/${productId}`
+  const api = `${url}/api/v1/products/get-collection-products/${productId}`
 
-    try {
-      const response = await axios.get(api)
-      if (response.status === 200) {
-        setData(response.data.products)
-      }
-    } catch (error) {
-      console.error("UnExpected Server Error", error);
+  try {
+    const response = await axios.get(api)
+    if (response.status === 200) {
+      setData(response.data.products)
     }
+  } catch (error) {
+    if (error?.response?.status === 404) {
+      // No collection exists for this product — expected, not an error
+      setData([])
+      return
+    }
+    console.error("UnExpected Server Error", error);
   }
+}
 
-  const {addToCart0} = useCart()
 
-  
+  const { addToCart0 } = useCart()
+
+
 
   useEffect(() => {
     if (!productId) return
@@ -42,7 +48,7 @@ const SimillerProducts = ({ isPadding, productId }) => {
   }, [productId])
 
   const handleAddToCart = (item) => {
-    const defaultVariation = item.variations.find((itm) => itm.is_default_variation === 1 )
+    const defaultVariation = item.variations.find((itm) => itm.is_default_variation === 1)
     addToCart0(item, defaultVariation, 0, 1)
 
   }
@@ -109,7 +115,7 @@ const SimillerProducts = ({ isPadding, productId }) => {
     router.push(`/product/${item.slug}`, { state: item });
   };
 
-  const {isDeliveryAllowed} = useGlobalContext()
+  const { isDeliveryAllowed } = useGlobalContext()
 
   useDisableBodyScroll(quickViewClicked)
 
@@ -202,8 +208,8 @@ const SimillerProducts = ({ isPadding, productId }) => {
               isPadding={true}
               breakpoints={{
                 0: { slidesPerView: 1 },
-                481: {slidesPerView: 2},
-                768: {slidesPerView: 3},
+                481: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
                 1024: { slidesPerView: 4 },
               }}
             />
