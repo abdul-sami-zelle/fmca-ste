@@ -67,12 +67,13 @@ export const BlogsProvider = ({ children }) => {
 
     }, [blogCategoryLoading])
 
-    const fetchBlogs = async (categoryId, page = 1) => {        const api = `/api/v1/blogs/get`;
+    const fetchBlogs = async (categoryId, page = 1) => {
+        const api = `/api/v1/blogs/get`;
         try {
             setIsBlogLoading(true);
             let response
             if (categoryId === null) {
-                response = await axios.get(`${url}${api}?page=${page}&limit=12`);
+                response = await axios.get(`${url}${api}?page=${page}&status=published&limit=12`);
                 if (response.status === 200 && response.data.blogs) {
                     setBlogs(response.data.blogs);
                     setTotalPages(response.data.totalPages)
@@ -83,7 +84,7 @@ export const BlogsProvider = ({ children }) => {
                 }
             } else {
 
-                response = await axios.get(`${url}${api}?category=${categoryId}&page=${page}&limit=12`);
+                response = await axios.get(`${url}${api}?category=${categoryId}&page=${page}&status=published&limit=12`);
                 setBlogs(response.data.blogs);
                 setTotalPages(response.data.totalPages)
                 setCurrentPage(response.data.currentPage)
