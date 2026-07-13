@@ -336,7 +336,7 @@ const BestSellerSlider = (
 
                 {/* Mobile View  */}
                 <div className='best-saller-mobile-container'>
-                    <h1>Best Seller</h1>
+                    <h2>Best Seller</h2>
                     <div className='mobile-card-nav-container'>
                         {
                             getDisplayedCards()?.length !== 0 ? (

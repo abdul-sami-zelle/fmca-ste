@@ -41,8 +41,8 @@ const BestSellerProductCard = (
                     </div>
                 </div>
                 <div className='best-seller-rating-and-review'>
-                    <RatingReview rating={productData.rating} disabled={true} size={"12px"} />
-                    <p>(200)</p>
+                    <RatingReview rating={productData?.average_rating} disabled={true} size={"12px"} />
+                    <p>({productData?.rating_count})</p>
                 </div>
 
                 <div className='category-product-price-and-heart'>

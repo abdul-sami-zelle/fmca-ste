@@ -199,54 +199,58 @@ const PromotionalBanner = (
       <Link href={'https://track.myfurnituremecca.com/'} target='_blank' className='promotion-banner-track-order'>Track Your Order</Link>
 
       <div className='header-links-and-select-language'>
-        <div className='banner-link-container'>
+        <nav className='banner-link-container-nav'>
+          <ul className='banner-link-container'>
 
-          {
-            bannerLinks.map((item, index) => {
-              const isExternal = item.link.startsWith('http');
-              const isActive =
-                index === activeIndex &&
-                (pathname === item.link || item.label === 'Track Order');
+            {
+              bannerLinks.map((item, index) => {
+                const isExternal = item.link.startsWith('http');
+                const isActive =
+                  index === activeIndex &&
+                  (pathname === item.link || item.label === 'Track Order');
 
-              if (item.label === 'Log In') {
+                if (item.label === 'Log In') {
+                  return (
+                    <li key={`link-${index}`}>
+                      <p
+                        onClick={() => {
+                          handleUserLogin('Log In');
+                          setActiveIndex(index);
+                          handleHover(index);
+                        }}
+                        ref={(el) => (linksRef.current[index] = el)}
+                        onMouseEnter={() => handleHover(index)}
+                        onMouseLeave={handleLeave}
+                        className={isActive ? 'active' : ''}
+                      >
+                        {item.label}
+                      </p>
+                    </li>
+                  );
+                }
+
                 return (
-                  <p
-                    key={`link-${index}`}
-                    onClick={() => {
-                      handleUserLogin('Log In');
-                      setActiveIndex(index);
-                      handleHover(index);
-                    }}
-                    ref={(el) => (linksRef.current[index] = el)}
-                    onMouseEnter={() => handleHover(index)}
-                    onMouseLeave={handleLeave}
-                    className={isActive ? 'active' : ''}
-                  >
-                    {item.label}
-                  </p>
+                  <li key={`link-${index}`}>
+                    <Link
+                      href={item.link}
+                      target={isExternal ? '_blank' : '_self'}
+                      ref={(el) => (linksRef.current[index] = el)}
+                      onClick={() => setActiveIndex(index)}
+                      onMouseEnter={() => handleHover(index)}
+                      onMouseLeave={handleLeave}
+                      className={isActive ? 'active' : ''}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
                 );
-              }
+              })
+            }
 
-              return (
-                <Link
-                  key={`link-${index}`}
-                  href={item.link}
-                  target={isExternal ? '_blank' : '_self'}
-                  ref={(el) => (linksRef.current[index] = el)}
-                  onClick={() => setActiveIndex(index)}
-                  onMouseEnter={() => handleHover(index)}
-                  onMouseLeave={handleLeave}
-                  className={isActive ? 'active' : ''}
-                >
-                  {item.label}
-                </Link>
-              );
-            })
-          }
+            <span className="indicator" ref={indicatorRef}></span>
 
-          <span className="indicator" ref={indicatorRef}></span>
-
-        </div>
+          </ul>
+        </nav>
         <div className='header-main-banner-language-div'>
           <button onClick={handleLanguageModal}>
             <Image src={currentSelectedCountryFlag || usaFlag} width={22} height={22} alt='flag' />

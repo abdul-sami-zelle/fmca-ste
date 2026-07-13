@@ -2,14 +2,14 @@ import AboutUsClient from "@/UI/Components/AboutusClient/AboutusClient";
 
 export async function generateMetadata() {
   return {
-    title: "About Us - Furniture Mecca",
-    description: "About Us - Furniture Mecca",
+    title: "About Us | Furniture Mecca",
+    description: "About Us | Furniture Mecca",
     alternates: {
         canonical:`https://myfurnituremecca.com/about-us`,
     },
     openGraph: {
-      title: "About Us - Furniture Mecca",
-      description: "About Us - Furniture Mecca",
+      title: "About Us | Furniture Mecca",
+      description: "About Us  Furniture Mecca",
       url: "https://myfurnituremecca.com/about-us",
       images: [
         {

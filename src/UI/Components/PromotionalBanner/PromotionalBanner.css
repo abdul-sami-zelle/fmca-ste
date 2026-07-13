@@ -46,7 +46,21 @@
     width: max-content;
     align-items: center;
     position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
     /* gap: 30px; */
+}
+
+.banner-link-container li{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.banner-link-container-nav{
+    display: contents;
 }
 
 .banner-link-container .active {

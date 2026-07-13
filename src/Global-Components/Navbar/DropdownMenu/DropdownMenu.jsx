@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import './DropdownMenu.css';
 // import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -49,28 +48,28 @@ const DropdownMenu = (
             <div className='nav-items-outer-container'>
                 <div className='menu-links'>
                     <Link href={`/${parentCategorySlug}/shop-all-${parentCategorySlug}`} className='living-room-heading'>{`Shop All ${navHeading}`}</Link>
-                    
+
                     <div className='mattresses-links-div'>
                         {chunkedNavData.map((chunk, columnIndex) => (
-                            <div className='mattress-column' key={columnIndex}>
+                            <ul className='mattress-column' key={columnIndex}>
                                 {chunk.map((item, index) => (
-                                    <p
+                                    <li
                                         className={`mattres-links ${lastSegment === item.slug ? 'active' : ''}`}
                                         key={index}
                                         onClick={() => handleActiveIndex(index)}
                                     >
                                         <Link href={`/${parentCategorySlug}/${item.slug}`}>{item.name}</Link>
-                                    </p>
+                                    </li>
                                 ))}
-                            </div>
+                            </ul>
                         ))}
                     </div>
                 </div>
             </div>
             {
-                products && <div className='mattresses-images-div' >
+                products && <ul className='mattresses-images-div' >
                     {products?.map((item, index) => {
-                        return <div
+                        return <li
                             key={index}
                             className='mattress-image'
                             onClick={() => handleNavigate(item)}
@@ -86,9 +85,9 @@ const DropdownMenu = (
                                     </span>
                                 }
                             </div>
-                        </div>
+                        </li>
                     })}
-                </div>
+                </ul>
             }
         </div>
     )

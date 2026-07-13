@@ -34,7 +34,7 @@ const AllBlogs = ({ blogData }) => {
           <div key={index} className='blog-cards-col'>
             <BlogCard
               singleBlog={item}
-              blogMainImage={`${url}${item.image.image_url}`}
+              blogMainImage={item?.image?.image_url ? `${url}${item.image.image_url}`: `/no-blog-img.jpg`}
               ind={index}
               blogCategory={item.category.name}
               blogTitle={item.title}

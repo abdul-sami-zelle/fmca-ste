@@ -133,21 +133,13 @@ const Home = () => {
         setShowSnakeBar={setShowSnakeBar}
         setSnakeBarMessage={setSnakeBarMessage}
       />
-      
-
-      {/* <InstaGallery />
-      <InstaTwoImageGallery /> */}
-
+  
       <SnakBar
         message={snakeBarMessage}
         openSnakeBarProp={showSnakeBar}
         setOpenSnakeBar={setShowSnakeBar}
         onClick={handleCloseSnakeBar}
       />
-
-      {/* <ZipCodeModal 
-        showZipModal={true}
-      /> */}
 
         {showDeliveryMessage && (
           <DisableDelivery parentRef={homePageRef} />

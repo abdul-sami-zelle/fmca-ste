@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
 
     if (!res.ok) {
       return {
-        title: `Free Delivery & Free Setup | ${params.category} – Furniture Sale | Furniture Mecca`,
+        title: `Furniture Mecca`,
         description: "Explore our products collection.",
       };
     }
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
 
     if (!seoData || seoData.length === 0) {
       return {
-        title: `Free Delivery & Free Setup | ${params.category} – Furniture Sale | Furniture Mecca`,
+        title: `Furniture Mecca`,
         description: "Explore our Categories collection.",
       };
     }
@@ -40,8 +40,8 @@ export async function generateMetadata({ params }) {
 
     return {
       title:
-        `Free Delivery & Free Setup | ${meta.title} – Furniture Sale | Furniture Mecca` ||
-        `Free Delivery & Free Setup | ${seoData[0].name} – Furniture Sale | Furniture Mecca`,
+        `${meta.title} | Furniture Mecca` ||
+        `${seoData[0].name} | Furniture Mecca`,
       description:
         meta.description || "Explore our category collection.",
       keywords: meta.keywords || undefined,
@@ -51,8 +51,8 @@ export async function generateMetadata({ params }) {
       },
       openGraph: {
         title:
-          `Free Delivery & Free Setup | ${meta.og_title} – Furniture Sale | Furniture Mecca` ||
-          `Free Delivery & Free Setup | ${meta.title} – Furniture Sale | Furniture Mecca`,
+          `${meta.og_title} | Furniture Mecca` ||
+          `${meta.title} | Furniture Mecca`,
         description: meta.og_description || meta.description,
         url: `https://myfurnituremecca.com/${slug}`,
         siteName: "Furniture Mecca",
@@ -69,8 +69,8 @@ export async function generateMetadata({ params }) {
       twitter: {
         card: "summary_large_image",
         title:
-          `Free Delivery & Free Setup | ${meta.x_title} – Furniture Sale | Furniture Mecca` ||
-          `Free Delivery & Free Setup | ${meta.title} – Furniture Sale | Furniture Mecca`,
+          `${meta.x_title}| Furniture Mecca` ||
+          `${meta.title}| Furniture Mecca`,
         description: meta.x_description || meta.description,
         images: [imageUrl],
       },
@@ -78,34 +78,11 @@ export async function generateMetadata({ params }) {
   } catch (error) {
     console.error("Error fetching SEO data:", error);
     return {
-      title: "Free Delivery & Free Setup | Category - Furniture Mecca",
+      title: "Category | Furniture Mecca",
       description: "Explore our Category collection.",
     };
   }
 }
-
-// export default async function ProductArchivePage({ params }) {
-//   const resolvedParam = await params;
-//   const subcategorySlug = resolvedParam["product-archive"];
-
-//   // 🔴 ONLY ADDITION: VALIDATE SLUG FOR REAL 404
-//   const res = await fetch(
-//     `https://fmapi.myfurnituremecca.com/api/v1/productCategory/get-seo?slug=${subcategorySlug}`,
-//     { cache: "no-store" }
-//   );
-
-//   if (!res.ok) {
-//     notFound();
-//   }
-
-//   const { seoData } = await res.json();
-
-//   if (!seoData || seoData.length === 0) {
-//     notFound();
-//   }
-
-//   return <ProductArchive />;
-// }
 
 
 export default async function ProductArchivePage({ params }) {

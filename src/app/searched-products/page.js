@@ -4,7 +4,7 @@ import ProductArchive from "../[category]/[product-archive]/productArchive";
 
 export async function generateMetadata() {
     return {
-        title: `Searched Products - Furniture Mecca`,
+        title: `Searched Products | Furniture Mecca`,
         description: `Browse our Furniture Mecca collection`,
     };
 }

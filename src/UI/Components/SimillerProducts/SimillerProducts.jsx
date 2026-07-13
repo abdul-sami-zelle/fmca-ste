@@ -149,7 +149,7 @@ const SimillerProducts = ({ isPadding, productId }) => {
                     allow_back_order={item?.allow_back_order}
                     ProductTitle={item.name}
                     colTwo={true}
-                    reviewCount={item.reviewCount}
+                    reviewCount={item.average_rating}
                     lowPriceAddvertisement={item.lowPriceAddvertisement}
                     priceTag={item.regular_price}
                     sale_price={item.sale_price}
@@ -245,7 +245,7 @@ const SimillerProducts = ({ isPadding, productId }) => {
                     allow_back_order={item?.allow_back_order}
                     ProductTitle={item.name}
 
-                    reviewCount={item.reviewCount}
+                    reviewCount={item.average_rating}
                     lowPriceAddvertisement={item.lowPriceAddvertisement}
                     priceTag={item.regular_price}
                     sale_price={item.sale_price}

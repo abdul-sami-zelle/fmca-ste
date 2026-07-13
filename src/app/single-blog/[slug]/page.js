@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
 
     if (!res.ok) {
       return {
-        title: `Free Delivery & Free Setup | ${slug} – Furniture Sale | Furniture Mecca`,
+        title: `${slug} | Furniture Mecca`,
         description: "Read our latest blog posts about furniture and home décor.",
       };
     }
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
 
     if (!seoData || seoData.length === 0) {
       return {
-        title: `Free Delivery & Free Setup | ${slug} – Furniture Sale | Furniture Mecca`,
+        title: `${slug} | Furniture Mecca`,
         description: "Read our latest blog posts about furniture and home décor.",
       };
     }
@@ -40,8 +40,8 @@ export async function generateMetadata({ params }) {
 
     return {
       title:
-        `Free Delivery & Free Setup | ${meta.title} – Furniture Sale | Furniture Mecca` ||
-        `Free Delivery & Free Setup | ${slug} – Furniture Sale | Furniture Mecca`,
+        `${meta.title} | Furniture Mecca` ||
+        `${slug} | Furniture Mecca`,
       description:
         meta.description || "Read our latest blog posts about furniture and home décor.",
       keywords: meta.keywords || undefined,
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }) {
           `https://myfurnituremecca.com/single-blog/${blogSlug}`,
       },
       openGraph: {
-        title: `Free Delivery & Free Setup | ${meta.og_title || meta.title} – Furniture Sale | Furniture Mecca`,
+        title: `${meta.og_title || meta.title} | Furniture Mecca`,
         description: meta.og_description || meta.description,
         url: `https://myfurnituremecca.com/single-blog/${blogSlug}`,
         siteName: "Furniture Mecca",
@@ -70,7 +70,7 @@ export async function generateMetadata({ params }) {
       twitter: {
         card: "summary_large_image",
         title:
-          `Free Delivery & Free Setup | ${meta.x_title || meta.title} – Furniture Sale | Furniture Mecca`,
+          `${meta.x_title || meta.title} | Furniture Mecca`,
         description: meta.x_description || meta.description,
         ...(imageUrl && { images: [imageUrl] }),
       },
@@ -78,7 +78,7 @@ export async function generateMetadata({ params }) {
   } catch (error) {
     console.error("Error fetching blog SEO data:", error);
     return {
-      title: "Free Delivery & Free Setup | Blog  – Furniture Sale | Furniture Mecca",
+      title: "Blog | Furniture Mecca",
       description: "Read our latest blog posts about furniture and home décor.",
     };
   }

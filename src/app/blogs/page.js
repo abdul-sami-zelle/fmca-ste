@@ -39,14 +39,14 @@ import BlogPage from './BlogPage';
 
 export async function generateMetadata() {
   return {
-    title: "Furniture Mecca's Blogs | Furniture Sale – Save Up to 75% Furniture Mecca",
+    title: "Furniture Mecca's Blogs | Furniture Mecca",
     description:
       "Explore Furniture Mecca's blog for furniture tips, home décor inspiration, design trends, seasonal ideas, and expert advice for every room.",
     alternates: {
       canonical: "https://myfurnituremecca.com/blogs",
     },
     openGraph: {
-      title: "Furniture Mecca's Blogs | Furniture Sale – Save Up to 75% Furniture Mecca",
+      title: "Furniture Mecca's Blogs | Furniture Mecca",
       description:
         "Explore Furniture Mecca's blog for furniture tips, home décor inspiration, design trends, seasonal ideas, and expert advice for every room.",
       url: "https://myfurnituremecca.com/blogs",

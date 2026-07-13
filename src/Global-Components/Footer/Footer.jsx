@@ -94,6 +94,10 @@ const Footer = ({ notLandingPage, checkoutPage }) => {
 
     const [googleRating, setGoogleRating] = useState(null);
 
+    function cleanPhoneNumber(str) {
+        return str.replace(/[-()]/g, '');
+    }
+
 
     const socialIcons = [
         { name: 'facebook', icon: '/icons/facebook.svg', link: 'https://www.facebook.com/myfurnituremecca' },
@@ -104,8 +108,8 @@ const Footer = ({ notLandingPage, checkoutPage }) => {
 
     const locationPhoneMail = [
         { name: stores?.[0]?.city || 'Philadelphia', icon: '/icons/location.svg', link: '#' },
-        { name: '215 352 1600', icon: '/icons/phone.svg', link: '#' },
-        { name: 'meccacustomercare@gmail.com', icon: '/icons/mail.svg', link: '#' }
+        { name: stores?.[0]?.phone || '215 352 1600', href: `tel:${stores?.[0]?.phone && cleanPhoneNumber(stores?.[0]?.phone)}` || 'tel:2153521600', icon: '/icons/phone.svg', link: '#' },
+        { name: stores?.[0]?.email || 'meccacustomercare@gmail.com', href: `mailto:${stores?.[0]?.email}` || 'mailto:meccacustomercare@gmail.com', icon: '/icons/mail.svg', link: '#' }
     ]
 
     const { setUserToken } = useUserDashboardContext();
@@ -146,14 +150,14 @@ const Footer = ({ notLandingPage, checkoutPage }) => {
                 { name: 'Terms & Conditions', link: '/terms-and-conditions' },
                 { name: 'Return Policy', link: '/return-policy' },
                 { name: 'Contact Us', link: '/contact-us' },
-                
-                
+
+
             ]
         },
         {
             heading: 'About Furniture Mecca', navLinks: [
                 { name: 'About Us', link: '/about-us' },
-                
+
                 // { name: 'Design your Room', link: 'https://room.myfurnituremecca.com/' },
                 { name: 'Career', link: '/careers' },
                 { name: 'Store Locations', link: '/store-locator' },
@@ -265,7 +269,8 @@ const Footer = ({ notLandingPage, checkoutPage }) => {
                                 {locationPhoneMail.map((item, index) => (
                                     <span key={index}>
                                         <img src={item.icon} alt='icon' />
-                                        <p>{item.name === '215 352 1600' ? <a href='tel:2153521600'>{item.name}</a> : item.name === 'meccacustomercare@gmail.com' ? <a href='mailto:meccacustomercare@gmail.com'>{item.name}</a> : item.name}</p>
+                                        <p>{item.href === "" ? item.name : <a href={item.href}>{item.name}</a>}</p>
+                                        {/* <p>{item.name === '215 352 1600' ? <a href='tel:2153521600'>{item.name}</a> : item.name === 'meccacustomercare@gmail.com' ? <a href='mailto:meccacustomercare@gmail.com'>{item.name}</a> : item.name}</p> */}
                                     </span>
                                 ))}
                             </div>

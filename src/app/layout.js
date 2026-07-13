@@ -10,6 +10,11 @@ export const metadata = {
   description:
     "Free Delivery & FREE Setup on all furniture during our Furniture Sale! Save up to 75% on living room, bedroom & dining sets. Limited-time offer—shop now!",
 
+
+  robots: {
+    index: true,
+    follow: true
+  },
   keywords: [
     "Furniture Mecca",
     "Furniture Store",
@@ -81,6 +86,11 @@ export default function RootLayout({ children }) {
     "@type": "FurnitureStore",
     "@id": "https://www.myfurnituremecca.com/#localbusiness",
     "name": "Furniture Mecca",
+    "alternateName": [
+      "Furniture Mecca",
+      "myfurnituremecca",
+      "MyFurnitureMecca"
+    ],
     "url": "https://www.myfurnituremecca.com",
     "image": "https://www.myfurnituremecca.com/Assets/Logo/fm-new-logo.png",
     "logo": "https://www.myfurnituremecca.com/Assets/Logo/fm-new-logo.png",
@@ -400,6 +410,12 @@ export default function RootLayout({ children }) {
         "@type": "Organization",
         "@id": "https://www.myfurnituremecca.com/#organization",
         "name": "Furniture Mecca",
+        "alternateName": [
+          "Furniture Mecca",
+          "myfurnituremecca",
+          "MyFurnitureMecca"
+
+        ],
         "url": "https://www.myfurnituremecca.com",
         "logo": {
           "@type": "ImageObject",
@@ -421,6 +437,12 @@ export default function RootLayout({ children }) {
         "@id": "https://www.myfurnituremecca.com/#website",
         url: "https://www.myfurnituremecca.com",
         name: "Furniture Mecca",
+        alternateName: [
+          "Furniture Mecca",
+          "myfurnituremecca",
+          "MyFurnitureMecca"
+
+        ],
         publisher: {
           "@id": "https://www.myfurnituremecca.com/#organization",
         },

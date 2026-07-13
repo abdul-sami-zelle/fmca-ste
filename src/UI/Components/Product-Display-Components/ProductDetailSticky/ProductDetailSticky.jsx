@@ -1201,7 +1201,7 @@ const ProductDetailSticky = ({
                 variationData={activeVariation}
               />
 
-              <RatingReview rating={product?.rating_count} disabled={true} size={"20px"} />
+              <RatingReview rating={product?.average_rating} disabled={true} size={"20px"} />
             </div>
 
             <ProductGallery
@@ -1249,7 +1249,7 @@ const ProductDetailSticky = ({
                   : <p>SKU : {activeVariation?.sku}</p>
                 }
                 <div className='product-detail-rating-and-share'>
-                  <RatingReview rating={product?.rating_count} disabled={true} size={"20px"} />
+                  <RatingReview rating={product?.average_rating} disabled={true} size={"20px"} />
                   <span className='single-product-share' onClick={() => handleShareModal(productData)}>
                     <FaShareSquare className='single-product-share-icon' size={20} />
                   </span>

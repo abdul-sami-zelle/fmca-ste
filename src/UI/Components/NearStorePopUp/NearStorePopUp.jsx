@@ -180,9 +180,9 @@ const NearStorePopUp = ({ isOpen, setIsOpen, handleCloseNearBy }) => {
                     </div>
                 </div>
 
-                <div className='pop-up-single-city-card'>
+                <ul className='pop-up-single-city-card'>
 
-                    <div className='pop-up-single-city-cart'>
+                    <li className='pop-up-single-city-cart'>
 
                         <svg
                             width="25"
@@ -196,9 +196,9 @@ const NearStorePopUp = ({ isOpen, setIsOpen, handleCloseNearBy }) => {
                         </svg>
 
                         <h3>Your Store {stores && stores?.length}</h3>
-                    </div>
+                    </li>
                     {stores && stores?.map((items, index) => {
-                        return <div key={index} className={`${currentStoreId === items._id ? 'near-stores-current-store' : 'other-nearby-stores'} `} onClick={() => handleCurrentStore(items, index)}>
+                        return <li key={index} className={`${currentStoreId === items._id ? 'near-stores-current-store' : 'other-nearby-stores'} `} onClick={() => handleCurrentStore(items, index)}>
                             <div className={`pop-up-city-and-distance ${storeOpenIndex === index ? 'rotate-btn' : ''}`}>
                                 <span>
                                     <button className={`near-store-popup-accordion-icon ${storeOpenIndex === index ? 'rotate-btn' : ''}`} onClick={() => { handleStoreHoursDetails(index) }}> <IoIosAdd size={20} color='#fff"' /> </button>
@@ -220,17 +220,19 @@ const NearStorePopUp = ({ isOpen, setIsOpen, handleCloseNearBy }) => {
                                 <Link href={items?.appointmentLink || '#'}>{items?.appointment}</Link>
                                 <div className='store-hours-detail'>
                                     <p className='store-timing'>Store Timings</p>
-                                    <div className='store-hours'>
+                                    <ul className='store-hours'>
                                         {items?.timings && items?.timings?.map((hoursItem, index) => {
-                                            return <p key={index} className={currentDay === hoursItem?.day?.toLowerCase() ? 'bold-current-day' : ''}> <span>{hoursItem?.day}</span> <span>{hoursItem?.time}</span> </p>
+                                            return <li key={index}>
+                                                <p className={currentDay === hoursItem?.day?.toLowerCase() ? 'bold-current-day' : ''}> <span>{hoursItem?.day}</span> <span>{hoursItem?.time}</span> </p>
+                                            </li>
                                         })}
-                                    </div>
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
+                        </li>
                     })}
 
-                </div>
+                </ul>
             </div>
             {/* <ZipModal
                 showMessage={wrongZip}

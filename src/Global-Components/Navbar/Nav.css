@@ -15,6 +15,7 @@
     height: 32px;
     padding-left: 0px;
     margin: 0px;
+    list-style: none;
 }
 
 .nav-item {
@@ -30,6 +31,7 @@
     line-height: 24px !important;
     letter-spacing: 1.6px !important;
     /* padding: 10px 10px; */
+    list-style: none;
 }
 
 .nav-item-sc{
@@ -198,6 +200,9 @@
     overflow-y: hidden;
     overflow-x: auto;
     gap: 10px;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
 }
 
 .mobile-nav-link.special-cat{
@@ -221,6 +226,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 4px;
+    list-style: none;
 }
 
 .mobile-nav-link a {

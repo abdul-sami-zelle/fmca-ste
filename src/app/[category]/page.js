@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
 
     if (!res.ok) {
       return {
-        title: `Free Delivery & Free Setup | ${category} – Furniture Sale | Furniture Mecca`,
+        title: `${category} | Furniture Mecca`,
         description: "Browse our collection of quality furniture.",
       };
     }
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
 
     if (!seoData || seoData.length === 0) {
       return {
-        title: `Free Delivery & Free Setup | ${category} – Furniture Sale | Furniture Mecca`,
+        title: `${category}| Furniture Mecca`,
         description: "Browse our collection of quality furniture.",
       };
     }
@@ -40,8 +40,8 @@ export async function generateMetadata({ params }) {
 
     return {
       title:
-        `Free Delivery & Free Setup | ${meta.title} – Furniture Sale | Furniture Mecca` ||
-        `Free Delivery & Free Setup | ${seoData[0].name} – Furniture Sale | Furniture Mecca`,
+        `${meta.title} | Furniture Mecca` ||
+        `${seoData[0].name} | Furniture Mecca`,
       description: meta.description || "Browse our collection of quality furniture.",
       keywords: meta.keywords || undefined,
       alternates: {
@@ -65,8 +65,8 @@ export async function generateMetadata({ params }) {
       twitter: {
         card: "summary_large_image",
         title:
-          `Free Delivery & Free Setup | ${meta.x_title} – Furniture Sale | Furniture Mecca` ||
-          `Free Delivery & Free Setup | ${meta.title} – Furniture Sale | Furniture Mecca`,
+          `${meta.x_title} | Furniture Mecca` ||
+          `${meta.title} | Furniture Mecca`,
         description: meta.x_description || meta.description,
         images: [imageUrl],
       },
@@ -74,7 +74,7 @@ export async function generateMetadata({ params }) {
   } catch (error) {
     console.error("Error fetching SEO data:", error);
     return {
-      title: "Free Delivery & Free Setup | Category – Furniture Sale | Furniture Mecca",
+      title: "Category | Furniture Mecca",
       description: "Browse our collection of quality furniture.",
     };
   }

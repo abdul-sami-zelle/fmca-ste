@@ -2,7 +2,7 @@ import CheckoutClient from "@/UI/Components/CheckoutClient/CheckoutClient";
 
 export async function generateMetadata({ params }) {
     return {
-      title: `Checkout - Furniture Mecca`,
+      title: `Checkout | Furniture Mecca`,
       description: `Browse our ${params} collection`,
       alternates: {
       canonical: `https://myfurnituremecca.com/check-out`,

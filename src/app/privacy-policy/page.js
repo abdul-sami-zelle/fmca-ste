@@ -2,14 +2,14 @@ import PrivacyPolicyClient from '@/UI/Components/PrivacyPolicyClient/PrivacyPoli
 
 export async function generateMetadata() {
   return {
-    title: "Privacy Policy  – Furniture Sale | Furniture Mecca",
-    description: "Privacy Policy  – Furniture Sale | Furniture Mecca",
+    title: "Privacy Policy | Furniture Mecca",
+    description: "Privacy Policy | Furniture Mecca",
      alternates: {
       canonical: `https://myfurnituremecca.com/privacy-policy`,
     },
     openGraph: {
-      title: "Privacy Policy  – Furniture Sale | Furniture Mecca",
-      description: "Privacy Policy  – Furniture Sale | Furniture Mecca",
+      title: "Privacy Policy | Furniture Mecca",
+      description: "Privacy Policy | Furniture Mecca",
       url: "https://myfurnituremecca.com/privacy-policy",
       images: [
         {

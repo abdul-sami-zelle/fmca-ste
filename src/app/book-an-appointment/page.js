@@ -2,14 +2,14 @@ import BookAppointmentClient from "@/UI/Components/BookAppointmentClient/BookApp
 
 export async function generateMetadata() {
   return {
-    title: "Book An Appointment - Furniture Mecca",
-    description: "Book An Appointment - Furniture Mecca",
+    title: "Book An Appointment | Furniture Mecca",
+    description: "Book An Appointment | Furniture Mecca",
     alternates: {
       canonical: `https://myfurnituremecca.com/book-an-appointment`,
     },
     openGraph: {
-      title: "Book An Appointment - Furniture Mecca",
-      description: "Book An Appointment - Furniture Mecca",
+      title: "Book An Appointment | Furniture Mecca",
+      description: "Book An Appointment | Furniture Mecca",
       url: "https://myfurnituremecca.com/book-an-appointment",
       images: [
         {

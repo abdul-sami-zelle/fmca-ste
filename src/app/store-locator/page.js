@@ -2,7 +2,7 @@ import StoreLocatorClient from "@/UI/Components/StoreLocatorClient/StoreLocatorC
 
 export async function generateMetadata() {
   return {
-    title: "Find Furniture or Mattress Store Near You - Furniture Mecca",
+    title: "Find Furniture or Mattress Store Near You | Furniture Mecca",
     description:
       "Find a Furniture Mecca store near you. Explore our furniture and mattress showrooms, get directions, view store hours, and shop living room, bedroom, dining room, office furniture, and mattresses at your nearest location.",
     keywords: [

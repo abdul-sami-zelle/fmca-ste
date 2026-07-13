@@ -27,40 +27,26 @@ const Nav = ({ navLinks, sale_data, headerOffer }) => {
 
 
     return (
-        <div className='navbar'>
+        <nav className='navbar'>
             {navLinks?.length > 0 ? (
-                <nav className='navar-links-container'>
+                <ul className='navar-links-container'>
                     {navLinks.map((item, index) => (
-                        <h3 key={index}
+                        <li key={index}
                             onMouseEnter={() => item.subCategories.length > 0 && handleMouseEnter(index)}
                             onMouseLeave={handleMouseLeave}
                             className={`nav-item ${activeIndex === `/${item.category_slug}` ? 'active' : ''}`}>
 
-                            {/* <Link href={
-                                item.category_slug === "outdoor"
-                                    ? `/${item.category_slug}/shop-all-outdoor`
-                                    : `/${item.category_slug}`
-                            }
-                                className={`nav-link ${activeIndex === `/${item.category_slug}` ? 'active-nav-link' : ''}`}>
-                                {item.category}
-                            </Link> */}
 
                             <Link
-                                href={
-                                    item.category_slug === "outdoor"
-                                        ? `/${item.category_slug}/shop-all-outdoor`
-                                        : `/${item.category_slug}`
+                                href={ `/${item.category_slug}`
                                 }
                                 className={`nav-link ${activeIndex === `/${item.category_slug}` ? 'active-nav-link' : ''
                                     } ${item.category_slug === "outdoor" ? "sale-color-2" : ""
                                     }`}
                             >
                                 {item.category}
-                                { item.category_slug === "outdoor" && <span className='new-state-tag'>NEW</span>}
-                                {/* {item.category_slug === "outdoor" ? <div className='special-category'>
-                                    <h3 className='nav-item-sc'>{item.category}</h3>
-                                    <span className='new-state-tag'>NEW</span>
-                                    </div> : item.category} */}
+                                {item.category_slug === "outdoor" && <span className='new-state-tag'>NEW</span>}
+
                             </Link>
 
                             <div className={`dropdown ${dropdownOpen === index ? 'show-drop-down' : ''}`}>
@@ -71,22 +57,10 @@ const Nav = ({ navLinks, sale_data, headerOffer }) => {
                                     products={item.products}
                                 />
                             </div>
-                        </h3>
+                        </li>
                     ))}
-
-                    {/* Sale Offer  */}
-                    {/* <h3 className={`nav-item ${activeIndex === `/sale/${headerOffer.category_slug}` ? 'active' : ''}`}>
-                        <Link
-                            href={`/call/${headerOffer.category_slug}`}
-                            state={{ headerOffer }} // Passing data via state
-                            className='nav-link offer-color'
-                        >
-                            {headerOffer.category} 🔥
-                        </Link>
-                    </h3> */}
-
                     {/* Sale category with different redirection */}
-                    <h3 className={`nav-item ${activeIndex === `/sale/${sale_data.category_slug}` ? 'active' : ''}`}>
+                    <li className={`nav-item ${activeIndex === `/sale/${sale_data.category_slug}` ? 'active' : ''}`}>
                         <Link
                             href={`/sale/${sale_data.category_slug}`}
                             state={{ sale_data }} // Passing data via state
@@ -94,8 +68,8 @@ const Nav = ({ navLinks, sale_data, headerOffer }) => {
                         >
                             {sale_data.category}
                         </Link>
-                    </h3>
-                </nav>
+                    </li>
+                </ul>
             ) : (
                 <div className='shimmer-nav-item-container'>
                     {Array.from({ length: 6 }).map((_, index) => (
@@ -105,31 +79,9 @@ const Nav = ({ navLinks, sale_data, headerOffer }) => {
             )}
 
             {navLinks?.length > 0 ? (
-                // <div className='mobile-navbar'>
-                //     {navLinks.map((item, index) => (
-                //         <h3 key={index}
-                //             onMouseEnter={() => item.subCategories.length > 0 && handleMouseEnter(index)}
-                //             onMouseLeave={handleMouseLeave}
-                //             className={`mobile-nav-link ${activeIndex === item.link ? 'active' : ''}`}>
-                //             <Link href={
-                //                 item.category_slug === "outdoor"
-                //                     ? `/${item.category_slug}/shop-all-outdoor`
-                //                     : `/${item.category_slug}`
-                //             } > {item.category} </Link>
-                //         </h3>
-                //     ))}
-                //     <h3 className={`mobile-nav-link  ${activeIndex === `/sale/${sale_data.category_slug}` ? 'active' : ''}`}>
-                //         <Link
-                //             href={`/sale/${sale_data.category_slug}`}
-                //             state={{ sale_data }}
-                //         >
-                //             {sale_data.category}
-                //         </Link>
-                //     </h3>
-                // </div>
-                <div className='mobile-navbar'>
+                <ul className='mobile-navbar'>
                     {navLinks.map((item, index) => (
-                        <h3
+                        <li
                             key={index}
                             onMouseEnter={() => item.subCategories.length > 0 && handleMouseEnter(index)}
                             onMouseLeave={handleMouseLeave}
@@ -139,31 +91,28 @@ const Nav = ({ navLinks, sale_data, headerOffer }) => {
             `}
                         >
                             <Link
-                                href={
-                                    item.category_slug === "outdoor"
-                                        ? `/${item.category_slug}/shop-all-outdoor`
-                                        : `/${item.category_slug}`
+                                href={ `/${item.category_slug}`
                                 }
                             >
                                 {item.category}
                                 {item.category_slug === "outdoor" && <span className='new-state-tag mob'>NEW</span>}
                             </Link>
-                        </h3>
+                        </li>
                     ))}
 
-                    <h3
+                    <li
                         className={`mobile-nav-link 
             ${activeIndex === `/sale/${sale_data.category_slug}` ? 'active' : ''} 
             ${"sale-color"}
         `}
                     >
-                        <Link style={{fontWeight:"700"}}
+                        <Link style={{ fontWeight: "700" }}
                             href={`/sale/${sale_data.category_slug}`}
                         >
                             {sale_data.category}
                         </Link>
-                    </h3>
-                </div>
+                    </li>
+                </ul>
             ) : (
                 <div className='mobile-shimmer-nav-item-container'>
                     {Array.from({ length: 4 }).map((_, index) => (
@@ -171,7 +120,7 @@ const Nav = ({ navLinks, sale_data, headerOffer }) => {
                     ))}
                 </div>
             )}
-        </div>
+        </nav>
     );
 };
 

@@ -128,10 +128,7 @@ const MobileNavbar = ({ showMobileNav, setMobileNavVisible, headerData, sale_dat
 
         <div className='mobile-nav-links-container'>
           {headerData.map((items, index) => (
-            <Link href={
-              items.category_slug === "outdoor"
-                ? `/${items.category_slug}/shop-all-outdoor`
-                : `/${items.category_slug}`
+            <Link href={ `/${items.category_slug}`
             } className='mobile-nav-single-link-container' key={index} onClick={handleNavbarClose} >
               <div className='mobile-nav-single-item-name-anchor' >
                 {items.mob_img === '' ? (

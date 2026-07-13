@@ -2,11 +2,11 @@ import ReturnPolicyClient from "@/UI/Components/ReturnPolicyClient/ReturnPolicyC
 
 export async function generateMetadata() {
   return {
-    title: "Return Policy - Furniture Mecca",
-    description: "Return Policy - Furniture Mecca",
+    title: "Return Policy | Furniture Mecca",
+    description: "Return Policy | Furniture Mecca",
     openGraph: {
-      title: "Return Policy - Furniture Mecca",
-      description: "Return Policy - Furniture Mecca",
+      title: "Return Policy | Furniture Mecca",
+      description: "Return Policy | Furniture Mecca",
       url: "https://myfurnituremecca.com/return-policy",
       images: [
         {

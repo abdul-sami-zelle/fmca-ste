@@ -6,18 +6,9 @@ import Link from 'next/link';
 
 import axios from 'axios';
 import { useUserDashboardContext } from '@/context/userDashboardContext/userDashboard';
-
-// Assets
-import logo from '../../Assets/Logo/m_logo_360 2.png'
-import searchIcon from '../../Assets/icons/search-icon-charcol.png';
 import { HiOutlineShoppingBag } from "react-icons/hi2";
-import profileIcon from '../../Assets/icon/profile-icon.svg'
-import locationIcon from '../../Assets/icons/location-red.png';
-import navToggler from '../../Assets/icons/Union.png'
-import searchRed from '../../Assets/icons/search-red.png'
 import { IoIosSearch } from "react-icons/io";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import { FaTruck } from "react-icons/fa";
 
 // Components
 import Nav from '../Navbar/Nav';
@@ -451,7 +442,7 @@ const Header = ({ checkoutPage }) => {
         currentSelectedCountry={currentSelectedCountry}
       />
       {/* Desktop view header */}
-      <div className='header'>
+      <header className='header'>
         {/* <div className="tab-view-menu-togller-contianer">
           <GiHamburgerMenu strokeWidth={1.3} onClick={showMobileNav} className='tab-nav-toggler' />
         </div> */}
@@ -615,10 +606,10 @@ const Header = ({ checkoutPage }) => {
             {hasMounted && (<p className='header-cart-products-count'>{cartTotalProducts}</p>)}
           </button>
         </div>
-      </div>
+      </header>
 
       {/* Tablate Haider */}
-      <div className='tab-view-header'>
+      <header className='tab-view-header'>
         <div className='tab-view-header-containt'>
           <div className='header-view-toggle-and-profile-div'>
             <img src={"/Assets/icons/Union.png"} alt="togle button" onClick={handleTabMenu} className='tab-view-humburger-icon' />
@@ -636,10 +627,10 @@ const Header = ({ checkoutPage }) => {
             <HiOutlineShoppingBag className='cartIcon' strokeWidth={1} />
           </div>
         </div>
-      </div>
+      </header>
 
       {/* Mobile View Header */}
-      <div className='mobile-view-header'>
+      <header className='mobile-view-header'>
 
         <div className='mobile-view-logo-and-other-containt-section'>
           <div className="left_section_1">
@@ -690,7 +681,7 @@ const Header = ({ checkoutPage }) => {
 
 
 
-      </div>
+      </header>
 
       <div className={`mobile-view-search-products-modal ${searchedProducts.length > 0 || isMobileSearched ? 'mobile-view-search-products-modal-visible' : ''}`}>
 

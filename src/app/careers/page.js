@@ -2,14 +2,14 @@ import CareersClient from "@/UI/Components/CareerClient/CareerCient";
 
 export async function generateMetadata() {
   return {
-    title: "Career - Furniture Mecca",
-    description: "Career - Furniture Mecca",
+    title: "Career | Furniture Mecca",
+    description: "Career | Furniture Mecca",
     alternates: {
         canonical:`https://myfurnituremecca.com/careers`,
       },
     openGraph: {
-      title: "Career - Furniture Mecca",
-      description: "Career - Furniture Mecca",
+      title: "Career | Furniture Mecca",
+      description: "Career | Furniture Mecca",
       url: "https://myfurnituremecca.com/careers",
       images: [
         {

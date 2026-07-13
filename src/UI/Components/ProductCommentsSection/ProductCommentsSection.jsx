@@ -74,7 +74,7 @@ const ProductCommentsSection = ({ data }) => {
 
     return (
         <div className="product-comment-section-main-container">
-            <div className="sort-by-related">
+            {/* <div className="sort-by-related">
                 <p>Showing {sortedData?.length} {sortedData?.length > 1 ? "Reviews" : "Review"}</p>
                 <div className={`
                     input-select-container `}>
@@ -83,7 +83,7 @@ const ProductCommentsSection = ({ data }) => {
                             Sort by
                         </legend>
                         <span onClick={handleClicked}>
-                            <p>{selectedOption}</p> {/* Display selected option */}
+                            <p>{selectedOption}</p> 
                             <Image
                                 src={'/Assets/icons/arrow-down.png'}
                                 width={15}
@@ -105,7 +105,7 @@ const ProductCommentsSection = ({ data }) => {
             </div>
             <div className={`comments-main-container ${sortedData.length > 0 ? 'show-comments-main-container' : ''}`}>
                 <Comments data={sortedData} order={selectedOption} />
-            </div>
+            </div> */}
 
         </div>
     );

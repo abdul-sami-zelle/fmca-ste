@@ -35,7 +35,11 @@ const ProductDimension = ({ productData, variationData, slideIndex, zoomIn, show
   // ]
 
   const dimensionCards = [
-    { icon: <RxDimensions size={25} />, title: 'Dimensions' },
+     ...(productData?.dimension_image?.image_url  
+      ? [ { icon: <RxDimensions size={25} />, title: 'Dimensions' },]
+      : []),
+
+   
 
     ...((productData?.type === "variable" ? variationData?.dyrc?.active === 1 : productData?.dyrc?.active === 1)
       ? [{ icon: <SiMaterialdesignicons size={22} />, title: 'Design Your Room' }]
@@ -100,10 +104,10 @@ const ProductDimension = ({ productData, variationData, slideIndex, zoomIn, show
         <div className='mobile-viw-dimension-main-contianer'>
           <div className='mobile-view-dimension-row-contianer'>
 
-            <div className='mobile-view-dimension-main' onClick={() => handleDimensionSelect('Dimensions', null)}>
+           {productData?.dimension_image?.image_url && <div className='mobile-view-dimension-main' onClick={() => handleDimensionSelect('Dimensions', null)}>
               <RxDimensions size={20} color='var(--secondary-color)' />
               <p className='dimensions-detail-button-title'>Dimensions</p>
-            </div>
+            </div>}
 
 
 

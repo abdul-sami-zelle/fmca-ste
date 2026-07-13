@@ -29,7 +29,7 @@ const BlogCard = (
                     <p>{date}</p>
                     <p>{month}</p>
                 </div>
-                <Image src={`${url}${img}`} width={640} height={330} alt='img' />
+                {img ? <Image src={`${url}${img}`} width={640} height={330} alt='img' /> : <Image src={`/no-blog-img.jpg`} width={640} height={330} alt='img' />}
             </div>
             <div className='blog-arther-details'>
                 <h3>{title}</h3>

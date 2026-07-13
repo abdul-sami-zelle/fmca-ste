@@ -2,14 +2,14 @@ import TermsAndConditionsClient from "@/UI/Components/TermsAndConditionsClient/T
 
 export async function generateMetadata() {
   return {
-    title: "Terms & Conditions - Furniture Mecca",
-    description: "Terms & Conditions - Furniture Mecca",
+    title: "Terms & Conditions | Furniture Mecca",
+    description: "Terms & Conditions | Furniture Mecca",
      alternates: {
       canonical: `https://myfurnituremecca.com/terms-and-conditions`,
     },
     openGraph: {
-      title: "Terms & Conditions - Furniture Mecca",
-      description: "Terms & Conditions - Furniture Mecca",
+      title: "Terms & Conditions | Furniture Mecca",
+      description: "Terms & Conditions | Furniture Mecca",
       url: "https://myfurnituremecca.com/terms-and-conditions",
       images: [
         {

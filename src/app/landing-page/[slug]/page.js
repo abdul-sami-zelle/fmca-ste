@@ -30,7 +30,7 @@ export async function generateMetadata({ params }) {
   // 🔴 HARD CODED FALLBACK (like your category page)
   if (!seoResponse) {
     return {
-      title: `Free Delivery & Free Setup | Furniture Mecca | Premium Furniture Collection`,
+      title: `Furniture Mecca`,
       description:
         "Browse our collection of quality furniture and home décor at Furniture Mecca.",
       keywords: "furniture, home decor, sofa, bed, dining, furniture mecca",
@@ -66,8 +66,8 @@ export async function generateMetadata({ params }) {
 
   return {
     title:
-      `Free Delivery & Free Setup | ${meta.title} – Furniture Sale | Furniture Mecca` ||
-      `Free Delivery & Free Setup | Furniture Mecca – Furniture Sale | Furniture Mecca`,
+      `${meta.title}  Furniture Mecca` ||
+      `Furniture Mecca `,
     description:
       meta.description ||
       "Browse our collection of quality furniture and home décor at Furniture Mecca.",
@@ -84,8 +84,8 @@ export async function generateMetadata({ params }) {
     robots: meta.robots || "index,follow",
 
     openGraph: {
-      title: `Free Delivery & Free Setup | ${meta.og_title} – Furniture Sale | Furniture Mecca` ||
-       `Free Delivery & Free Setup | ${meta.title} – Furniture Sale | Furniture Mecca`,
+      title: `${meta.og_title} | Furniture Mecca` ||
+       `${meta.title} | Furniture Mecca`,
       description: meta.og_description || meta.description,
       url: `https://myfurnituremecca.com/landing-page/${slug}`,
       siteName: "Furniture Mecca",
@@ -102,8 +102,8 @@ export async function generateMetadata({ params }) {
 
     twitter: {
       card: "summary_large_image",
-          title: `Free Delivery & Free Setup | ${meta.x_title} – Furniture Sale | Furniture Mecca` ||
-       `Free Delivery & Free Setup | ${meta.title} – Furniture Sale | Furniture Mecca`,
+          title: `${meta.x_title} | Furniture Mecca` ||
+       `${meta.title} | Furniture Mecca`,
       description:
         meta.x_description ||
         meta.description ||

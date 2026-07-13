@@ -129,7 +129,7 @@ const FrequentlyBought = ({ isPadding, product }) => {
                                 allow_back_order={item?.allow_back_order}
                                 ProductTitle={item.name}
                                 colTwo={true}
-                                reviewCount={item.reviewCount}
+                                reviewCount={item.average_rating}
                                 lowPriceAddvertisement={item.lowPriceAddvertisement}
                                 priceTag={item.regular_price}
                                 sale_price={item.sale_price}
