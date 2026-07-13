@@ -5,10 +5,10 @@ export const metadata = {
   metadataBase: new URL("https://myfurnituremecca.com"),
 
   title:
-    "Free Delivery & Free Setup | Furniture Sale – Save Up to 75% Furniture Mecca",
+    "Affordable Furniture Store in Philadelphia | Furniture Mecca",
 
   description:
-    "Free Delivery & FREE Setup on all furniture during our Furniture Sale! Save up to 75% on living room, bedroom & dining sets. Limited-time offer—shop now!",
+    "Find affordable furniture in Philadelphia at Furniture Mecca. Shop quality living room, bedroom, dining room furniture, mattresses, and enjoy flexible financing options.",
 
 
   robots: {
@@ -23,9 +23,7 @@ export const metadata = {
     "Dining Room Furniture",
     "Mattresses",
     "Furniture Sale",
-    "Affordable Furniture",
-    "Free Delivery Furniture",
-    "Free Setup Furniture",
+    "Affordable Furniture"
   ],
 
   icons: {
@@ -40,10 +38,10 @@ export const metadata = {
 
   openGraph: {
     title:
-      "Free Delivery & Free Setup | Furniture Sale – Save Up to 75% | Furniture Mecca",
+      "Affordable Furniture Store in Philadelphia | Furniture Mecca",
 
     description:
-      "Shop furniture and mattresses with Free Delivery & Free Setup. Save up to 75% on top furniture collections.",
+      "Find affordable furniture in Philadelphia at Furniture Mecca. Shop quality living room, bedroom, dining room furniture, mattresses, and enjoy flexible financing options.",
 
     url: "https://myfurnituremecca.com",
 
@@ -68,10 +66,10 @@ export const metadata = {
     card: "summary_large_image",
 
     title:
-      "Free Delivery & Free Setup | Furniture Sale – Save Up to 75% | Furniture Mecca",
+      "Affordable Furniture Store in Philadelphia | Furniture Mecca",
 
     description:
-      "Shop furniture and mattresses with Free Delivery & Free Setup. Save up to 75% on top furniture collections.",
+      "Find affordable furniture in Philadelphia at Furniture Mecca. Shop quality living room, bedroom, dining room furniture, mattresses, and enjoy flexible financing options.",
 
     images: [
       "https://www.myfurnituremecca.com/Assets/Logo/fm-new-logo.png",
