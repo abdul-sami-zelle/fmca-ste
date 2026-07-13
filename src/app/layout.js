@@ -87,7 +87,7 @@ export default function RootLayout({ children }) {
     "@id": "https://www.myfurnituremecca.com/#localbusiness",
     "name": "Furniture Mecca",
     "alternateName": [
-      "Furniture Mecca",
+      "My Furniture Mecca",
       "myfurnituremecca",
       "MyFurnitureMecca"
     ],
@@ -411,7 +411,7 @@ export default function RootLayout({ children }) {
         "@id": "https://www.myfurnituremecca.com/#organization",
         "name": "Furniture Mecca",
         "alternateName": [
-          "Furniture Mecca",
+          "My Furniture Mecca",
           "myfurnituremecca",
           "MyFurnitureMecca"
 
@@ -438,7 +438,7 @@ export default function RootLayout({ children }) {
         url: "https://www.myfurnituremecca.com",
         name: "Furniture Mecca",
         alternateName: [
-          "Furniture Mecca",
+          "My Furniture Mecca",
           "myfurnituremecca",
           "MyFurnitureMecca"
 
