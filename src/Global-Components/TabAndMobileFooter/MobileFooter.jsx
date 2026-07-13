@@ -32,33 +32,34 @@ const MobileFooter = ({ checkoutPage }) => {
         { socialIcon: '/icons/insta.svg', socialLink: 'https://www.instagram.com/myfurnituremecca/?igshid=MzRlODBiNWFlZA%3D%3D' },
     ]
 
-    const contactData = [
-        { icon: locationIcon, title: 'Philadelphia', link: '#' },
-        { icon: callIcon, title: '215 352 1600', link: 'tel:2153521600' },
-        { icon: mailIcon, title: 'meccacustomercare@gmail.com', link: 'mailto:meccacustomercare@gmail.com' }
-    ]
+    function cleanPhoneNumber(str) {
+        return str.replace(/[-()]/g, '');
+    }
+
+
+ 
 
     const footerCustomerCareAndAbout = [
-        { 
+        {
             heading: 'Customer Care', navLinks: [
                 { name: 'Track Your Order', link: 'https://track.myfurnituremecca.com/' },
                 { name: 'Financing', link: '/financing' },
                 { name: 'Shipping & Delivery', link: '/shipping-and-delivery' },
-                 { name: 'Terms & Conditions', link: '/terms-and-conditions' },
-                 { name: 'Return Policy', link: '/return-policy' },
+                { name: 'Terms & Conditions', link: '/terms-and-conditions' },
+                { name: 'Return Policy', link: '/return-policy' },
                 { name: 'Contact Us', link: '/contact-us' },
-                
-                
-               
-                
-                
+
+
+
+
+
 
             ]
         },
         {
             heading: 'About Furniture Mecca', navLinks: [
                 { name: 'About Us', link: '/about-us' },
-                
+
                 // { name: 'Design your Room', link: '/free-design-consultation' },
                 { name: 'Career', link: '/careers' },
                 { name: 'Store Locations', link: '/store-locator' },
@@ -126,9 +127,18 @@ const MobileFooter = ({ checkoutPage }) => {
         }
     };
 
-   
 
- 
+       const contactData = [
+        // { icon: locationIcon, title: 'Philadelphia', link: '#' },
+        // { icon: callIcon, title: '215 352 1600', link: 'tel:2153521600' },
+        // { icon: mailIcon, title: 'meccacustomercare@gmail.com', link: 'mailto:meccacustomercare@gmail.com' }
+        { name: stores?.[0]?.city || 'Philadelphia', icon: locationIcon, link: '#' },
+        { name: stores?.[0]?.phone || '215 352 1600', href: `tel:${stores?.[0]?.phone && cleanPhoneNumber(stores?.[0]?.phone)}` || 'tel:2153521600', icon: callIcon, link: '#' },
+        { name: stores?.[0]?.email || 'meccacustomercare@gmail.com', href: `mailto:${stores?.[0]?.email}` || 'mailto:meccacustomercare@gmail.com', icon: mailIcon, link: '#' }
+    ]
+
+
+
 
 
     return (
@@ -210,11 +220,13 @@ const MobileFooter = ({ checkoutPage }) => {
                     return <span key={index}>
                         <Image src={item.icon} width={22} height={22} alt='img' />
                         {/* <Link href={item.link}>{item.title}</Link> */}
-                        {
+                        {/* {
                             item.title === 'meccacustomercare@gmail.com' ?
                                 <a href='mailto:meccacustomercare@gmail.com'>{item.title}</a> :
                                 <Link href={item.link}>{item.title}</Link>
-                        }
+                        } */}
+
+                        <p>{item.href === "" ? item.name : <a href={item.href}>{item.name}</a>}</p>
 
                     </span>
                 })}
