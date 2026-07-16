@@ -32,6 +32,7 @@ import ZipCodeModal from '@/UI/Modals/ZipCodeModal/ZipCodeModal';
 import ExampleButton from '@/utils/exampleBtn';
 import DisableDelivery from '@/Global-Components/DisableDelivery/DisableDelivery';
 import { useGlobalContext } from '@/context/GlobalContext/globalContext';
+import ReviewCard from '@/Global-Components/ReviewCards/ReviewCard';
 
 const Home = () => {
 
@@ -79,7 +80,7 @@ const Home = () => {
       <Sliderr images={slides ? slides : []} />
       <FinanceBannerSlider images={financingBanners} borderTop={'5px solid #963A0B'} />
       <MobileFinancingSlider images={financingBanners} borderTop={'5px solid #963A0B'}  />
-      <Category title={'Shop by Category'} categoryData={landingPageCategories} handleNavigate={handleNavigate} />
+      <Category source='home' title={'Shop by Category'} categoryData={landingPageCategories} handleNavigate={handleNavigate} />
 
       <LandingPageFinancing />
       <TrendingNow data={trendingNow ? trendingNow : null} />
@@ -92,6 +93,9 @@ const Home = () => {
         setShowSnakeBar={setShowSnakeBar}
         setSnakeBarMessage={setSnakeBarMessage}
       />
+
+
+     
 
       
 
@@ -152,6 +156,8 @@ const Home = () => {
         {showDeliveryMessage && (
           <DisableDelivery parentRef={homePageRef} />
         )}
+
+      
       
     </div>
   )

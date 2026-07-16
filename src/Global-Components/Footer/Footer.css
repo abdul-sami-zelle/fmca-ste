@@ -482,6 +482,15 @@ p.footer-nav-items > a{
     color: var(--text-white);
 }
 
+.footer-left-contact-section > span > h1{
+    font-size: var(--sub-section-size);
+    line-height: var(--sub-section-height);
+    font-weight: var(--sub-section-weight);
+    color: var(--text-white);
+    margin: 0;
+    padding: 0;
+}
+
 .footer-left-contact-section span p a{
     font-size: var(--sub-section-size);
     line-height: var(--sub-section-height);

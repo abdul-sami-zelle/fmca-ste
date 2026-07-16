@@ -8,7 +8,7 @@ import Image from 'next/image';
 import generateInvoicePDF from '../User-Dashboard-Components/OrderInvoice/OrderInvoice';
 import { useUserDashboardContext } from '@/context/userDashboardContext/userDashboard';
 
-const Category = ({ title, categoryData, handleNavigate, categorySlug, marginTop = '0px' }) => {
+const Category = ({ title,source= "default", categoryData, handleNavigate, categorySlug, marginTop = '0px' }) => {
 
  const [isloaded,setIsLoaded] = useState(false);
 
@@ -16,7 +16,11 @@ const Category = ({ title, categoryData, handleNavigate, categorySlug, marginTop
     <div className='category-main-container' style={{marginTop: marginTop}}>
       <div className="category-bread-crumb-and-title">
         {/* <Breadcrumb /> */}
-        <h1 className='category-heading' onClick={generateInvoicePDF}>{title}</h1>
+        {
+          source !== "default" ?
+          <h2 className='category-heading'>{title}</h2>:
+          <h1 className='category-heading'>{title}</h1>
+        }
       </div>
       <div className='category-cards-container'>
         {categoryData && categoryData.length > 0 ? (

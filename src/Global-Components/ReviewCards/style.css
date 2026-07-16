@@ -1,0 +1,345 @@
+/* ==========================================================================
+   1. Base Card Styles (Cleaned up from full-card border logic)
+   ========================================================================== */
+.card-container-wcs {
+    background-color: #f5f5f5;
+    border-radius: 28px;
+    padding: 24px;
+    width: 100%;
+    min-width: 320px;
+    min-height: 280px;
+    font-family: var(--Poppins-font);
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.card-container-wcs:hover {
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   2. Avatar & Animated Border Setup
+   ========================================================================== */
+
+/* Register the custom CSS property for the gradient angle */
+@property --avatar-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+/* The Avatar Profile Container */
+.avatar-letter-wcs {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #FFF;
+    /* Theme fallback color */
+    color: #963A0B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 26px;
+    text-transform: uppercase;
+
+    /* Crucial for placing the pseudo-element ring accurately */
+    position: relative;
+    z-index: 1;
+}
+
+/* The Animated Circular Gradient Ring */
+.avatar-letter-wcs::before {
+    content: '';
+    position: absolute;
+    /* Pushes the animated boundary slightly outward from the circular avatar */
+    top: -2px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    /* Maintains a perfect circle */
+
+    /* Conic gradient leveraging our custom angle */
+    background: conic-gradient(from var(--avatar-angle),
+            #4285F4,
+            #EA4335,
+            #FBBC05,
+            #34A853,
+            #4285F4);
+
+    /* Invisible by default */
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+
+    /* Mask out the inside of the circle to expose only a 2.5px ring outline */
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 2.5px;
+}
+
+/* ==========================================================================
+   3. Hover Triggers & Keyframes
+   ========================================================================== */
+
+/* Triggers the avatar's circular border animation when hovering anywhere on the card */
+.card-container-wcs:hover .avatar-letter-wcs::before {
+    opacity: 1;
+    animation: googleAvatarSpin 3s linear infinite;
+}
+
+/* Smoothly spins the gradient angle inside the mask boundary */
+@keyframes googleAvatarSpin {
+    to {
+        --avatar-angle: 360deg;
+    }
+}
+
+/* ==========================================================================
+   Rest of your structural styles (Header, Body, Footer) stay unchanged...
+   ========================================================================== */
+.card-header-wcs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.user-info-wcs {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name-wcs {
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    -webkit-line-clamp: 1 !important;
+    text-overflow: ellipsis !important;
+    -webkit-box-orient: vertical !important;
+    display: -webkit-box !important;
+    overflow: hidden !important;
+}
+
+.rating-container-wcs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+}
+
+.stars-wcs {
+    color: #fbbc05;
+    font-size: 16px;
+    letter-spacing: -1px;
+}
+
+.date-wcs {
+    font-size: 11px;
+    color: #70757a;
+}
+
+.card-body-wcs {
+    margin-bottom: 18px;
+}
+
+.review-text-wcs {
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--text-primary);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.read-more-btn-wcs {
+    background: none;
+    border: none;
+    color: #70757a;
+    font-size: 12px;
+    padding: 0;
+    margin-top: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.read-more-btn-wcs:hover {
+    text-decoration: underline;
+}
+
+.card-footer-wcs {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.posted-on-wcs {
+    font-size: 11px;
+    color: #70757a;
+    font-weight: 500;
+}
+
+.card-footer-wcs img {
+    width: 80px;
+    height: auto;
+}
+
+.review-text-wcs.expanded {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+@media (max-width: 768px) {
+
+    .user-name-wcs {
+        font-size: 14px;
+        line-height: 16px;
+    }
+    
+
+}
+
+
+
+/* ==========================================================================
+   Review Card Shimmer
+   ========================================================================== */
+@keyframes shimmer {
+    0% {
+        left: -150%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.card-container-wcs-shimmer {
+    background-color: #f5f5f5;
+    border-radius: 28px;
+    padding: 24px;
+    width: 100%;
+    min-width: 320px;
+    min-height: 280px;
+    box-sizing: border-box;
+}
+
+/* Header: avatar circle + name/stars lines */
+.shimmer-card-header-wcs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.shimmer-avatar-wcs {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #e6e6e6;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.shimmer-user-info-wcs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.shimmer-name-wcs {
+    width: 120px;
+    height: 16px;
+    border-radius: 8px;
+    background-color: #e6e6e6;
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer-stars-wcs {
+    width: 80px;
+    height: 14px;
+    border-radius: 7px;
+    background-color: #e6e6e6;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Body: review text lines */
+.shimmer-card-body-wcs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.shimmer-line-wcs {
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
+    background-color: #e6e6e6;
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer-line-wcs.short {
+    width: 65%;
+}
+
+/* Footer: "Posted on" + logo */
+.shimmer-card-footer-wcs {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.shimmer-posted-wcs {
+    width: 60px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #e6e6e6;
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer-logo-wcs {
+    width: 80px;
+    height: 16px;
+    border-radius: 4px;
+    background-color: #e6e6e6;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shared shimmer sweep for every block above */
+.shimmer-avatar-wcs::before,
+.shimmer-name-wcs::before,
+.shimmer-stars-wcs::before,
+.shimmer-line-wcs::before,
+.shimmer-posted-wcs::before,
+.shimmer-logo-wcs::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    height: 100%;
+    width: 150%;
+    background: linear-gradient(90deg,
+            rgba(240, 240, 240, 0) 0%,
+            rgba(255, 255, 255, 0.6) 50%,
+            rgba(240, 240, 240, 0) 100%);
+    animation: shimmer 1.5s infinite;
+}
+
+@media (max-width: 768px) {
+    .card-container-wcs-shimmer {
+        min-height: 240px;
+        padding: 16px;
+    }
+}

@@ -135,7 +135,7 @@ export async function generateMetadata({ params }) {
     return {
       title:
         `${meta?.title}` ||
-        `Free Delivery & Setup | Furniture Deals During Furniture Sale 2026 - Furniture Mecca`,
+        `Furniture Mecca`,
       description:
         meta?.description ||
         "Free Delivery & Free Setup on furniture during Furniture Sale. Explore exclusive deals on sofas, beds & dining sets—limited stock available.",

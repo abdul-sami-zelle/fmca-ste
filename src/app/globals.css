@@ -103,3 +103,8 @@ a {
   color: #FF8416;
   border-color: #FF8416;
 }
+
+.blog-content-image{
+    width: 100% !important;
+    height: auto !important;
+}

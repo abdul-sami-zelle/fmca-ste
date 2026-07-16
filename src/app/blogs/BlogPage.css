@@ -7,6 +7,12 @@
     padding: var(--global-padding);
 }
 
+.single-blog-columns > .blog-content-image{
+    width: 100% !important;
+    height: auto !important;
+}
+
+
 .blogs-page-main-heading-div{
     display: flex;
     width: 100%;

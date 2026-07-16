@@ -1,0 +1,138 @@
+/* .what-customer-says{
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    padding: 0 60px 35px;
+    display: flex;
+}
+
+.reviews-grid-wcs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.what-cust-says-heading {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: var(--heading-line-height);
+    color: var(--text-primary);
+} */
+.what-customer-says {
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    padding: 0 60px 35px;
+    display: flex;
+}
+
+.what-cust-says-heading {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: var(--heading-line-height);
+    color: var(--text-primary);
+}
+
+/* Slider viewport — clips the track so only the visible cards show.
+   Fades the edges so cards don't look like they're cutting off mid-card. */
+.reviews-slider-wcs {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0,
+            #000 40px,
+            #000 calc(100% - 40px),
+            transparent 100%);
+    mask-image: linear-gradient(to right,
+            transparent 0,
+            #000 40px,
+            #000 calc(100% - 40px),
+            transparent 100%);
+}
+
+/* The track holds two back-to-back copies of the reviews. Its transform
+   is driven from JS (requestAnimationFrame) rather than a CSS animation,
+   so the scroll speed can ease down to 0 on hover ("brake") and ease
+   back up on mouse-leave instead of pausing/resuming instantly. */
+.reviews-slider-track {
+    display: flex;
+    width: max-content;
+    gap: 20px;
+    will-change: transform;
+}
+
+.reviews-slider-item {
+    flex: 0 0 320px;
+    width: 320px;
+}
+
+/* Mobile: no auto-scroll, drag/swipe only. Native horizontal scroll with
+   snapping, plain and finger-friendly. */
+.reviews-slider-wcs.is-mobile {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    /* Firefox */
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+
+.reviews-slider-wcs.is-mobile::-webkit-scrollbar {
+    display: none;
+}
+
+.reviews-slider-wcs.is-mobile .reviews-slider-item {
+    scroll-snap-align: start;
+}
+
+/* Respect reduced-motion preferences on desktop: fall back to a static,
+   manually scrollable row instead of auto-scrolling. (Mobile already
+   behaves this way by design, regardless of this setting.) */
+@media (prefers-reduced-motion: reduce) {
+    .reviews-slider-wcs:not(.is-mobile) {
+        overflow-x: auto;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .reviews-slider-wcs:not(.is-mobile) .reviews-slider-track {
+        transform: none !important;
+    }
+
+    .reviews-slider-wcs:not(.is-mobile) .reviews-slider-item {
+        scroll-snap-align: start;
+    }
+}
+
+@media (max-width: 768px) {
+    .reviews-slider-item {
+        flex: 0 0 320px;
+        width: 320px;
+    }
+
+    .what-customer-says {
+        gap: 10px;
+        padding: 15px 10px 20px;
+    }
+
+    .what-cust-says-heading {
+        width: 100%;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+}
+
+.reviews-slider-wcs.is-mobile {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;   /* was: pan-x — allow vertical page scroll too */
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+}

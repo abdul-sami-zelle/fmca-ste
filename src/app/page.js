@@ -32,11 +32,13 @@ import ZipCodeModal from '@/UI/Modals/ZipCodeModal/ZipCodeModal';
 import ExampleButton from '@/utils/exampleBtn';
 import DisableDelivery from '@/Global-Components/DisableDelivery/DisableDelivery';
 import { useGlobalContext } from '@/context/GlobalContext/globalContext';
+import ReviewCard from '@/Global-Components/ReviewCards/ReviewCard';
+import ReviewsGrid from '@/Global-Components/Reviews/Reviews';
 
 const Home = () => {
 
 
-  const { 
+  const {
     landingPageCategories,
     landingPageFOEB,
     content2,
@@ -52,6 +54,8 @@ const Home = () => {
     setBestSellerProducts,
     bestSellerNav1,
     setBestSellerNav1,
+    reviews,
+    reviewsLoading,
   } = useLPContentContext();
 
   const { blogs } = useBlog()
@@ -63,23 +67,26 @@ const Home = () => {
   // };
 
   const [showSnakeBar, setShowSnakeBar] = useState(false);
-    const [snakeBarMessage, setSnakeBarMessage] = useState();
+  const [snakeBarMessage, setSnakeBarMessage] = useState();
 
-    const handleCloseSnakeBar = () => {
-      setShowSnakeBar(false)
-    }
+  const handleCloseSnakeBar = () => {
+    setShowSnakeBar(false)
+  }
 
-    const homePageRef = useRef()
-    const {showDeliveryMessage} = useGlobalContext()
+  const homePageRef = useRef()
+  const { showDeliveryMessage } = useGlobalContext()
 
 
   return (
-    <div ref={homePageRef}  className='home-page-main-container'>
+    <div ref={homePageRef} className='home-page-main-container'>
+
+   
+     
       <NearStorePopUp />
       <Sliderr images={slides ? slides : []} />
       <FinanceBannerSlider images={financingBanners} borderTop={'5px solid #963A0B'} />
-      <MobileFinancingSlider images={financingBanners} borderTop={'5px solid #963A0B'}  />
-      <Category title={'Shop by Category'} categoryData={landingPageCategories} handleNavigate={()=>{}} />
+      <MobileFinancingSlider images={financingBanners} borderTop={'5px solid #963A0B'} />
+      <Category source='home' title={'Shop by Category'} categoryData={landingPageCategories} handleNavigate={() => { }} />
 
       <LandingPageFinancing />
       <TrendingNow data={trendingNow ? trendingNow : null} />
@@ -93,7 +100,7 @@ const Home = () => {
         setSnakeBarMessage={setSnakeBarMessage}
       />
 
-      
+
 
       {/* {content2?.section_1 && (
         <Comparision
@@ -127,13 +134,15 @@ const Home = () => {
         <FurnitureForBudget budgetCardData={landingPageFOEB} />
       )}
 
+       <ReviewsGrid reviews={reviews} isLoading={reviewsLoading} />
+
       {blogs?.length > 0 && <BlogSlider />}
 
-      <GetTheScop 
+      <GetTheScop
         setShowSnakeBar={setShowSnakeBar}
         setSnakeBarMessage={setSnakeBarMessage}
       />
-  
+
       <SnakBar
         message={snakeBarMessage}
         openSnakeBarProp={showSnakeBar}
@@ -141,10 +150,10 @@ const Home = () => {
         onClick={handleCloseSnakeBar}
       />
 
-        {showDeliveryMessage && (
-          <DisableDelivery parentRef={homePageRef} />
-        )}
-      
+      {showDeliveryMessage && (
+        <DisableDelivery parentRef={homePageRef} />
+      )}
+
     </div>
   )
 }

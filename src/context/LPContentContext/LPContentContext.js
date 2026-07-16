@@ -18,7 +18,9 @@ export const LPContentProvider = ({ children }) => {
   const [landingPageFOEB, setLandingPageFOEB] = useState([]);
   const [content2, setContent2] = useState({});
   const [featuredProducts, setFeaturedProducts] = useState([]);
-  const [slides, setSlides] = useState([])
+  const [slides, setSlides] = useState([]);
+  const activeReviewsApi = `${url}/api/v1/what-customer-say/active`;
+
 
   // Standard Function
   const slidersApi = `${url}/api/v1/pages/home/upd-slider/get`;
@@ -47,18 +49,18 @@ export const LPContentProvider = ({ children }) => {
 
   const landingPageContent2Api = `${url}/api/v1/content2/get`;
   const [constent2Counter, setContent2Counter] = useState(0);
-  const {data: contentTwoData, error: content2Error, isLoading: content2Loader} = useSWR(landingPageContent2Api, fetcher, {
+  const { data: contentTwoData, error: content2Error, isLoading: content2Loader } = useSWR(landingPageContent2Api, fetcher, {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
     dedupingInterval: 1000 * 60 * 60 * 24 * 365
   })
-  if(content2Error && constent2Counter < 3) {
+  if (content2Error && constent2Counter < 3) {
     setTimeout(() => {
       setContent2Counter(constent2Counter + 1);
     }, 1000)
   }
   useEffect(() => {
-    if(contentTwoData) {
+    if (contentTwoData) {
       setContent2(contentTwoData);
     }
   }, [contentTwoData])
@@ -66,23 +68,23 @@ export const LPContentProvider = ({ children }) => {
   // Standard Function
   const featuredApi = `${url}/api/v1/products/featured-products?totalProduct=5`;
   const [featureCount, setFeatureCount] = useState(0);
-  const {data: featureData, error: featureError, isLoading: featureLoading} = useSWR(featuredApi, fetcher, {
+  const { data: featureData, error: featureError, isLoading: featureLoading } = useSWR(featuredApi, fetcher, {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
-    dedupingInterval: 1000 *  60 * 60 * 24 * 365,
-  }) 
+    dedupingInterval: 1000 * 60 * 60 * 24 * 365,
+  })
 
-  if(featureError && featureCount < 3) {
+  if (featureError && featureCount < 3) {
     setTimeout(() => {
       setFeatureCount(featureCount + 1)
     }, 1000)
   }
 
   useEffect(() => {
-    if(featureData) {
+    if (featureData) {
       const filteredProducts = featureData.products.filter(
-          (product) => product.parent === 0
-        );
+        (product) => product.parent === 0
+      );
       setFeaturedProducts(filteredProducts);
     }
   }, [featureData])
@@ -93,24 +95,24 @@ export const LPContentProvider = ({ children }) => {
   // Standard Function
   const trandingNowApi = `${url}/api/v1/pages/home/trending-now/get`;
   const [trandingCount, setTrandingCount] = useState(0)
-  const {data: trandingData, error: trandingError, isLoading: trandingLoader} = useSWR(trandingNowApi, fetcher, {
+  const { data: trandingData, error: trandingError, isLoading: trandingLoader } = useSWR(trandingNowApi, fetcher, {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
     dedupingInterval: 1000 * 60 * 60 * 24 * 365
   });
-  if(trandingError && trandingCount < 3) {
+  if (trandingError && trandingCount < 3) {
     setTimeout(() => {
       setTrandingCount(trandingCount + 1);
     }, 1000);
   }
 
   useEffect(() => {
-    if(trandingData) {
+    if (trandingData) {
       setTrendingNow(trandingData.data)
     }
   }, [trandingData])
 
-  
+
 
   const [financingBanners, setFinancingBanners] = useState(null)
   // Standard Function
@@ -142,7 +144,7 @@ export const LPContentProvider = ({ children }) => {
   const categoryApi = `${url}/api/v1/content1/get`;
   const header = { "Content-Type": "application/json" };
   const [categoryCount, setCategoryCount] = useState(0);
-  const { data: categoriesData, error: categoriesError, isLoading: categoriesLoading } = useSWR(categoryApi,  fetcher, header, {
+  const { data: categoriesData, error: categoriesError, isLoading: categoriesLoading } = useSWR(categoryApi, fetcher, header, {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
     dedupingInterval: 1000 * 60 * 60 * 24 * 365
@@ -183,6 +185,34 @@ export const LPContentProvider = ({ children }) => {
     },
   ]);
 
+
+
+  const [reviews, setReviews] = useState([]);
+  const [reviewsCount, setReviewsCount] = useState(0);
+
+  const {
+    data: reviewsData,
+    error: reviewsError,
+    isLoading: reviewsLoading,
+  } = useSWR(activeReviewsApi, fetcher, {
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+    dedupingInterval: 1000 * 60 * 60 * 24 * 365,
+  });
+
+  if (reviewsError && reviewsCount < 3) {
+    setTimeout(() => {
+      setReviewsCount((prev) => prev + 1);
+      mutate(activeReviewsApi);
+    }, 1000);
+  }
+
+  useEffect(() => {
+    if (reviewsData) {
+      setReviews(reviewsData.data || []);
+    }
+  }, [reviewsData]);
+
   // Category Page States
   const [categoryPageData, setCategoryPageData] = useState();
   const [categoryData, setCategoryData] = useState();
@@ -220,7 +250,9 @@ export const LPContentProvider = ({ children }) => {
       bestSelling,
       setBestSelling,
       paragraph,
-      setParagraph
+      setParagraph,
+      reviews,
+      reviewsLoading,
     }}>
       {children}
     </LPContentContext.Provider>

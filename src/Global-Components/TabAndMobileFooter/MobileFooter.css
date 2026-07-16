@@ -308,6 +308,15 @@
     font-weight: 500;
 }
 
+.contact-container > span > h1{
+    color: #fff;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
 
 .footer-social-icons{
     display: flex;
