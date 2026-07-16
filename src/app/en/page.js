@@ -33,6 +33,7 @@ import ExampleButton from '@/utils/exampleBtn';
 import DisableDelivery from '@/Global-Components/DisableDelivery/DisableDelivery';
 import { useGlobalContext } from '@/context/GlobalContext/globalContext';
 import ReviewCard from '@/Global-Components/ReviewCards/ReviewCard';
+import ReviewsSlider from '@/Global-Components/Reviews/Reviews';
 
 const Home = () => {
 
@@ -53,6 +54,8 @@ const Home = () => {
     setBestSellerProducts,
     bestSellerNav1,
     setBestSellerNav1,
+    reviews,
+    reviewsLoading
   } = useLPContentContext();
 
   const { blogs } = useBlog()
@@ -95,18 +98,7 @@ const Home = () => {
       />
 
 
-     
-
-      
-
-      {/* {content2?.section_1 && (
-        <Comparision
-          heading={content2.section_1.heading}
-          image={content2.section_1.image}
-          mobileImage={content2.section_1.mobile_image}
-        />
-      )}  */}
-
+    
       {featuredProducts &&
         (<ProductSlider cardData={featuredProducts} />)
       }
@@ -131,6 +123,9 @@ const Home = () => {
         <FurnitureForBudget budgetCardData={landingPageFOEB} />
       )}
 
+       <ReviewsSlider reviews={reviews} isLoading={reviewsLoading} />
+      
+
       {blogs?.length > 0 && <BlogSlider />}
 
       <GetTheScop 
@@ -149,9 +144,7 @@ const Home = () => {
         onClick={handleCloseSnakeBar}
       />
 
-      {/* <ZipCodeModal 
-        showZipModal={true}
-      /> */}
+  
 
         {showDeliveryMessage && (
           <DisableDelivery parentRef={homePageRef} />

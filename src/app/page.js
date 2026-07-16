@@ -33,7 +33,7 @@ import ExampleButton from '@/utils/exampleBtn';
 import DisableDelivery from '@/Global-Components/DisableDelivery/DisableDelivery';
 import { useGlobalContext } from '@/context/GlobalContext/globalContext';
 import ReviewCard from '@/Global-Components/ReviewCards/ReviewCard';
-import ReviewsGrid from '@/Global-Components/Reviews/Reviews';
+import ReviewsSlider from '@/Global-Components/Reviews/Reviews';
 
 const Home = () => {
 
@@ -134,7 +134,7 @@ const Home = () => {
         <FurnitureForBudget budgetCardData={landingPageFOEB} />
       )}
 
-       <ReviewsGrid reviews={reviews} isLoading={reviewsLoading} />
+       <ReviewsSlider reviews={reviews} isLoading={reviewsLoading} />
 
       {blogs?.length > 0 && <BlogSlider />}
 
