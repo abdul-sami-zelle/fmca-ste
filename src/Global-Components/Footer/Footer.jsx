@@ -107,7 +107,7 @@ const Footer = ({ notLandingPage, checkoutPage }) => {
     ]
 
     const locationPhoneMail = [
-        { name: stores?.[0]?.city ?  `Furniture Store ${stores?.[0]?.city}` : 'Philadelphia', icon: '/icons/location.svg', link: '#' },
+        { name: stores?.[0]?.city ?  `${stores?.[0]?.city}` : 'Philadelphia', icon: '/icons/location.svg', link: '#' },
         { name: stores?.[0]?.phone || '215 352 1600', href: `tel:${stores?.[0]?.phone && cleanPhoneNumber(stores?.[0]?.phone)}` || 'tel:2153521600', icon: '/icons/phone.svg', link: '#' },
         { name: stores?.[0]?.email || 'meccacustomercare@gmail.com', href: `mailto:${stores?.[0]?.email}` || 'mailto:meccacustomercare@gmail.com', icon: '/icons/mail.svg', link: '#' }
     ]
@@ -269,7 +269,7 @@ const Footer = ({ notLandingPage, checkoutPage }) => {
                                 {locationPhoneMail.map((item, index) => (
                                     <span key={index}>
                                         <img src={item.icon} alt='icon' />
-                                        {index===0 ?  <h1>{item.name}</h1>:
+                                        {index===0 ?  <p>{item.name}</p>:
                                          <p>{item.href === "" ? item.name : <a href={item.href}>{item.name}</a>}</p>
                                         }
                                        

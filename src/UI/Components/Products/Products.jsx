@@ -78,12 +78,20 @@ const Products = ({ navigationType }) => {
   const location = useSearchParams();
   const pathname = usePathname();
   const firstSegment = pathname.split("/")[1]; // "accent-furniture"
-  const formatted =
-    firstSegment
-      .split("-") // ['accent', 'furniture']
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each
-      .join(" ") + "s";
+  // const formatted =
+  //   firstSegment
+  //     .split("-") // ['accent', 'furniture']
+  //     .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each
+  //     .join(" ") + "s";
 
+  const formatted = (() => {
+  const text = firstSegment
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+  return /s$/i.test(text) ? text : `${text}s`;
+})();
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
 

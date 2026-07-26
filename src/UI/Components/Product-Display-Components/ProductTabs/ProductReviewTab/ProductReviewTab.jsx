@@ -87,7 +87,7 @@ const ProductReviewTab = ({ id, reviewRef, productData, params }) => {
       {error && <div>{error}</div>}
 
       <WriteReview productData={product} snakeBarOpen={handleOpenSnakeBar} product_id={product?.uid} review_enable={product?.enable_review} product_name={product?.name} product_permalink={"https://"} />
-      <ProductComments review_enable={product?.enable_review} data={reviews} />
+      {/* <ProductComments review_enable={product?.enable_review} data={reviews} /> */}
 
       <SnakBar
         message={errorMessage}

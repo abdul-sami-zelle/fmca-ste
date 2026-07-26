@@ -132,7 +132,7 @@ const MobileFooter = ({ checkoutPage }) => {
         // { icon: locationIcon, title: 'Philadelphia', link: '#' },
         // { icon: callIcon, title: '215 352 1600', link: 'tel:2153521600' },
         // { icon: mailIcon, title: 'meccacustomercare@gmail.com', link: 'mailto:meccacustomercare@gmail.com' }
-        { name:  stores?.[0]?.city ? `Furniture Store ${stores?.[0]?.city}` : 'Philadelphia', icon: locationIcon, link: '#' },
+        { name:  stores?.[0]?.city ? `${stores?.[0]?.city}` : 'Philadelphia', icon: locationIcon, link: '#' },
         { name: stores?.[0]?.phone || '215 352 1600', href: `tel:${stores?.[0]?.phone && cleanPhoneNumber(stores?.[0]?.phone)}` || 'tel:2153521600', icon: callIcon, link: '#' },
         { name: stores?.[0]?.email || 'meccacustomercare@gmail.com', href: `mailto:${stores?.[0]?.email}` || 'mailto:meccacustomercare@gmail.com', icon: mailIcon, link: '#' }
     ]
@@ -225,7 +225,7 @@ const MobileFooter = ({ checkoutPage }) => {
                                 <a href='mailto:meccacustomercare@gmail.com'>{item.title}</a> :
                                 <Link href={item.link}>{item.title}</Link>
                         } */}
-                        {index===0?<h1>{ item.name}</h1>:<p>{item.href === "" ? item.name : <a href={item.href}>{item.name}</a>}</p>}
+                        {index===0?<p>{ item.name}</p>:<p>{item.href === "" ? item.name : <a href={item.href}>{item.name}</a>}</p>}
 
 
                     </span>

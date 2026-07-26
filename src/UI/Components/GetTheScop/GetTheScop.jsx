@@ -6,14 +6,16 @@ import checked from "../../../Assets/checked.png"
 import LoaderAnimation from '../../../Assets/Loader-animations/loader-check-two.gif';
 import { url } from '../../../utils/api';
 import Image from 'next/image';
+import { useGlobalContext } from '@/context/GlobalContext/globalContext';
 
-const GetTheScop = ({setShowSnakeBar, setSnakeBarMessage}) => {
+const GetTheScop = ({ setShowSnakeBar, setSnakeBarMessage }) => {
 
   // State for email input and form submission status
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { stores } = useGlobalContext()
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -64,7 +66,7 @@ const GetTheScop = ({setShowSnakeBar, setSnakeBarMessage}) => {
       // Handle error
       console.error('Error signing up:', error);
       setShowSnakeBar(true);
-        setSnakeBarMessage('Error signing up')
+      setSnakeBarMessage('Error signing up')
 
       // Check if the error is due to the API response or a network issue
       if (error.response) {
@@ -92,6 +94,7 @@ const GetTheScop = ({setShowSnakeBar, setSnakeBarMessage}) => {
               <p className='get-the-scoop-offers-keywords'> Offers</p> |
               <p className='get-the-scoop-offers-keywords'> Best Price</p>
             </span>
+            <span className='f_store_tag_line'>Serving with premium furniture, unbeatable prices, and exceptional customer service at <h1>Furniture Store {`${stores?.[0]?.city}`}</h1></span>
             <form className='get-the-scoop-form-input-and-button' onSubmit={handleSubmit}>
               <div className='get-the-scop-input'>
                 <input
@@ -140,6 +143,8 @@ const GetTheScop = ({setShowSnakeBar, setSnakeBarMessage}) => {
               <Link href={'#'}>Best Prices</Link>
             </span>
           </div>
+          <span className='f_store_tag_line'>Serving with premium furniture, unbeatable prices, and exceptional customer service at <h1>Furniture Store {`${stores?.[0]?.city}`}</h1></span>
+
           {!isSubscribed ?
             <form style={{ width: "100%" }} onSubmit={handleSubmit}>
 
