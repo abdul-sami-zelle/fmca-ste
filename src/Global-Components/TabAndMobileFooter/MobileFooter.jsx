@@ -225,7 +225,7 @@ const MobileFooter = ({ checkoutPage }) => {
                                 <a href='mailto:meccacustomercare@gmail.com'>{item.title}</a> :
                                 <Link href={item.link}>{item.title}</Link>
                         } */}
-                        {index===0?<p>{ item.name}</p>:<p>{item.href === "" ? item.name : <a href={item.href}>{item.name}</a>}</p>}
+                        {index===0?<p style={{color:"#fff"}}>{ item.name}</p>:<p>{item.href === "" ? item.name : <a href={item.href}>{item.name}</a>}</p>}
 
 
                     </span>
