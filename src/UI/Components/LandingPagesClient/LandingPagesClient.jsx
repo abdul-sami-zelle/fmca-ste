@@ -46,7 +46,7 @@ const LandingPagesClient = ({ slug }) => {
     }
 
     return (
-        <div className='privacy-policy-main-container'>
+        <div className='privacy-policy-main-container-2'>
             <div className='policy-container'>
                 <div
                     dangerouslySetInnerHTML={{
