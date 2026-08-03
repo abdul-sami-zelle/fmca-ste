@@ -36,14 +36,14 @@ const FinancingClient = () => {
 
             setFincancingCategories({
                 desktop: uniqueByCategory([
-                    { title: "All Financings", category: "all" },
+                    { title: "All Options", category: "all" },
                     ...response.data.financingPage.slides.desktop.map((item) => ({
                         title: item.description,
                         category: item.title,
                     })),
                 ]),
                 mobile: uniqueByCategory([
-                    { title: "All Financings", category: "all" },
+                    { title: "All Options", category: "all" },
                     ...response.data.financingPage.slides.mobile.map((item) => ({
                         title: item.description,
                         category: item.title,
@@ -131,7 +131,7 @@ const FinancingClient = () => {
         <div className='financing-main-container'>
             <div className='financing-top-head-contianer'>
                 <h2 className='pay-our-way-heading'>PAY YOUR WAY</h2>
-                <p className='financing-para'>Make financing easy, find the right plan for you</p>
+                <p className='financing-para'>Find the right option for you</p>
                 <h1 className='financing-main-heading'>Payment Solutions, Leasing and Traditional Financing</h1>
             </div>
             {financingPageData ? (

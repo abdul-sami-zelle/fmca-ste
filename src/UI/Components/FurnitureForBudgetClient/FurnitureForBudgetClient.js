@@ -2,46 +2,43 @@
 
 import React, { Suspense, useEffect, useState } from "react";
 import "./FurnitureAtEveryBudget.css";
-// import star from '../../../Assets/icons/blue-star.png'
 import { url } from "../../../utils/api";
-// import { useLocation, useNavigate } from 'react-router-dom';
 import heart from '../../../Assets/icons/heart-vector.png'
 import QuickView from "../../Components/QuickView/QuickView";
 import ProductCardShimmer from "../../Components/Loaders/productCardShimmer/productCardShimmer";
 import { useList } from "../../../context/wishListContext/wishListContext";
-
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProductCardTwo from "../../Components/ProductCardTwo/ProductCardTwo";
 import ProductInfoModal from "../../../Global-Components/ProductInfoModal/ProductInfoModal";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams, useParams } from "next/navigation";
 import Image from "next/image";
-import Pagination from "../Pagination/PaginationRashid";
 import SectionLoader from "../Loader/SectionLoader";
 import ElipticalPagenation from "../Products/ElepticalPagination";
 import SnakBar from "@/Global-Components/SnakeBar/SnakBar";
 
-export default function FurnitureAtEveryBudgetClient() {
+export default function FurnitureAtEveryBudgetClient({ params }) {
+
+
 
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    // const navigate = useNavigate();
+
     const router = useRouter();
 
-
-
-
-
     const searchParams = useSearchParams();
-    const category = searchParams.get('categoryUid');
-    const categorySlug = searchParams.get('category');
-    const max_price = searchParams.get('max_price');
+
+    const categorySlug = params?.category;          // "living-room"
+    const priceSlug = params?.price;                 // "under-800"
+    const max_price = priceSlug?.replace(/^under-/i, ''); // "800"
+
+    const pageFromUrl = parseInt(searchParams.get('page')) || 1;
+
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${url}/api/v1/products/by-category?categoryUid=${category}&max_price=${max_price}&per_page=12`);
+                const response = await fetch(`${url}/api/v1/products/by-category?categorySlug=${categorySlug}&max_price=${max_price}&per_page=24`);
                 if (!response.ok) {
                     throw new Error("Failed to fetch data");
                 }
@@ -60,130 +57,88 @@ export default function FurnitureAtEveryBudgetClient() {
 
 
     const [productCache, setProductCache] = useState({});
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(pageFromUrl);
     const [products, setProducts] = useState(null);
     const [pagination, setPagination] = useState(null);
     const [bannerImages, setBannerImages] = useState(null);
     const [isInitialLoad, setIsInitialLoad] = useState(true);
 
+    // FIX #2: keep currentPage in sync with the URL.
+    // Without this, using the browser's Back/Forward button changes the URL
+    // (searchParams) but currentPage state never updates, so nothing re-renders.
+    useEffect(() => {
+        const urlPage = parseInt(searchParams.get('page')) || 1;
+        if (urlPage !== currentPage) {
+            setCurrentPage(urlPage);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [searchParams]);
 
-
-
-
-    // useEffect(() => {
-    //   const fetchInitialData = async () => {
-    //     try {
-    //       setIsInitialLoad(true); // Start shimmer for first load
-    //       const response = await fetch(`http://localhost:3002/api/v1/content1/get-foeb?uid=1&slug=living-room&page=1`);
-    //       if (!response.ok) throw new Error("Failed to fetch initial data");
-
-    //       const result = await response.json();
-
-    //       setBannerImages(result.furnitureBudget);
-    //       setProducts(result.products);
-    //       setPagination(result.pagination);
-
-    //       setProductCache(prev => ({ ...prev, [1]: result.products }));
-    //     } catch (err) {
-    //       setError(err.message);
-    //     } finally {
-    //       setIsInitialLoad(false); // Stop shimmer
-    //     }
-    //   };
-
-    //   const fetchPaginatedProducts = async () => {
-    //       if (typeof window !== 'undefined') {
-    //     window.scrollTo({ top: 0, behavior: 'smooth' });
-    //   }
-    //     if (productCache[currentPage]) {
-    //       setProducts(productCache[currentPage]);
-    //       return;
-    //     }
-
-    //     try {
-    //       setLoading(true); // Use loading for pagination
-    //       const category = searchParams.get('categoryUid');
-    //       const max_price = searchParams.get('max_price');
-
-    //       const response = await fetch(`${url}/api/v1/products/by-category?categoryUid=${category}&max_price=${max_price}&page=${currentPage}&per_page=12`);
-    //       if (!response.ok) throw new Error("Failed to fetch paginated products");
-
-    //       const result = await response.json();
-
-    //       setProducts(result.products);
-    //       setPagination(result.pagination);
-    //       setProductCache(prev => ({ ...prev, [currentPage]: result.products }));
-    //     } catch (err) {
-    //       setError(err.message);
-    //     } finally {
-    //       setLoading(false); // Stop pagination loader
-    //     }
-    //   };
-
-    //   if (currentPage === 1 && isInitialLoad) {
-    //     fetchInitialData();
-    //   } else {
-    //     fetchPaginatedProducts();
-    //   }
-    // }, [currentPage]);
-
+    // Reset cache & page when category/price changes (kept commented logic
+    // from original file, but now also clears cache so stale pages from a
+    // different category/price never leak in)
+    useEffect(() => {
+        setProductCache({});
+    }, [categorySlug, max_price]);
 
 
     useEffect(() => {
-        const fetchInitialData = async () => {
+        const fetchBanner = async () => {
             try {
-                setIsInitialLoad(true);
-                setProductCache({}); // clear cache on filter change
-                const response = await fetch(`${url}/api/v1/content1/get-foeb?uid=${category}&slug=${categorySlug}&page=1`);
-                if (!response.ok) throw new Error("Failed to fetch initial data");
-
+                const response = await fetch(`${url}/api/v1/content1/get-foeb?uid=1&slug=${categorySlug}&page=1`);
+                if (!response.ok) throw new Error("Failed to fetch banner data");
                 const result = await response.json();
-
                 setBannerImages(result.furnitureBudget);
-                setProducts(result.products);
-                setPagination(result.pagination);
-
-                setProductCache({ 1: result.products }); // reset with new cache
             } catch (err) {
                 setError(err.message);
-            } finally {
-                setIsInitialLoad(false);
             }
         };
 
-        const fetchPaginatedProducts = async () => {
+        fetchBanner();
+    }, [categorySlug]);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
             if (typeof window !== 'undefined') {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
-            if (productCache[currentPage]) {
-                setProducts(productCache[currentPage]);
+            // FIX #1: cache now stores { products, pagination } together.
+            // Previously only products were cached, so navigating back to a
+            // cached page left `pagination` stuck on whatever the last
+            // network-fetched page was (breaking the pager UI / totalPages).
+            const cached = productCache[currentPage];
+            if (cached) {
+                setProducts(cached.products);
+                setPagination(cached.pagination);
+                setIsInitialLoad(false);
                 return;
             }
 
             try {
                 setLoading(true);
-                const response = await fetch(`${url}/api/v1/products/by-category?categoryUid=${category}&max_price=${max_price}&page=${currentPage}&per_page=12`);
-                if (!response.ok) throw new Error("Failed to fetch paginated products");
+                setIsInitialLoad(true);
+                const response = await fetch(`${url}/api/v1/products/by-category?categorySlug=${categorySlug}&max_price=${max_price}&page=${currentPage}&per_page=24`);
+                if (!response.ok) throw new Error("Failed to fetch products");
 
                 const result = await response.json();
 
                 setProducts(result.products);
                 setPagination(result.pagination);
-                setProductCache(prev => ({ ...prev, [currentPage]: result.products }));
+                setProductCache(prev => ({
+                    ...prev,
+                    [currentPage]: { products: result.products, pagination: result.pagination }
+                }));
             } catch (err) {
                 setError(err.message);
             } finally {
                 setLoading(false);
+                setIsInitialLoad(false);
             }
         };
 
-        if (currentPage === 1 && isInitialLoad) {
-            fetchInitialData();
-        } else {
-            fetchPaginatedProducts();
-        }
-    }, [currentPage, category, max_price]); // added dependencies
+        fetchProducts();
+    }, [currentPage, categorySlug, max_price]);
 
 
     const [quickViewProduct, setQuickViewProduct] = useState({})
@@ -196,7 +151,7 @@ export default function FurnitureAtEveryBudgetClient() {
     const handleQuickViewClose = () => { setQuickView(false) }
 
     const handleProductClick = (item) => {
-        router.push(`/product/${item.slug}`,)
+        router.push(`/product/${item.slug}`)
     };
 
 
@@ -324,18 +279,40 @@ export default function FurnitureAtEveryBudgetClient() {
 
 
     const [imagePreloader, setImagePreloader] = useState(false);
+    const updatePageInUrl = (pageNumber) => {
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('page', pageNumber);
+        router.push(`${currentUrl.pathname}?${currentUrl.searchParams.toString()}`, { scroll: false });
+    };
+
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
+        updatePageInUrl(pageNumber);
     };
 
     const handlePrevPage = () => {
-        if (currentPage > 1) setCurrentPage(currentPage - 1);
+        if (currentPage > 1) {
+            const newPage = currentPage - 1;
+            setCurrentPage(newPage);
+            updatePageInUrl(newPage);
+        }
     };
 
     const handleNextPage = () => {
-        if (currentPage < pagination?.totalPages) setCurrentPage(currentPage + 1);
+        if (currentPage < pagination?.totalPages) {
+            const newPage = currentPage + 1;
+            setCurrentPage(newPage);
+            updatePageInUrl(newPage);
+        }
     };
 
+    // useEffect(() => {
+    //     setCurrentPage(1);
+    //     setProductCache({});
+    //     const currentUrl = new URL(window.location.href);
+    //     currentUrl.searchParams.delete('page');
+    //     router.replace(`${currentUrl.pathname}`, { scroll: false });
+    // }, [categorySlug, max_price]);
 
     return (
         <>
@@ -374,7 +351,7 @@ export default function FurnitureAtEveryBudgetClient() {
                 <div className="mobile-furniture-heading-and-column-contianer">
                     <h3 className="furniture-for-every-budget-main-heading">Furniture Under ${max_price}</h3>
 
-                    <div className='mobile-view-product-card-grid-select'>
+                    <div className='mobile-view-product-card-grid-select foeb'>
                         <div className={`mobile-view-toggler-single-box ${activeGrid === 'single-col' ? 'active-toggler-single-box' : ''}`}>
                             <div className={`mobile-view-card-grid-single-col ${activeGrid === 'single-col' ? 'grid-active' : ''}`} onClick={() => handleActiveGrid('single-col')}></div>
                         </div>
@@ -389,7 +366,7 @@ export default function FurnitureAtEveryBudgetClient() {
 
                 </div>
 
-                <div className="product-grid">
+                <div className="product-grid-foeb">
                     {!isInitialLoad ? (
                         products.map((item, index) => (
                             <ProductCardTwo

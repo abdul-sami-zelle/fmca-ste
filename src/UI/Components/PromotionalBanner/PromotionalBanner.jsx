@@ -73,7 +73,7 @@ const PromotionalBanner = (
     { label: 'Log In', link: '' },
     { label: 'Stores', link: '/store-locator' },
     { label: 'Track Order', link: 'https://track.myfurnituremecca.com/' },
-    { label: 'Financing', link: '/financing' },
+    { label: 'Financing/Leasing', link: '/financing' },
     { label: 'Help', link: '/contact-us' },
   ]
   const indicatorRef = useRef(null);

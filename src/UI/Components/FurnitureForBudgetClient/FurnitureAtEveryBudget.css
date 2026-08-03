@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0 60px;
+    padding: 0 60px 20px 60px;
     position: relative;
 }
 
@@ -30,7 +30,7 @@
     /* margin-bottom: 5px; */
 }
 
-.product-grid {
+.product-grid-foeb {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
@@ -95,7 +95,7 @@
     display: none;
 }
 @media (max-width: 1200px) {
-    .product-grid {
+    .product-grid-foeb {
         grid-template-columns: repeat(3, 1fr);
         /* 4 columns per row */
 
@@ -115,13 +115,21 @@
 }
 }
 
-@media only screen and (max-width: 480px) {
+.mobile-view-product-card-grid-select.foeb{
+    display: none;
+}
+
+@media only screen and (max-width: 700px) {
+    .mobile-view-product-card-grid-select.foeb{
+    display: flex;
+}
+
     .furniture_at_every_budget {
         padding: 10px 20px;
         gap: 15px;
     }
 
-    .product-grid {
+    .product-grid-foeb {
         display: none;
     }
 

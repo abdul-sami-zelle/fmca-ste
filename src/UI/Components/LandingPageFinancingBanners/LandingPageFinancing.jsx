@@ -10,7 +10,7 @@ const LandingPageFinancing = () => {
   const bannersData = [
     '/mix-images/mob-banner-1.jpg',
     '/mix-images/option-2.gif',
-    '/mix-images/large-banner.jpg',
+    '/mix-images/large-banner-2.jpeg',
   ]
   const financingButtons = [
     {
@@ -43,7 +43,7 @@ const LandingPageFinancing = () => {
   return (
     <>
       <div className='landing-page-financing-main-container'>
-        <h3 className='landing-page-financing-main-heading'>Flexible Financing Options</h3>
+        <h3 className='landing-page-financing-main-heading'>Financing & Leasing Options</h3>
         <div className='landing-page-financing-banners-main-container'>
           <div className='landing-page-financing-left'>
 
@@ -56,7 +56,7 @@ const LandingPageFinancing = () => {
             </div>
           </div>
           <div onClick={navigateTofinancing} className='landing-page-financing-right'>
-            <Image src={'/mix-images/large-banner.jpg'} width={900} height={470} alt='banner-three' />
+            <Image src={'/mix-images/large-banner-2.jpeg'} width={900} height={470} alt='banner-three' />
             <div className='financing-page-buttons-div'>
               {financingButtons.map((item, index) => (
                 <div key={index} className='financing-page-buttons-div-column' onClick={(e) => e.stopPropagation()}>
