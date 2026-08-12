@@ -31,10 +31,10 @@ const ProductCommentsSection = ({ data }) => {
                 // Sort by date (most recent first)
                 sortedReviews = [...data].sort((a, b) => new Date(b.date_created) - new Date(a.date_created));
                 break;
-            case 'Verified Reviews':
-                // Filter for only verified reviews and sort by rating (highest first) or date (if needed)
-                sortedReviews = [...data].filter((item) => item.verified).sort((a, b) => b.rating - a.rating);
-                break;
+            // case 'Verified Reviews':
+            //     // Filter for only verified reviews and sort by rating (highest first) or date (if needed)
+            //     sortedReviews = [...data].filter((item) => item.verified).sort((a, b) => b.rating - a.rating);
+            //     break;
             default:
                 sortedReviews = data; // No sorting
                 break;
@@ -99,7 +99,7 @@ const ProductCommentsSection = ({ data }) => {
                     >
                         <p onClick={() => handleSelect('Most Relevant')}>Most Relevant</p>
                         <p onClick={() => handleSelect('Most Recent')}>Most Recent</p>
-                        <p onClick={() => handleSelect('Verified Reviews')}>Verified Reviews</p>
+                        {/* <p onClick={() => handleSelect('Verified Reviews')}>Verified Reviews</p> */}
                     </div>
                 </div>
             </div>

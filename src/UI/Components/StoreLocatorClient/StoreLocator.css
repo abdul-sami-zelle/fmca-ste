@@ -206,6 +206,10 @@
     justify-content: space-between;
 }
 
+.single-store-head a{
+    text-decoration: none;
+}
+
 .single-store-head h2 {
     font-size: 20px;
     line-height: 30px;
@@ -890,6 +894,10 @@
     gap: 5px;
     width: 100%;
     margin-bottom: 10px;
+}
+
+.mobile-view-bottom-modal-delivery-options a{
+    text-decoration: none;
 }
 
 .mobile-view-bottom-modal-delivery-options span {

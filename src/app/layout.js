@@ -534,8 +534,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
 
-        {/* Google Analytics */}
-        <Script
+        {/* <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-GQL4WY726N"
           strategy="afterInteractive"
         />
@@ -554,6 +553,31 @@ export default function RootLayout({ children }) {
               page_path: window.location.pathname,
             });
           `}
+        </Script> */}
+        {/* Google Analytics + Google Ads */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-GQL4WY726N"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-tags" strategy="afterInteractive">
+          {`
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    // Google Analytics 4
+    gtag('config', 'G-GQL4WY726N', {
+      page_path: window.location.pathname,
+    });
+
+    // Google Ads
+    gtag('config', 'AW-985619704');
+  `}
         </Script>
 
         {/* Facebook Pixel NoScript */}

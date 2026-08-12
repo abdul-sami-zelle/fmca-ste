@@ -14,8 +14,8 @@ const Comments = ({ data ,order }) => {
                     <div className='user-details'>
                         <div className='user-name-and-detail'>
                             <h3>{item.reviewer}</h3>
-                            <p>{"Pennesylvania"}</p>
-                            <p>{item.verified ? "Verified" : "Not Verifiled"}</p>
+                            {/* <p>{"Pennesylvania"}</p>
+                            <p>{item.verified ? "Verified" : "Not Verifiled"}</p> */}
                         </div>
                         <div className="cemmented-product-images">
                             {item?.images &&
@@ -53,15 +53,15 @@ const Comments = ({ data ,order }) => {
                         </div>
                         <h3 className='mobile-comment-state'>{item.state}</h3>
                         <div className='mobile-comment-status-and-rating'>
-                            <p>Panselvania</p>
+                            {/* <p>Panselvania</p> */}
                             <div className='mobile-comment-verified-and-rating-stars'>
-                                <p>{item.verified ? "Verified" : "Not Verifiled"}</p>
+                                {/* <p>{item.verified ? "Verified" : "Not Verifiled"}</p> */}
                                 <RatingReview disabled={true} rating={item.rating} />
                                 
                             </div>
                         </div>
                         <p className='mobile-comment'>{item.review}</p>
-                        <button className='mobile-comment-show-more-btn'>show more</button>
+                        {/* <button className='mobile-comment-show-more-btn'>show more</button> */}
                         <div className='mobile-comment-images-and-feedback'>
                             <div className='mobile-single-comment-images'>
                                 {item.images?.slice(0, 2).map((item, index) => (
@@ -71,10 +71,10 @@ const Comments = ({ data ,order }) => {
                                     <p>View More</p>
                                 </div>
                             </div>
-                            <button className='mobile-comment-feedback'>
+                            {/* <button className='mobile-comment-feedback'>
                                 <img src={thumbUp} alt='thhumb' />
                                 <p>Helpful  0</p>
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 ))}

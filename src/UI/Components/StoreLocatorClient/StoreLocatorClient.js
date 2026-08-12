@@ -3,35 +3,23 @@
 import React, { useEffect, useRef } from 'react'
 import './StoreLocator.css'
 import { useState } from 'react';
-import directionArrow from '../../../Assets/icons/direction-arrow.png'
-import storeImage from '../../../Assets/all-stores-location-images/store-image.png'
-import { FaStar } from "react-icons/fa";
 import { GoogleMap, useLoadScript, LoadScript, Marker } from '@react-google-maps/api';
-import directionIcon from '../../../Assets/icons/direction-icon.png';
-import closeBtn from '../../../Assets/icons/cancel.png';
-import blueTick from '../../../Assets/icons/blue-tick.png'
 import axios from 'axios';
-import DeliveryLocationMap from './DeliveryLocationMap';
-import StoreLocationMap from './StoreLocationMap';
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { LiaSearchLocationSolid } from "react-icons/lia";
 import { SlLocationPin } from "react-icons/sl";
 import { getGoogleStoreDetails, useDisableBodyScroll } from '../../../utils/api';
-import RatingReview from '../../Components/starRating/starRating';
 import { url } from '../../../utils/api';
 import { MdOutlineDirections } from "react-icons/md";
-import UserComment from './userComment';
 import { FaPhone } from "react-icons/fa6";
 import { IoIosMailOpen, IoIosClose } from "react-icons/io";
-import loader from "../../../Assets/Loader-animations/loader-check-two.gif"
-// import { useLocation } from 'react-router-dom';
 import SectionLoader from '../../Components/Loader/SectionLoader';
 import Image from 'next/image';
 import SwiperSlider from '@/UI/Sliders/SwiperSlider/SwiperSlider';
-// import MapComp from '../MapComp/MapComp';
-
 import dynamic from "next/dynamic";
 import StoreLocatorFAQ from '../FAQ/StoreLocatorFAQs';
+import Link from 'next/link';
+
 
 const MapComp = dynamic(() => import("../MapComp/MapComp"), { ssr: false });
 
@@ -274,7 +262,7 @@ const StoreLocatorClient = () => {
             {storesApiData && storesApiData?.map((item, index) => (
               <div key={index} className='store-single-card'>
                 <div className='single-store-head'>
-                  <h2>{item.name}</h2>
+                  <Link href={item?.detail_link ? item?.detail_link :""}><h2>{item.name}</h2></Link>
                   <p>{item.distance}</p>
                 </div>
                 <div className='single-card-address-and-contact'>
@@ -490,7 +478,7 @@ const StoreLocatorClient = () => {
               <div className="single-location-slider">
 
                 <div className='mobile-view-bottom-modal-delivery-options'>
-                  <h3 className='mobile-heading-comments-top-heading'>{selectedStoreData[0]?.name}</h3>
+                  <Link href={selectedStoreData[0]?.detail_link ? selectedStoreData[0]?.detail_link :""}><h3 className='mobile-heading-comments-top-heading'>{selectedStoreData[0]?.name}</h3></Link>
                   <span>
                     {/* <Image src={'/Assets/icons/blue-tick.png'} width={12} height={12} alt='blue-tick' /> */}
                     <FaPhone size={15} color='#595959' />
@@ -529,7 +517,7 @@ const StoreLocatorClient = () => {
             ) : (
               <div className='mobile-view-single-store-details'>
                 <div className='mobile-view-bottom-modal-delivery-options'>
-                  <h3 className='mobile-heading-comments-top-heading'>{selectedStoreData[0]?.name}</h3>
+                  <Link href={selectedStoreData[0]?.detail_link ? selectedStoreData[0]?.detail_link :""}><h3 className='mobile-heading-comments-top-heading'>{selectedStoreData[0]?.name}</h3></Link>
                   <span>
                     {/* <Image src={'/Assets/icons/blue-tick.png'} width={12} height={12} alt='blue-tick' /> */}
                     <FaPhone size={15} color='#595959' />

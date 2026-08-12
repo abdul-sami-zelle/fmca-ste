@@ -693,3 +693,122 @@
         display: none;
     }
 }
+
+
+/* NEW outer wrapper — non-scrolling, just clips + positions the subcat panel */
+.mobile-nav-links-outer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* the actual scrollable list — move the old overflow-y/scrollbar rules here */
+.mobile-nav-links-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0 10px;
+    box-shadow:
+        inset 0px -4px 4px -4px rgba(0, 0, 0, 0.4),
+        inset 0px 4px 4px -4px rgba(0, 0, 0, 0.4);
+}
+
+.mobile-nav-links-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* subcat panel unchanged — but its positioned ancestor is now .mobile-nav-links-outer */
+.mobile-subcat-panel {
+    position: absolute;
+    top: 0;
+    left: -100%;   /* was 100% — now starts off-screen to the LEFT */
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    transition: left 0.3s ease-in-out;
+    box-shadow: inset 0 -4px 4px -4px #0006, inset 0 4px 4px -4px #0006;
+}
+
+.mobile-subcat-panel.show-subcat-panel {
+    left: 0;   /* slides in from the left */
+}
+.mobile-subcat-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px 12px;
+    border-bottom: 1px solid #eee;
+    flex-shrink: 0;
+}
+
+.mobile-subcat-back,
+.mobile-subcat-close {
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.mobile-subcat-title {
+    position: absolute;
+    left: 30%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 65%;
+}
+
+.mobile-subcat-links-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 10px;
+}
+
+.mobile-subcat-links-container::-webkit-scrollbar {
+    display: none;
+}
+
+.mobile-subcat-shop-all {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 10px 5px 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+    /* color: var(--primary-color); */
+    /* border-bottom: 0.5px solid var(--primary-color); */
+}
+
+.mobile-subcat-single-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 10px;
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    border-bottom: 0.5px solid #eee;
+}
+
+.mobile-subcat-single-link:last-child {
+    border-bottom: none;
+}

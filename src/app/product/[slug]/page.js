@@ -27,13 +27,22 @@ function buildSchema(product, slug) {
         : `https://fmapi.myfurnituremecca.com${img.image_url}`
     ),
 
-    aggregateRating: product.average_rating
-      ? {
+    // aggregateRating: product.average_rating
+    //   ? {
+    //       "@type": "AggregateRating",
+    //       ratingValue: product.average_rating,
+    //       reviewCount: product.rating_count,
+    //     }
+    //   : undefined,
+
+    aggregateRating:
+      parseFloat(product.average_rating || 0) > 0
+        ? {
           "@type": "AggregateRating",
           ratingValue: product.average_rating,
           reviewCount: product.rating_count,
         }
-      : undefined,
+        : undefined,
 
     offers: {
       "@type": "Offer",
@@ -104,14 +113,14 @@ export async function generateMetadata(props) {
       type: "website",
       images: meta.og_image
         ? [
-            {
-              url: meta.og_image.startsWith("http")
-                ? meta.og_image
-                : `https://fmapi.myfurnituremecca.com/${meta.og_image.replace(/^\//, "")}`,
-              width: 1200,
-              height: 630,
-            },
-          ]
+          {
+            url: meta.og_image.startsWith("http")
+              ? meta.og_image
+              : `https://fmapi.myfurnituremecca.com/${meta.og_image.replace(/^\//, "")}`,
+            width: 1200,
+            height: 630,
+          },
+        ]
         : [],
     },
   };
