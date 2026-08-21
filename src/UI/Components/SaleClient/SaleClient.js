@@ -6,7 +6,6 @@ import '../Products/Products.css'
 import { url, useDisableBodyScroll } from "../../../utils/api";
 import { useActiveSalePage } from "../../../context/ActiveSalePageContext/ActiveSalePageContext";
 import Sliderr from "../../../Global-Components/Slider/Slider";
-// import { useNavigate } from "react-router-dom";
 import { useList } from "../../../context/wishListContext/wishListContext";
 import ProductCardShimmer from "../../Components/Loaders/productCardShimmer/productCardShimmer";
 import heart from "../../../Assets/icons/heart-vector.png"
@@ -31,9 +30,17 @@ import MobileViewProductFilters from "../MobileViewProductFilters/MobileViewProd
 
 export default function SaleClient({ slug, saleName }) {
     const router = useRouter();
-    const { salesData, products, totalProducts, noProducts, setNoProducts } = useActiveSalePage();
+    const {
+        salesData,
+        products,
+        totalProducts
+    } = useActiveSalePage();
+
+    const filterRequestRef = useRef(0);
+
+    const [hasNoProducts, setHasNoProducts] = useState(false);
+    const [isLoadingProducts, setIsLoadingProducts] = useState(true);
     const [sortedProducts, setSortedProducts] = useState([])
-    useEffect(() => { setSortedProducts(products) }, [products])
 
     const handleProductClick = (item) => {
         router.push(`/product/${item.slug}`)
@@ -277,93 +284,40 @@ export default function SaleClient({ slug, saleName }) {
     const searchParams = useSearchParams()
     const selectedCategoryRef = useRef(null);
 
-    // const handleFilterProduct = (item, index) => {
-    //     const newActiveIndex = activeCategory === index ? null : index;
-    //     const newCategoryId = selectedCategoryId === item.uid ? null : item.uid;
-
-    //     setActiveCategory(newActiveIndex);
-    //     setSelectedCategoryId(newCategoryId);
-
-    //     setSortedProducts([]);
-
-    //     setTimeout(() => {
-    //         // 👉 If category is removed (null) → show all products
-    //         if (newCategoryId === null && searchParams.toString === '') {
-    //             setSortedProducts(products);
-    //             return;
-    //         } else if(searchParams.toString() !== null) {
-    //             filterProducts(searchParams.toString())
-    //             return;
-    //         }
-
-    //         // 👉 Otherwise filter based on selected category
-    //         const filtered = products.filter((product) =>
-    //             product.categories.some(
-    //                 (category) => category.is_main === 1 && category.uid === newCategoryId
-    //             )
-    //         );
-
-    //         if(searchParams.toString() !== '') {
-    //             filterProducts(searchParams.toString())
-    //         } else {
-    //             setSortedProducts(filtered);
-    //         }
-
-    //     }, 1000);
-    // };
-
-
     const handleFilterProduct = (item, index) => {
-        const newActiveIndex = activeCategory === index ? null : index;
-        const newCategoryId = selectedCategoryId === item.uid ? null : item.uid;
+        const isDeselecting = selectedCategoryId === item.uid;
+        const newActiveIndex = isDeselecting ? null : index;
+        const newCategoryId = isDeselecting ? null : item.uid;
+        const newCategorySlug = isDeselecting ? null : item.slug; // <-- slug of the selected category
 
         setActiveCategory(newActiveIndex);
         setSelectedCategoryId(newCategoryId);
 
-        // 👉 NEW: update ref immediately so filterProducts always sees latest value
+        // keep ref in sync so filterProducts always sees the latest value
         selectedCategoryRef.current = newCategoryId;
 
-        const query = searchParams.toString(); // always call once
-        const isQueryEmpty = query === "";
+        const params = new URLSearchParams(window.location.search);
+
+        if (newCategorySlug) {
+            params.set("category", newCategorySlug);
+        } else {
+            params.delete("category");
+        }
+
+        const queryString = params
+            .toString()
+            .replace(/%2C/g, ",")
+            .replace(/\+/g, " ");
+
+        const pathname = window.location.pathname;
 
         setSortedProducts([]);
 
-        setTimeout(() => {
+        // ✅ Update the URL so category persists on refresh/share
+        router.replace(`${pathname}${queryString ? `?${queryString}` : ""}`, { shallow: true, scroll: false });
 
-            // 1️⃣ NO category selected + NO search params  → show all products
-            if (newCategoryId === null && isQueryEmpty) {
-                setSortedProducts(products);
-                return;
-            }
-
-            // 2️⃣ NO category selected + search params NOT empty → show filtered API data
-            if (newCategoryId === null && !isQueryEmpty) {
-                filterProducts(query);
-                return;
-            }
-
-            // 3️⃣ Category selected + NO search params → filter by category only
-            if (newCategoryId !== null && isQueryEmpty) {
-                const filtered = products.filter(product =>
-                    product.categories.some(
-                        category =>
-                            category.is_main === 1 &&
-                            category.uid === newCategoryId
-                    )
-                );
-                setSortedProducts(filtered);
-                return;
-            }
-
-            // 4️⃣ Category selected + search params NOT empty → filtered API data + category filter
-            if (newCategoryId !== null && !isQueryEmpty) {
-                filterProducts(query);
-                return;
-            }
-
-        }, 500);
+        filterProducts(queryString);
     };
-
 
     const [allFilters, setAllFilters] = useState([])
     const [priceRange, setPriceRange] = useState()
@@ -380,35 +334,56 @@ export default function SaleClient({ slug, saleName }) {
     const [isFeatured, setIsFeatured] = useState([])
     const [isStock, setIsStock] = useState([])
     const [clearFilters, setClearFilters] = useState(false)
-    
+
 
     const filterProducts = async (filter) => {
-        const api = `/api/v1/products/by-category?categorySlug=${childSlug}&${filter}&per_page=60`;
+        const requestId = ++filterRequestRef.current;
+
         try {
-            setSortedProducts([])
-            setClearFilters(true);
+            setIsLoadingProducts(true);
+            setHasNoProducts(false);
+            setSortedProducts([]);
+
+            const api =
+                `/api/v1/products/by-category?categorySlug=${childSlug}&${filter}&per_page=60`;
+
             const response = await axios.get(`${url}${api}`);
-            let data = response.data.products;
-            
+
+            // Ignore old API responses
+            if (requestId !== filterRequestRef.current) {
+                return;
+            }
+
+            let data = response.data.products || [];
+
             let finalData = data;
 
             if (selectedCategoryRef.current !== null) {
                 finalData = data.filter(product =>
-                    product.categories.some(category =>
+                    product.categories?.some(category =>
                         category.is_main === 1 &&
                         category.uid === selectedCategoryRef.current
                     )
                 );
             }
 
-            setNoProducts(finalData.length === 0)
-
             setSortedProducts(finalData);
+            setHasNoProducts(finalData.length === 0);
+
         } catch (error) {
+            if (requestId !== filterRequestRef.current) {
+                return;
+            }
+
             console.error("Internal Server Error", error);
-            setClearFilters(false);
+
+            setSortedProducts([]);
+            setHasNoProducts(false);
+
         } finally {
-            setClearFilters(false);
+            if (requestId === filterRequestRef.current) {
+                setIsLoadingProducts(false);
+            }
         }
     };
 
@@ -450,7 +425,7 @@ export default function SaleClient({ slug, saleName }) {
             .replace(/%2C/g, ",")
             .replace(/\+/g, " ");
 
-        router.push(`?${priceString}`);
+        router.push(`?${priceString}`, { scroll: false });
         filterProducts(priceString);
     };
 
@@ -481,7 +456,7 @@ export default function SaleClient({ slug, saleName }) {
 
 
         // ✅ Update the URL
-        router.replace(`${pathname}?${queryString}`, { shallow: true });
+        router.replace(`${pathname}?${queryString}`, { shallow: true, scroll: false });
 
         // ✅ Call API after updating query
         filterProducts(queryString);
@@ -499,10 +474,6 @@ export default function SaleClient({ slug, saleName }) {
             params.delete("rating");
         }
 
-        // params.set("page", 1);
-        // setActivePage(1);
-        // setActivePageIndex(1);
-
         const ratingString = params
             .toString()
             .replace(/%2C/g, ",")
@@ -511,7 +482,7 @@ export default function SaleClient({ slug, saleName }) {
         const pathname = window.location.pathname;
 
         // ✅ Update the URL
-        router.replace(`${pathname}?${ratingString}`, { shallow: true });
+        router.replace(`${pathname}?${ratingString}`, { shallow: true, scroll: false });
         filterProducts(ratingString);
     };
 
@@ -529,11 +500,6 @@ export default function SaleClient({ slug, saleName }) {
             params.delete("collectionId");
         }
 
-        // Always reset to page 1 on filter change
-        // params.set("page", "1");
-        // setActivePage(1);
-        // setActivePageIndex(1);
-
         const queryString = params
             .toString()
             .replace(/%2C/g, ",")
@@ -541,7 +507,7 @@ export default function SaleClient({ slug, saleName }) {
         const pathname = window.location.pathname;
 
         // ✅ Update the URL
-        router.replace(`${pathname}?${queryString}`, { shallow: true });
+        router.replace(`${pathname}?${queryString}`, { shallow: true, scroll: false });
 
         // ✅ Call API after updating query
         filterProducts(queryString);
@@ -561,11 +527,6 @@ export default function SaleClient({ slug, saleName }) {
             params.delete("brand");
         }
 
-        // Always reset to page 1 on filter change
-        // params.set("page", "1");
-        // setActivePage(1);
-        // setActivePageIndex(1);
-
         const queryString = params
             .toString()
             .replace(/%2C/g, ",")
@@ -573,7 +534,7 @@ export default function SaleClient({ slug, saleName }) {
         const pathname = window.location.pathname;
 
         // ✅ Update the URL
-        router.replace(`${pathname}?${queryString}`, { shallow: true });
+        router.replace(`${pathname}?${queryString}`, { shallow: true, scroll: false });
 
         // ✅ Call API after updating query
         filterProducts(queryString);
@@ -601,11 +562,6 @@ export default function SaleClient({ slug, saleName }) {
         // 🔄 Update state with all selected feature codes
         setIsFeatured(updatedFeatureCodes);
 
-        // Always reset to page 1 on filter change
-        // params.set("page", "1");
-        // setActivePage(1);
-        // setActivePageIndex(1);
-
         // Clean query string
         const queryString = params
             .toString()
@@ -614,7 +570,7 @@ export default function SaleClient({ slug, saleName }) {
         const pathname = window.location.pathname;
 
         // ✅ Update the URL
-        router.replace(`${pathname}?${queryString}`, { shallow: true });
+        router.replace(`${pathname}?${queryString}`, { shallow: true, scroll: false });
 
         // ✅ Call API with updated query
         filterProducts(queryString);
@@ -632,11 +588,6 @@ export default function SaleClient({ slug, saleName }) {
             params.delete("stockStatus");
         }
 
-        // Always reset to page 1 on filter change
-        // params.set("page", "1");
-        // setActivePage(1);
-        // setActivePageIndex(1);
-
         const queryString = params
             .toString()
             .replace(/%2C/g, ",")
@@ -644,7 +595,7 @@ export default function SaleClient({ slug, saleName }) {
         const pathname = window.location.pathname;
 
         // ✅ Update the URL
-        router.replace(`${pathname}?${queryString}`, { shallow: true });
+        router.replace(`${pathname}?${queryString}`, { shallow: true, scroll: false });
 
         // ✅ Call API after updating query
         filterProducts(queryString);
@@ -669,14 +620,162 @@ export default function SaleClient({ slug, saleName }) {
         setBrandValue([]);
         setIsFeatured([]);
         setIsStock([]);
-        setSortedProducts(products)
+
+        setSelectedCategoryId(null);
+        setActiveCategory(null);
+        selectedCategoryRef.current = null;
+
+        setHasNoProducts(false);
+        setIsLoadingProducts(true);
 
         const pathname = window.location.pathname;
-        router.replace(pathname, { shallow: true });
 
-        fetchFilters();
+        router.replace(pathname, {
+            shallow: true,
+            scroll: false
+        });
+
         filterProducts("");
     };
+
+    // ─────────────────────────────────────────────────────────────
+    // ✅ FIX #1: only auto-sync sortedProducts from the raw `products`
+    // list when there is NO active filter/category in the URL.
+    //
+    // Additionally, only mark hasNoProducts / isLoadingProducts=false
+    // once we actually have a settled `products` result. An empty
+    // `products` array right after mount (before the context's own
+    // fetch resolves) previously flipped hasNoProducts to true and
+    // isLoadingProducts to false immediately — flashing "No Products
+    // Found" / a 0 count before real data arrived. Now we only treat
+    // it as "genuinely empty" once totalProducts also confirms 0;
+    // otherwise we leave the loading state alone until real data lands.
+    // ─────────────────────────────────────────────────────────────
+    useEffect(() => {
+        if (!searchParams.toString()) {
+            if (products && products.length > 0) {
+                setSortedProducts(products);
+                setHasNoProducts(false);
+                setIsLoadingProducts(false);
+            } else if (products && products.length === 0 && totalProducts === 0) {
+                // Genuinely confirmed empty — not just a transient initial state
+                setSortedProducts([]);
+                setHasNoProducts(true);
+                setIsLoadingProducts(false);
+            }
+            // else: context data hasn't settled yet — keep showing the loading state
+        }
+    }, [products, searchParams, totalProducts]);
+
+    // ─────────────────────────────────────────────────────────────
+    // ✅ FIX #2: Hydrate filters/category from the URL on first load.
+    // This must WAIT until saleCategories (and allFilters, where relevant)
+    // have actually loaded before it's allowed to lock itself via
+    // hasHydratedFromUrl.current = true. Otherwise, on a fresh URL load
+    // like ?category=kids-room, this effect fires while
+    // saleCategories is still [], silently skips setting
+    // activeCategory/selectedCategoryId/selectedCategoryRef, but still
+    // marks itself "done" — so those never get set correctly, even
+    // though the product fetch itself succeeds.
+    // ─────────────────────────────────────────────────────────────
+    const hasHydratedFromUrl = useRef(false);
+
+    useEffect(() => {
+        if (hasHydratedFromUrl.current) return;
+
+        const query = searchParams.toString();
+        if (!query) {
+            setHasNoProducts(false);
+            setIsLoadingProducts(true);
+            hasHydratedFromUrl.current = true;
+            return;
+        }
+
+        const categoriesReady = saleCategories.length > 0;
+        const filtersReady = allFilters && Object.keys(allFilters).length > 0;
+
+        const categorySlugParam = searchParams.get("category");
+        const colorParam = searchParams.get("color");
+
+        // Only block on categoriesReady if the URL actually needs it,
+        // and only block on filtersReady if color/highlight params are present —
+        // otherwise we could wait forever on data we don't even need for this URL.
+        const needsCategories = categorySlugParam && !categoriesReady;
+        const needsFilters =
+            (colorParam ||
+                Array.from(searchParams.keys()).some(
+                    (k) => allFilters?.highlights?.some((h) => h.code === k)
+                )) &&
+            !filtersReady;
+
+        if (needsCategories || needsFilters) {
+            // Wait — effect will re-run once saleCategories/allFilters update
+            return;
+        }
+
+        // --- category ---
+        if (categorySlugParam && saleCategories.length > 0) {
+            const matchIndex = saleCategories.findIndex(cat => cat.slug === categorySlugParam);
+            if (matchIndex !== -1) {
+                setActiveCategory(matchIndex);
+                setSelectedCategoryId(saleCategories[matchIndex].uid);
+                selectedCategoryRef.current = saleCategories[matchIndex].uid;
+            }
+        }
+
+        // --- price ---
+        const priceParam = searchParams.get("price");
+        if (priceParam) {
+            const [min, max] = priceParam.split(",").map(Number);
+            if (!isNaN(min) && !isNaN(max)) setPriceRange([min, max]);
+        }
+
+        // --- color ---
+        if (colorParam && allFilters?.colors?.[0]?.options) {
+            const names = colorParam.split(",");
+            const matchedValues = allFilters.colors[0].options
+                .filter(opt => names.includes(opt.name))
+                .map(opt => opt.value);
+            if (matchedValues.length) setColorValue(matchedValues);
+        }
+
+        // --- rating ---
+        const ratingParam = searchParams.get("rating");
+        if (ratingParam) {
+            setRatingValue(ratingParam.split(",").map(Number));
+        }
+
+        // --- collection ---
+        const collectionParam = searchParams.get("collectionId");
+        if (collectionParam) {
+            setCollectionValue([collectionParam]);
+        }
+
+        // --- brand ---
+        const brandParam = searchParams.get("brand");
+        if (brandParam) {
+            setBrandValue([brandParam]);
+        }
+
+        // --- featured / highlight flags ---
+        if (allFilters?.highlights?.length) {
+            const activeCodes = allFilters.highlights
+                .filter(h => searchParams.get(h.code) === "1")
+                .map(h => h.code);
+            if (activeCodes.length) setIsFeatured(activeCodes);
+        }
+
+        // --- stock ---
+        const stockParam = searchParams.get("stockStatus");
+        if (stockParam !== null) {
+            setIsStock([stockParam === "1" ? "inStock" : "outOfStock"]);
+        }
+
+        // --- finally, fetch products matching the full query ---
+        filterProducts(query);
+        hasHydratedFromUrl.current = true; // ✅ only lock once fully hydrated with real data
+
+    }, [allFilters, saleCategories, searchParams]);
 
     useDisableBodyScroll(cartSection, quickViewClicked)
 
@@ -684,12 +783,12 @@ export default function SaleClient({ slug, saleName }) {
         <>
             <div ref={salePageRef} className="activeCategoryPage">
                 {salesData && <Sliderr images={salesData?.data?.mainSlider} />}
-                 
+
                 <div className="section_1_ASP">
-                   
+
                     <div className="offer-head-and-grid-select">
                         {/* <h3 className='category-heading'>{salesData ? salesData?.data?.categoryData?.name : ""}</h3> */}
-                         {saleName && <h1 className="sale_page_heading">{saleName}</h1>}
+                        {saleName && <h1 className="sale_page_heading">{saleName}</h1>}
                         <div className="offer-grid-main-container">
                             <div className={`offer-single-col-outer-container ${activeGrid === 'single-col' ? 'active-offer-single-col' : ''}`} onClick={() => handleActiveGrid('single-col')}>
                                 <div className={`offer-single-col-inner-container ${activeGrid === 'single-col' ? 'active-single-inner-col' : ''}`}></div>
@@ -737,391 +836,907 @@ export default function SaleClient({ slug, saleName }) {
                             )}
                         </div>
                     )}
-                    {noProducts ? (
-                        <div className="product-not-found-container">
-                            <Image
-                                src={"/Assets/icon/product-empty.png"}
-                                width={120}
-                                height={120}
-                                alt="no found"
+                   <div className="sale-page-filter-and-products-main-container">
+
+    {/* =========================================================
+        FILTER SECTION
+        This section ALWAYS remains visible while products load.
+    ========================================================= */}
+
+    <div
+        className={`sale-page-filter-contain-container ${
+            showFilters ? 'show-filter-section' : ''
+        }`}
+    >
+
+        <div className="filter-section-hide-button-container">
+            <button onClick={() => setShowFilters(false)}>
+                <BsArrowLeft size={15} color="#000" />
+                Hide Filters
+            </button>
+        </div>
+
+
+        <div className="filter-section-heading-and-clear-filter-button">
+            <h3>Filters</h3>
+
+            <button onClick={handleClearFilters}>
+                Clear Filters
+            </button>
+        </div>
+
+
+        <div className="all-filters-section">
+
+            {/* =================================================
+                PRICE FILTER
+            ================================================= */}
+
+            {allFilters?.priceRange?.minPrice !== undefined &&
+                allFilters?.priceRange?.maxPrice !== undefined &&
+                priceRange && (
+
+                    <DoubleRangeSlider
+                        min={allFilters?.priceRange?.minPrice}
+                        max={allFilters?.priceRange?.maxPrice}
+                        initialRange={priceRange}
+                        setInitialRange={setPriceRange}
+                        onRangeChange={handleRangeChange}
+                        minLabel="Min Price:"
+                        maxLabel="Max Price:"
+                    />
+                )
+            }
+
+
+            {/* =================================================
+                COLOR FILTER
+            ================================================= */}
+
+            <div className="single-filter">
+
+                <span
+                    onClick={() =>
+                        handleColorFilterOpenClose("color-filter")
+                    }
+                >
+
+                    <h3 className="filters-heading">
+                        {allFilters?.colors?.[0]?.name}
+                    </h3>
+
+                    <i className="add-button-round">
+
+                        {isOpen === "color-filter" ? (
+
+                            <FaMinus
+                                size={14}
+                                color="var(--secondary-color)"
                             />
-                            <h3>No Products Found</h3>
-                            <p>Your search did not match any product.</p>
-                            <button className="no-product-clear-filter-button" onClick={handleClearFilters}>Clear Filters</button>
 
-                        </div>
-                    ) : (
-                        <div className="sale-page-filter-and-products-main-container">
+                        ) : (
 
-                            <div className={`sale-page-filter-contain-container ${showFilters ? 'show-filter-section' : ''}`}>
+                            <FaPlus
+                                size={14}
+                                color="var(--secondary-color)"
+                            />
 
-                                <div className="filter-section-hide-button-container">
-                                    <button onClick={() => setShowFilters(false)}>
-                                        <BsArrowLeft size={15} color="#000" /> Hide Filters
-                                    </button>
-                                </div>
+                        )}
 
-                                <div className="filter-section-heading-and-clear-filter-button">
-                                    <h3>Filters</h3>
-                                    <button onClick={handleClearFilters}>
-                                        Clear Filters
-                                    </button>
-                                </div>
+                    </i>
 
-                                <div className="all-filters-section">
-                                    {/* Price Filter */}
+                </span>
 
-                                    {allFilters?.priceRange?.minPrice !== undefined &&
-                                        allFilters?.priceRange?.maxPrice !== undefined &&
-                                        priceRange && (
 
-                                            <DoubleRangeSlider
-                                                min={allFilters?.priceRange?.minPrice}
-                                                max={allFilters?.priceRange?.maxPrice}
-                                                initialRange={priceRange}
-                                                setInitialRange={setPriceRange}
-                                                onRangeChange={handleRangeChange}
-                                                minLabel="Min Price:"
-                                                maxLabel="Max Price:"
-                                            />
-                                        )}
+                <div
+                    className={`single-filter-items-container ${
+                        isOpen === "color-filter"
+                            ? "show-single-filter-icons"
+                            : ""
+                    }`}
+                >
 
-                                    {/* Color Filter */}
-                                    <div className="single-filter">
-                                        <span
-                                            onClick={() => handleColorFilterOpenClose("color-filter")}
-                                        >
-                                            <h3 className="filters-heading">
-                                                {allFilters?.colors?.[0]?.name}
-                                            </h3>
-                                            <i className="add-button-round">
-                                                {isOpen === "color-filter" ? (
-                                                    <FaMinus ize={14} color="var(--secondary-color)" />
-                                                ) : (
-                                                    <FaPlus ize={14} color="var(--secondary-color)" />
-                                                )}
-                                            </i>
-                                        </span>
-                                        <div
-                                            className={`single-filter-items-container ${isOpen === "color-filter"
-                                                ? "show-single-filter-icons"
-                                                : ""
-                                                }`}
-                                        >
-                                            {allFilters?.colors?.[0]?.options.map((item, index) => (
-                                                <span key={index} className={`color-span`}>
-                                                    <input
-                                                        type="checkbox"
-                                                        name="colorFilter"
-                                                        value={item.name}
-                                                        checked={colorValue?.includes(item.value)}
-                                                        onChange={(e) =>
-                                                            handleColorCheck(item.value, item.name)
-                                                        }
-                                                        style={{
-                                                            backgroundColor: item.value,
-                                                            border: `2px solid ${item.value}`,
-                                                        }}
-                                                        className="color-custom-checkbox"
-                                                        id={`color-filter-${index}`}
-                                                    />
-                                                    <label
-                                                        className="filter-inner-text"
-                                                        htmlFor={`filter-${index}`}
-                                                    >
-                                                        {item.name}
-                                                    </label>
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
+                    {allFilters?.colors?.[0]?.options?.map(
+                        (item, index) => (
 
-                                    {/* Featured Filter */}
-                                    <div className="single-filter">
-                                        <span
-                                            onClick={() => handleColorFilterOpenClose("highlight")}
-                                        >
-                                            <h3 className="filters-heading">Trending</h3>
-                                            <i className="add-button-round">
-                                                {highlightOpen === "highlight" ? (
-                                                    <FaMinus ize={14} color="var(--secondary-color)" />
-                                                ) : (
-                                                    <FaPlus ize={14} color="var(--secondary-color)" />
-                                                )}
-                                            </i>
-                                        </span>
-                                        <div
-                                            className={`single-filter-items-container ${highlightOpen === "highlight"
-                                                ? "show-single-filter-icons"
-                                                : ""
-                                                }`}
-                                        >
-                                            {allFilters?.highlights?.map((item, index) => (
-                                                <span key={index} className={`color-span`}>
-                                                    <input
-                                                        type="checkbox"
-                                                        placeholder="checkbox"
-                                                        value={item.code}
-                                                        checked={isFeatured?.includes(item.code)}
-                                                        onChange={(e) => handleFeatured(item)}
-                                                        className="custom-checkbox"
-                                                        id={`feature-${index}`}
-                                                    />
-                                                    <label
-                                                        className="filter-inner-text"
-                                                        htmlFor={`feature-${index}`}
-                                                    >
-                                                        {item.name}
-                                                    </label>
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
+                            <span
+                                key={index}
+                                className="color-span"
+                            >
 
-                                    {/* Collections Filter */}
-                                    <div className="single-filter">
-                                        <span
-                                            onClick={() => handleColorFilterOpenClose("collections")}
-                                        >
-                                            <h3 className="filters-heading">Collection</h3>
-                                            <i className="add-button-round">
-                                                {collectionOpen === "collections" ? (
-                                                    <FaMinus ize={14} color="var(--secondary-color)" />
-                                                ) : (
-                                                    <FaPlus ize={14} color="var(--secondary-color)" />
-                                                )}
-                                            </i>
-                                        </span>
-                                        <div
-                                            className={`single-filter-items-container ${collectionOpen === "collections"
-                                                ? "show-single-filter-icons"
-                                                : ""
-                                                }`}
-                                        >
-                                            {allFilters?.collections?.map((item, index) => (
-                                                <span key={index} className={`color-span`}>
-                                                    <input
-                                                        type="checkbox"
-                                                        placeholder="checkbox"
-                                                        value={item.uid}
-                                                        checked={collectionValue?.includes(item.uid)}
-                                                        onChange={(e) => handleCollectionSelect(item)}
-                                                        className="custom-checkbox"
-                                                        id={`collection-${index}`}
-                                                    />
-                                                    <label
-                                                        className="filter-inner-text"
-                                                        htmlFor={`collection-${index}`}
-                                                    >
-                                                        {item.name}
-                                                    </label>
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Brand Filter */}
-                                    <div className="single-filter">
-                                        <span onClick={() => handleColorFilterOpenClose("brand")}>
-                                            <h3 className="filters-heading">Brand</h3>
-                                            <i className="add-button-round">
-                                                {brandOpen === "brand" ? (
-                                                    <FaMinus ize={14} color="var(--secondary-color)" />
-                                                ) : (
-                                                    <FaPlus ize={14} color="var(--secondary-color)" />
-                                                )}
-                                            </i>
-                                        </span>
-                                        <div
-                                            className={`single-filter-items-container ${brandOpen === "brand" ? "show-single-filter-icons" : ""
-                                                }`}
-                                        >
-                                            {allFilters?.brands?.map((item, index) => (
-                                                <span key={index} className={`color-span`}>
-                                                    <input
-                                                        type="checkbox"
-                                                        placeholder="checkbox"
-                                                        value={item.name}
-                                                        checked={brandValue?.includes(item.name)}
-                                                        onChange={(e) => handleBrandSelect(item)}
-                                                        className="custom-checkbox"
-                                                        id={`brand-${index}`}
-                                                    />
-                                                    <label
-                                                        className="filter-inner-text"
-                                                        htmlFor={`brand-${index}`}
-                                                    >
-                                                        {item.name}
-                                                    </label>
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    {/* Rating Filter */}
-                                    <div className="single-filter">
-                                        <span
-                                            onClick={() =>
-                                                handleColorFilterOpenClose("rating-filter")
-                                            }
-                                        >
-                                            <h3 className="filters-heading">Ratings</h3>
-                                            <i className="add-button-round">
-                                                {isOpen === "rating-filter" ? (
-                                                    <FaMinus ize={15} color="var(--secondary-color)" />
-                                                ) : (
-                                                    <FaPlus ize={15} color="var(--secondary-color)" />
-                                                )}
-                                            </i>
-                                        </span>
-                                        <div
-                                            className={`single-filter-items-container ${ratingOpen === "rating-filter"
-                                                ? "show-single-filter-icons"
-                                                : ""
-                                                }`}
-                                        >
-                                            {[...Array(5).keys()].reverse().map((item, index) => {
-                                                const rating = item + 1;
-                                                return (
-                                                    <span key={index} className={`color-span`}>
-                                                        <input
-                                                            type="checkbox"
-                                                            placeholder="checkbox"
-                                                            value={rating}
-                                                            checked={ratingValue.includes(rating)}
-                                                            onChange={(e) =>
-                                                                handleRatingFilter(Number(e.target.value))
-                                                            }
-                                                            className="custom-checkbox"
-                                                            id={`rating-${rating}`}
-                                                        />
-                                                        <label htmlFor={`rating-${5 - item}`}>
-                                                            <RatingReview
-                                                                rating={item + 1}
-                                                                disabled={true}
-                                                                size={"20px"}
-                                                            />
-                                                        </label>
-                                                    </span>
-                                                );
-                                            })}
-                                        </div>
-                                    </div>
-
-                                    {/* Stock Filter */}
-                                    <div className="single-filter">
-                                        <span onClick={() => handleColorFilterOpenClose("stock")}>
-                                            <h3 className="filters-heading">Stock Status</h3>
-                                            <i className="add-button-round">
-                                                {stockOpen === "stock" ? (
-                                                    <FaMinus ize={14} color="var(--secondary-color)" />
-                                                ) : (
-                                                    <FaPlus ize={14} color="var(--secondary-color)" />
-                                                )}
-                                            </i>
-                                        </span>
-                                        <div
-                                            className={`single-filter-items-container ${stockOpen === "stock" ? "show-single-filter-icons" : ""
-                                                }`}
-                                        >
-                                            {allFilters?.stock?.map((item, index) => (
-                                                <span key={index} className={`color-span`}>
-                                                    <input
-                                                        type="checkbox"
-                                                        placeholder="checkbox"
-                                                        value={item.code}
-                                                        checked={isStock?.includes(item.code)}
-                                                        onChange={(e) => handleStock(item)}
-                                                        className="custom-checkbox"
-                                                        id={`stock-${index}`}
-                                                    />
-                                                    <label
-                                                        className="filter-inner-text"
-                                                        htmlFor={`stock-${index}`}
-                                                    >
-                                                        {item.name}
-                                                    </label>
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div className={`sale-page-products-contain-container ${showFilters ? 'decrease-products-section' : ''}`}>
-
-                                <div className="sale-products-len-and-show-filter-button-section">
-                                    {!showFilters && (
-                                        <button className="sale-product-show-filter-button" onClick={() => setShowFilters(true)}>
-                                            <CiCircleList size={15} color="#000" /> Show Filters
-                                        </button>
+                                <input
+                                    type="checkbox"
+                                    name="colorFilter"
+                                    value={item.name}
+                                    checked={colorValue?.includes(
+                                        item.value
                                     )}
-                                    <button className="mobile-sale-product-show-filter-button" onClick={() => setShowMobileFilters(true)}>
-                                        <CiCircleList size={15} color="#000" /> Show Filters
-                                    </button>
-                                    <h3 className="sale-products-total-len">{sortedProducts?.length > 0 ? sortedProducts?.length : ''} {sortedProducts?.length > 0 ? 'Products Found' : 'No Products Found'} </h3>
-                                </div>
+                                    onChange={() =>
+                                        handleColorCheck(
+                                            item.value,
+                                            item.name
+                                        )
+                                    }
+                                    style={{
+                                        backgroundColor: item.value,
+                                        border: `2px solid ${item.value}`,
+                                    }}
+                                    className="color-custom-checkbox"
+                                    id={`color-filter-${index}`}
+                                />
 
-                                <div className={`active-sale-cards ${showFilters ? 'grid-col-3' : ''}  increase-columns ${activeGrid === 'single-col' ? 'offer-cards-single-grid' : 'offer-cards-dual-col'}`}>
+                                <label
+                                    className="filter-inner-text"
+                                    htmlFor={`color-filter-${index}`}
+                                >
+                                    {item.name}
+                                </label>
 
-                                    {sortedProducts && sortedProducts.length > 0 ? (
-                                        sortedProducts.map((item, index) => {
-                                            return <ProductCardTwo
-                                                key={index}
-                                                slug={item.slug}
-                                                singleProductData={item}
-                                                maxWidthAccordingToComp={"100%"}
-                                                justWidth={'100%'}
-                                                colTwo={activeGrid === 'single-col' ? false : true}
-                                                tagIcon={item.productTag ? item.productTag : heart}
-                                                tagClass={item.productTag ? 'tag-img' : 'heart-icon'}
-                                                mainImage={`${item.image.image_url}`}
-                                                productCardContainerClass="product-card"
-                                                ProductSku={item.sku}
-                                                tags={item.sale_tag}
-                                                ProductTitle={item.name}
-                                                reviewCount={item.reviewCount}
-                                                lowPriceAddvertisement={item.lowPriceAddvertisement}
-                                                priceTag={item.regular_price}
-                                                sale_price={item.sale_price}
-                                                financingAdd={item.financingAdd}
-                                                learnMore={item.learnMore}
-                                                mainIndex={index}
-                                                deliveryTime={item.deliveryTime}
-                                                stock={item.manage_stock}
-                                                attributes={item.attributes}
-                                                handleCardClick={() => handleProductClick(item)}
-                                                handleQuickView={() => handleQuickViewOpen(item)}
-                                                handleWishListclick={() => handleWishList(item)}
-                                                showOnPage={true}
-                                                createdDate={item.createdAt}
-                                                showExtraLines={true}
-                                                titleHeight={true}
-                                                allow_back_order={item?.allow_back_order}
-                                                handleInfoModal={() => handleOpennfoModal(item.sale_price, item.regular_price)}
-                                                productTag={item.product_tag}
-                                            />
-                                        })
-                                    ) : (
-                                        Array.from({ length: 12 }).map((_, index) => (
-                                            <ProductCardShimmer key={index} width={'100%'} />
-                                        ))
-                                    )}
+                            </span>
 
-                                </div>
-
-                                {totalProducts > 16 && (
-                                    <div className="active-sale-view-more-button-contianer">
-                                        <button className="active-sale-view-more-button" onClick={handleNavigateToOutlate}>View More Products</button>
-                                    </div>
-                                )}
-
-                            </div>
-
-                        </div>
+                        )
                     )}
+
+                </div>
+
+            </div>
+
+
+            {/* =================================================
+                FEATURED / TRENDING FILTER
+            ================================================= */}
+
+            <div className="single-filter">
+
+                <span
+                    onClick={() =>
+                        handleColorFilterOpenClose("highlight")
+                    }
+                >
+
+                    <h3 className="filters-heading">
+                        Trending
+                    </h3>
+
+                    <i className="add-button-round">
+
+                        {highlightOpen === "highlight" ? (
+
+                            <FaMinus
+                                size={14}
+                                color="var(--secondary-color)"
+                            />
+
+                        ) : (
+
+                            <FaPlus
+                                size={14}
+                                color="var(--secondary-color)"
+                            />
+
+                        )}
+
+                    </i>
+
+                </span>
+
+
+                <div
+                    className={`single-filter-items-container ${
+                        highlightOpen === "highlight"
+                            ? "show-single-filter-icons"
+                            : ""
+                    }`}
+                >
+
+                    {allFilters?.highlights?.map(
+                        (item, index) => (
+
+                            <span
+                                key={index}
+                                className="color-span"
+                            >
+
+                                <input
+                                    type="checkbox"
+                                    placeholder="checkbox"
+                                    value={item.code}
+                                    checked={isFeatured?.includes(
+                                        item.code
+                                    )}
+                                    onChange={() =>
+                                        handleFeatured(item)
+                                    }
+                                    className="custom-checkbox"
+                                    id={`feature-${index}`}
+                                />
+
+                                <label
+                                    className="filter-inner-text"
+                                    htmlFor={`feature-${index}`}
+                                >
+                                    {item.name}
+                                </label>
+
+                            </span>
+
+                        )
+                    )}
+
+                </div>
+
+            </div>
+
+
+            {/* =================================================
+                COLLECTION FILTER
+            ================================================= */}
+
+            <div className="single-filter">
+
+                <span
+                    onClick={() =>
+                        handleColorFilterOpenClose("collections")
+                    }
+                >
+
+                    <h3 className="filters-heading">
+                        Collection
+                    </h3>
+
+                    <i className="add-button-round">
+
+                        {collectionOpen === "collections" ? (
+
+                            <FaMinus
+                                size={14}
+                                color="var(--secondary-color)"
+                            />
+
+                        ) : (
+
+                            <FaPlus
+                                size={14}
+                                color="var(--secondary-color)"
+                            />
+
+                        )}
+
+                    </i>
+
+                </span>
+
+
+                <div
+                    className={`single-filter-items-container ${
+                        collectionOpen === "collections"
+                            ? "show-single-filter-icons"
+                            : ""
+                    }`}
+                >
+
+                    {allFilters?.collections?.map(
+                        (item, index) => (
+
+                            <span
+                                key={index}
+                                className="color-span"
+                            >
+
+                                <input
+                                    type="checkbox"
+                                    placeholder="checkbox"
+                                    value={item.uid}
+                                    checked={collectionValue?.includes(
+                                        item.uid
+                                    )}
+                                    onChange={() =>
+                                        handleCollectionSelect(item)
+                                    }
+                                    className="custom-checkbox"
+                                    id={`collection-${index}`}
+                                />
+
+                                <label
+                                    className="filter-inner-text"
+                                    htmlFor={`collection-${index}`}
+                                >
+                                    {item.name}
+                                </label>
+
+                            </span>
+
+                        )
+                    )}
+
+                </div>
+
+            </div>
+
+
+            {/* =================================================
+                BRAND FILTER
+            ================================================= */}
+
+            <div className="single-filter">
+
+                <span
+                    onClick={() =>
+                        handleColorFilterOpenClose("brand")
+                    }
+                >
+
+                    <h3 className="filters-heading">
+                        Brand
+                    </h3>
+
+                    <i className="add-button-round">
+
+                        {brandOpen === "brand" ? (
+
+                            <FaMinus
+                                size={14}
+                                color="var(--secondary-color)"
+                            />
+
+                        ) : (
+
+                            <FaPlus
+                                size={14}
+                                color="var(--secondary-color)"
+                            />
+
+                        )}
+
+                    </i>
+
+                </span>
+
+
+                <div
+                    className={`single-filter-items-container ${
+                        brandOpen === "brand"
+                            ? "show-single-filter-icons"
+                            : ""
+                    }`}
+                >
+
+                    {allFilters?.brands?.map(
+                        (item, index) => (
+
+                            <span
+                                key={index}
+                                className="color-span"
+                            >
+
+                                <input
+                                    type="checkbox"
+                                    placeholder="checkbox"
+                                    value={item.name}
+                                    checked={brandValue?.includes(
+                                        item.name
+                                    )}
+                                    onChange={() =>
+                                        handleBrandSelect(item)
+                                    }
+                                    className="custom-checkbox"
+                                    id={`brand-${index}`}
+                                />
+
+                                <label
+                                    className="filter-inner-text"
+                                    htmlFor={`brand-${index}`}
+                                >
+                                    {item.name}
+                                </label>
+
+                            </span>
+
+                        )
+                    )}
+
+                </div>
+
+            </div>
+
+
+            {/* =================================================
+                RATING FILTER
+            ================================================= */}
+
+            <div className="single-filter">
+
+                <span
+                    onClick={() =>
+                        handleColorFilterOpenClose(
+                            "rating-filter"
+                        )
+                    }
+                >
+
+                    <h3 className="filters-heading">
+                        Ratings
+                    </h3>
+
+                    <i className="add-button-round">
+
+                        {isOpen === "rating-filter" ? (
+
+                            <FaMinus
+                                size={15}
+                                color="var(--secondary-color)"
+                            />
+
+                        ) : (
+
+                            <FaPlus
+                                size={15}
+                                color="var(--secondary-color)"
+                            />
+
+                        )}
+
+                    </i>
+
+                </span>
+
+
+                <div
+                    className={`single-filter-items-container ${
+                        ratingOpen === "rating-filter"
+                            ? "show-single-filter-icons"
+                            : ""
+                    }`}
+                >
+
+                    {[...Array(5).keys()]
+                        .reverse()
+                        .map((item, index) => {
+
+                            const rating = item + 1;
+
+                            return (
+
+                                <span
+                                    key={index}
+                                    className="color-span"
+                                >
+
+                                    <input
+                                        type="checkbox"
+                                        placeholder="checkbox"
+                                        value={rating}
+                                        checked={ratingValue.includes(
+                                            rating
+                                        )}
+                                        onChange={(e) =>
+                                            handleRatingFilter(
+                                                Number(
+                                                    e.target.value
+                                                )
+                                            )
+                                        }
+                                        className="custom-checkbox"
+                                        id={`rating-${rating}`}
+                                    />
+
+                                    <label
+                                        htmlFor={`rating-${5 - item}`}
+                                    >
+
+                                        <RatingReview
+                                            rating={item + 1}
+                                            disabled={true}
+                                            size={"20px"}
+                                        />
+
+                                    </label>
+
+                                </span>
+
+                            );
+
+                        })}
+
+                </div>
+
+            </div>
+
+
+            {/* =================================================
+                STOCK FILTER
+            ================================================= */}
+
+            <div className="single-filter">
+
+                <span
+                    onClick={() =>
+                        handleColorFilterOpenClose("stock")
+                    }
+                >
+
+                    <h3 className="filters-heading">
+                        Stock Status
+                    </h3>
+
+                    <i className="add-button-round">
+
+                        {stockOpen === "stock" ? (
+
+                            <FaMinus
+                                size={14}
+                                color="var(--secondary-color)"
+                            />
+
+                        ) : (
+
+                            <FaPlus
+                                size={14}
+                                color="var(--secondary-color)"
+                            />
+
+                        )}
+
+                    </i>
+
+                </span>
+
+
+                <div
+                    className={`single-filter-items-container ${
+                        stockOpen === "stock"
+                            ? "show-single-filter-icons"
+                            : ""
+                    }`}
+                >
+
+                    {allFilters?.stock?.map(
+                        (item, index) => (
+
+                            <span
+                                key={index}
+                                className="color-span"
+                            >
+
+                                <input
+                                    type="checkbox"
+                                    placeholder="checkbox"
+                                    value={item.code}
+                                    checked={isStock?.includes(
+                                        item.code
+                                    )}
+                                    onChange={() =>
+                                        handleStock(item)
+                                    }
+                                    className="custom-checkbox"
+                                    id={`stock-${index}`}
+                                />
+
+                                <label
+                                    className="filter-inner-text"
+                                    htmlFor={`stock-${index}`}
+                                >
+                                    {item.name}
+                                </label>
+
+                            </span>
+
+                        )
+                    )}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    {/* =========================================================
+        PRODUCTS SECTION
+        Only this area changes during loading/filtering.
+    ========================================================= */}
+
+    <div
+        className={`sale-page-products-contain-container ${
+            showFilters
+                ? 'decrease-products-section'
+                : ''
+        }`}
+    >
+
+        {/* PRODUCT HEADER */}
+
+        <div className="sale-products-len-and-show-filter-button-section">
+
+            {!showFilters && (
+
+                <button
+                    className="sale-product-show-filter-button"
+                    onClick={() => setShowFilters(true)}
+                >
+
+                    <CiCircleList
+                        size={15}
+                        color="#000"
+                    />
+
+                    Show Filters
+
+                </button>
+
+            )}
+
+
+           <div className="mobile-view-left-side-clear-filter">
+             <button
+                className="mobile-sale-product-show-filter-button"
+                onClick={() =>
+                    setShowMobileFilters(true)
+                }
+            >
+
+                <CiCircleList
+                    size={15}
+                    color="#000"
+                />
+
+                Show Filters
+
+            </button>
+            <h3 className="sale-products-total-len">
+
+                {isLoadingProducts ? (
+
+                    "Loading Products..."
+
+                ) : hasNoProducts ? (
+
+                    "No Products Found"
+
+                ) : (
+
+                    (() => {
+                        const isFilterApplied = searchParams.toString() !== "";
+                        const count = isFilterApplied
+                            ? (sortedProducts?.length || 0)
+                            : (totalProducts || 0);
+
+                        return `${count} ${count > 1 ? "Products Found" : "Product Found"}`;
+                    })()
+
+                )}
+
+            </h3>
+           
+
+           </div>
+          {searchParams.toString() !== "" &&  <p className="mob-clear-filter" onClick={handleClearFilters}>
+                Clear Filters
+            </p>}
+
+
+            {/* PRODUCT COUNT */}
+
+            
+
+        </div>
+                      
+
+
+
+        {/* =====================================================
+            PRODUCT GRID
+
+            IMPORTANT:
+            Filters remain visible.
+            Only this section switches between:
+            - Loading
+            - No Products
+            - Products
+        ===================================================== */}
+
+        <div
+            className={`active-sale-cards ${
+                showFilters
+                    ? 'grid-col-3'
+                    : ''
+            } increase-columns ${
+                activeGrid === 'single-col'
+                    ? 'offer-cards-single-grid'
+                    : 'offer-cards-dual-col'
+            }`}
+        >
+
+            {/* ============================
+                LOADING
+            ============================ */}
+
+            {isLoadingProducts ? (
+
+                Array.from({ length: 12 }).map(
+                    (_, index) => (
+
+                        <ProductCardShimmer
+                            key={index}
+                            width="100%"
+                        />
+
+                    )
+                )
+
+            ) : hasNoProducts ? (
+
+                /* ============================
+                   NO PRODUCTS
+                ============================ */
+
+                <div className="product-not-found-container sale">
+
+                    <Image
+                        src="/Assets/icon/product-empty.png"
+                        width={120}
+                        height={120}
+                        alt="no found"
+                    />
+
+                    <h3>
+                        No Products Found
+                    </h3>
+
+                    <p>
+                        Your search did not match any product.
+                    </p>
+
+                    <button
+                        className="no-product-clear-filter-button"
+                        onClick={handleClearFilters}
+                    >
+                        Clear Filters
+                    </button>
+
+                </div>
+
+            ) : (
+
+                /* ============================
+                   PRODUCTS
+                ============================ */
+
+                sortedProducts?.map(
+                    (item, index) => (
+
+                        <ProductCardTwo
+                            key={item._id || index}
+
+                            slug={item.slug}
+
+                            singleProductData={item}
+
+                            maxWidthAccordingToComp="100%"
+
+                            justWidth="100%"
+
+                            colTwo={
+                                activeGrid === 'single-col'
+                                    ? false
+                                    : true
+                            }
+
+                            tagIcon={
+                                item.productTag
+                                    ? item.productTag
+                                    : heart
+                            }
+
+                            tagClass={
+                                item.productTag
+                                    ? 'tag-img'
+                                    : 'heart-icon'
+                            }
+
+                            mainImage={`${item.image.image_url}`}
+
+                            productCardContainerClass="product-card"
+
+                            ProductSku={item.sku}
+
+                            tags={item.sale_tag}
+
+                            ProductTitle={item.name}
+
+                            reviewCount={item.reviewCount}
+
+                            lowPriceAddvertisement={
+                                item.lowPriceAddvertisement
+                            }
+
+                            priceTag={item.regular_price}
+
+                            sale_price={item.sale_price}
+
+                            financingAdd={item.financingAdd}
+
+                            learnMore={item.learnMore}
+
+                            mainIndex={index}
+
+                            deliveryTime={item.deliveryTime}
+
+                            stock={item.manage_stock}
+
+                            attributes={item.attributes}
+
+                            handleCardClick={() =>
+                                handleProductClick(item)
+                            }
+
+                            handleQuickView={() =>
+                                handleQuickViewOpen(item)
+                            }
+
+                            handleWishListclick={() =>
+                                handleWishList(item)
+                            }
+
+                            showOnPage={true}
+
+                            createdDate={item.createdAt}
+
+                            showExtraLines={true}
+
+                            titleHeight={false}
+
+                            allow_back_order={
+                                item?.allow_back_order
+                            }
+
+                            handleInfoModal={() =>
+                                handleOpennfoModal(
+                                    item.sale_price,
+                                    item.regular_price
+                                )
+                            }
+
+                            productTag={
+                                item.product_tag
+                            }
+
+                        />
+
+                    )
+                )
+
+            )}
+
+        </div>
+
+
+        {/* =====================================================
+            VIEW MORE
+        ===================================================== */}
+
+        {totalProducts > 16 &&
+            !isLoadingProducts &&
+            !hasNoProducts && (
+
+                <div className="active-sale-view-more-button-contianer">
+
+                    <button
+                        className="active-sale-view-more-button"
+                        onClick={handleNavigateToOutlate}
+                    >
+                        View More Products
+                    </button>
+
+                </div>
+
+            )}
+
+    </div>
+
+</div>
 
 
                 </div>

@@ -1928,8 +1928,8 @@ label {
     }
 
     .product-not-found-container {
-        display: none;
-        gap: 15px;
+        display: flex;
+        gap: 10px;
     }
 
     .product-not-found-container>h3 {
