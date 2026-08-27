@@ -34,7 +34,7 @@ export const ActiveSalePageProvider = ({ children }) => {
 
     // Main function to fetch sales data
     const fetchData = async (endpoint) => {
-        const api = `${url}/api/v1/sales-page/get${endpoint ? `?${new URLSearchParams(endpoint)}` : ''}`;
+        const api = `${url}/api/v1/sales-page/get-sale-page${endpoint ? `?${new URLSearchParams(endpoint)}` : ''}`;
         const options = {
             method: 'GET',
             headers: {
@@ -45,7 +45,7 @@ export const ActiveSalePageProvider = ({ children }) => {
         try {
             setLoading(true);
             const data = await fetchWithRetry(api, options);
-           await fetchProductsByCategory(data?.data?.categoryData?.slug)
+            await fetchProductsByCategory(data?.data?.categoryData?.slug)
             setSalesData(data); // Store the fetched data in state
         } catch (error) {
             setError(error.message);
@@ -55,32 +55,50 @@ export const ActiveSalePageProvider = ({ children }) => {
         }
     };
 
-    // Function to fetch products by category
+    // // Function to fetch products by category
+    // const fetchProductsByCategory = async (categoryUid) => {
+    //     // Check if products are already fetched
+    //     if (products) {
+    //         return;
+    //     }
+
+    //     const api = `${url}/api/v1/products/by-category?categorySlug=${categoryUid}&per_page=60&isSortCatWise=1`;
+    //     const options = {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         }
+    //     };
+
+    //     try {
+    //         setLoading(true);
+    //         const data = await fetchWithRetry(api, options);
+    //         if(!data?.products?.length > 0) {
+    //             setNoProducts(true)
+    //         }
+    //         setProducts(data.products); // Store the fetched products in state
+    //         setTotalProducts(data.pagination.totalProducts)
+    //     } catch (error) {
+    //         setError(error.message);
+    //         console.error('Error fetching products:', error);
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
+
     const fetchProductsByCategory = async (categoryUid) => {
-        // Check if products are already fetched
-        if (products) {
-            return;
-        }
-
+        if (products) return;
+        setError(null); // clear any stale error before trying again
         const api = `${url}/api/v1/products/by-category?categorySlug=${categoryUid}&per_page=60&isSortCatWise=1`;
-        const options = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        };
-
         try {
             setLoading(true);
-            const data = await fetchWithRetry(api, options);
-            if(!data?.products?.length > 0) {
-                setNoProducts(true)
-            }
-            setProducts(data.products); // Store the fetched products in state
-            setTotalProducts(data.pagination.totalProducts)
+            const data = await fetchWithRetry(api, { method: 'GET', headers: { 'Content-Type': 'application/json' } });
+            if (!data?.products?.length > 0) setNoProducts(true);
+            setProducts(data.products);
+            setTotalProducts(data.pagination.totalProducts);
         } catch (error) {
             setError(error.message);
-            console.error('Error fetching products:', error);
+            setProducts([]); // <-- IMPORTANT: settle it to a real, empty value instead of leaving it null forever
         } finally {
             setLoading(false);
         }

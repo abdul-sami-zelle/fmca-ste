@@ -1,8 +1,9 @@
 .activeCategoryPage {
     width: 100%;
+    padding: 25px 60px;
 }
 
-.sale_page_heading{
+.sale_page_heading {
     color: var(--text-primary);
     font-size: 25px;
     font-weight: 600;
@@ -57,9 +58,9 @@
 .content_1_section {
     display: flex;
     box-sizing: border-box;
-    padding: 35px 60px;
     width: 100%;
     gap: 5%;
+    padding-bottom: 35px;
 }
 
 
@@ -102,7 +103,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     gap: 25px;
-    margin: 35px 60px;
+    padding-bottom: 35px;
 
 }
 
@@ -235,7 +236,7 @@
     justify-content: center;
 }
 
-.offer-head-categories-scroll-button.offer-head-left{
+.offer-head-categories-scroll-button.offer-head-left {
     left: 10px;
 }
 
@@ -253,6 +254,7 @@
     border-radius: 13px;
     overflow: hidden;
     border: 1px solid transparent;
+    flex-shrink: 0;
     cursor: pointer;
 }
 
@@ -260,7 +262,7 @@
     border: 1px solid var(--orange-fill);
 }
 
-.offer-category-image-single-item-container > img {
+.offer-category-image-single-item-container>img {
     width: 100%;
     height: 100%;
     /* object-fit: contain; */
@@ -307,7 +309,7 @@
     width: 100%;
 }
 
-.filter-section-hide-button-container > button {
+.filter-section-hide-button-container>button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -335,14 +337,14 @@
     height: auto;
 }
 
-.filter-section-heading-and-clear-filter-button > h3 {
+.filter-section-heading-and-clear-filter-button>h3 {
     font-size: 18px;
     line-height: 1.2;
     font-weight: 500;
     color: #000;
 }
 
-.filter-section-heading-and-clear-filter-button > button {
+.filter-section-heading-and-clear-filter-button>button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -458,8 +460,8 @@
 
 .sale-products-len-and-show-filter-button-section {
     display: flex;
-    align-items: center;
-    justify-content: start;
+    align-items: start;
+    justify-content: space-between;
     width: 100%;
     height: inherit;
     gap: 15px;
@@ -508,6 +510,7 @@
     line-height: 1.2;
     font-weight: 500;
     color: #000;
+    margin-top: 10px;
 }
 
 
@@ -580,12 +583,15 @@
     .sale-page-filter-contain-container {
         display: none;
     }
+
     .sale-page-products-contain-container.decrease-products-section {
         width: 100%;
     }
+
     .mobile-sale-product-show-filter-button {
         display: flex;
     }
+
     .offer-category-image-single-item-container {
         /* max-width: 80px; */
         /* height: 60px; */
@@ -593,6 +599,7 @@
         padding: 1px;
         overflow: hidden;
     }
+
     .mobile-sale-product-show-filter-button {
         padding: 5px 10px;
         font-size: 12px;
@@ -601,7 +608,6 @@
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
     .section_1_ASP {
-        margin: 25px 30px !important;
         gap: 15px !important;
     }
 
@@ -609,6 +615,7 @@
         grid-template-columns: repeat(2, 1fr);
         padding: 5px !important;
     }
+
     .active-sale-cards.grid-col-3 {
         grid-template-columns: repeat(2, 1fr);
         padding: 5px !important;
@@ -617,7 +624,6 @@
 
 @media only screen and (min-width: 481px) and (max-width: 767px) {
     .section_1_ASP {
-        margin: 15px !important;
         gap: 10px !important;
     }
 
@@ -631,8 +637,8 @@
         /* grid-template-columns: repeat(1, 1fr); */
         padding: 5px !important;
     }
-    
-    .active-sale-cards.offer-cards-single-grid  {
+
+    .active-sale-cards.offer-cards-single-grid {
         /* max-width: 460px; */
         display: flex;
         flex-direction: column;
@@ -641,30 +647,37 @@
         width: 100%;
         gap: 10px;
     }
+
     .active-sale-cards.offer-cards-dual-col {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         column-gap: 10px;
         row-gap: 10px;
     }
+
     .offer-grid-main-container {
         display: flex;
     }
+
     .sale-page-products-contain-container.decrease-products-section {
         padding: 0;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1200px) {
 
-    .sale_page_heading{
-    font-size: 20px;
-    line-height: 24px;
-}
+    .offer-category-image-single-item-container {
+        max-width: 105px;
+    }
 
-.offer-head-and-grid-select {
-    justify-content: space-between;
-}
+
+
+
+
+    .offer-head-and-grid-select {
+        justify-content: space-between;
+    }
+
     .active-sale-cards {
         display: flex;
         flex-direction: column;
@@ -676,22 +689,19 @@
         /* padding: 5px 10px; */
         /* gap: 10px; */
     }
-   
+
 
     .section_1_ASP {
-        margin: 15px 10px;
         gap: 10px;
     }
 
     .content_1_section {
-        padding: 15px;
         flex-direction: column;
         gap: 10px;
     }
 
     .left_side_cont {
-        /* width: 100%; */
-        display: none;
+        width: 100%;
     }
 
     .right_side_cont {
@@ -728,7 +738,328 @@
         column-gap: 10px;
         row-gap: 10px;
     }
+
     .sale-page-products-contain-container.decrease-products-section {
         padding: 0;
+    }
+}
+
+.product-not-found-container {
+    grid-column: 1 / -1;
+    width: 100%;
+}
+
+.mob-clear-filter {
+    display: none;
+}
+
+
+
+
+
+.sale_page_hotspot_grid_section_main{
+    width: 100%;
+}
+
+.sale_page_hotspot_grid_section.mobile {
+    display: none;
+}
+
+.sale_page_hotspot_grid_section.desktop {
+    display: grid;
+}
+
+.sale_page_hotspot_grid_section {
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 10px;
+}
+
+.sale_hotspot_item {
+    display: block;
+    width: 100%;
+    line-height: 0;
+}
+
+.sale_hotspot_item img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.sale_main_banner {
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 35px;
+}
+
+.sale_main_banner a {
+    display: block;
+    width: 100%;
+}
+
+.sale_main_banner picture {
+    display: block;
+    width: 100%;
+}
+
+.sale_main_banner_image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.toppedProductsSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding-bottom: 35px;
+}
+
+.toppedProductsSection_products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 10px;
+}
+
+.stores_details_bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    padding: 35px 0;
+}
+
+.stores_details_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 10px;
+}
+
+@media (max-width: 767px) {
+    .sale_page_hotspot_grid_section.mobile {
+        display: grid;
+    }
+
+    .sale_page_hotspot_grid_section.desktop {
+        display: none;
+    }
+
+    .sale_page_hotspot_grid_section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+    }
+
+    .activeCategoryPage {
+        padding: 10px;
+    }
+
+    .sale_page_heading {
+        font-size: 18px;
+    }
+
+    .product-not-found-container.sale {
+        gap: 10px;
+        display: flex;
+    }
+
+    .mob-clear-filter {
+        display: flex;
+        color: var(--text-primary);
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        text-decoration: underline;
+    }
+
+    .toppedProductsSection_products {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .content_1_section {
+        padding-bottom: 25px;
+    }
+
+    .section_1_ASP {
+        padding: 25px 0;
+    }
+
+    .stores_details_bottom{
+        gap: 10px;
+    }
+
+    .sale_main_banner {
+        padding-bottom: 25px;
+    }
+
+    .toppedProductsSection {
+        padding-bottom: 25px;
+    }
+
+    .stores_details_grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* =========================================
+   SALE PAGE SHIMMER
+========================================= */
+
+.sale-page-shimmer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 10px;
+}
+
+.sale-page-shimmer-card {
+    width: 100%;
+    overflow: hidden;
+}
+
+.sale-page-shimmer-image,
+.sale-page-shimmer-line,
+.sale-page-shimmer-hotspot {
+    position: relative;
+    overflow: hidden;
+    background: #eeeeee;
+}
+
+.sale-page-shimmer-image::after,
+.sale-page-shimmer-line::after,
+.sale-page-shimmer-hotspot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.6),
+            transparent);
+
+    animation: sale-page-shimmer 1.4s infinite;
+}
+
+.sale-page-shimmer-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 6px;
+}
+
+.sale-page-shimmer-line {
+    height: 14px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.sale-page-shimmer-title {
+    width: 85%;
+}
+
+.sale-page-shimmer-price {
+    width: 55%;
+}
+
+.sale-page-shimmer-small {
+    width: 35%;
+    height: 11px;
+}
+
+.sale-page-shimmer-hotspots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 10px;
+}
+
+.sale-page-shimmer-hotspot {
+    width: 100%;
+    aspect-ratio: 1.5 / 2;
+    border-radius: 4px;
+}
+
+@keyframes sale-page-shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 767px) {
+
+    .sale-page-shimmer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sale-page-shimmer-hotspots {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+    }
+}
+
+/* =========================================
+   TOP SALE SLIDER SHIMMER
+========================================= */
+
+.sale-slider-shimmer {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #eeeeee;
+
+    /*
+       Desktop banner is approximately
+       1920 x 510 based on your slider artwork.
+    */
+    aspect-ratio: 1920 / 510;
+}
+
+.sale-slider-shimmer-inner {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+
+    background: linear-gradient(90deg,
+            #eeeeee 0%,
+            #f7f7f7 50%,
+            #eeeeee 100%);
+
+    background-size: 200% 100%;
+
+    animation: sale-slider-shimmer-animation 1.4s infinite;
+}
+
+@keyframes sale-slider-shimmer-animation {
+
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .sale-slider-shimmer {
+        /*
+           Mobile banner placeholder.
+           The actual mobile image is loaded separately
+           by the slider, so keep this independent from
+           the desktop aspect ratio.
+        */
+        aspect-ratio: 640 / 560;
     }
 }

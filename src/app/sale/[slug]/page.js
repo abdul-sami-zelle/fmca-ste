@@ -134,7 +134,7 @@ export async function generateMetadata({ params }) {
 
     return {
       title:
-        `${meta?.title}` ||
+        `${meta?.title} | Furniture Mecca` ||
         `Furniture Mecca`,
       description:
         meta?.description ||

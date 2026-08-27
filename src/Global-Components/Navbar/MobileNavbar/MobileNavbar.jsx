@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { url, useDisableBodyScroll } from '../../../utils/api';
 import Image from 'next/image';
 import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 
-import { MdKeyboardArrowRight } from "react-icons/md";
 import { useGlobalContext } from '@/context/GlobalContext/globalContext';
 import { CiUser } from 'react-icons/ci';
 import { useRouter } from 'next/navigation';
@@ -13,8 +13,11 @@ import { useUserDashboardContext } from '@/context/userDashboardContext/userDash
 
 const MobileNavbar = ({ showMobileNav, setMobileNavVisible, headerData, sale_data, headerOffer }) => {
 
+  const [activeCategory, setActiveCategory] = useState(null); // holds the clicked category object
+
   const handleNavbarClose = () => {
     setMobileNavVisible(false)
+    setActiveCategory(null) // reset subcategory panel whenever the whole nav closes
   }
   const { CalculateGrandTotal } = useGlobalContext()
 
@@ -126,84 +129,96 @@ const MobileNavbar = ({ showMobileNav, setMobileNavVisible, headerData, sale_dat
           </div>
         </div>
 
-        <div className='mobile-nav-links-container'>
-          {headerData.map((items, index) => (
-            <Link href={ `/${items.category_slug}`
-            } className='mobile-nav-single-link-container' key={index} onClick={handleNavbarClose} >
-              <div className='mobile-nav-single-item-name-anchor' >
-                {items.mob_img === '' ? (
-                  <Image src={`/Assets/mobile-nav-assets/living-room-set.png`} width={70} height={60} alt='nav-icon' />
-                ) : (
-                  <Image src={`${url}${items?.mob_img}`} width={70} height={60} alt='nav-icon' />
-                )}
+          {/* OUTER WRAPPER — non-scrolling, clips + positions the subcat panel */}
+        <div className='mobile-nav-links-outer'>
 
-                <p>{items.category}</p>
-              </div>
-              <span>
-                <MdKeyboardArrowRight size={20} color='#595959' />
-              </span>
-            </Link>
-          ))}
+          {/* SCROLLABLE CATEGORY LIST */}
+          <div className='mobile-nav-links-container'>
+            {headerData?.length > 0 &&
+              headerData.map((items, index) => (
+                <div
+                  className='mobile-nav-single-link-container'
+                  key={index}
+                  onClick={() => setActiveCategory(items)}
+                >
+                  <div className='mobile-nav-single-item-name-anchor'>
+                    {items.mob_img === '' ? (
+                      <Image src={`/Assets/mobile-nav-assets/living-room-set.png`} width={70} height={60} alt='nav-icon' />
+                    ) : (
+                      <Image src={`${url}${items?.mob_img}`} width={70} height={60} alt='nav-icon' />
+                    )}
+                    <p>{items.category}</p>
+                  </div>
+                  <span>
+                    <MdKeyboardArrowRight size={20} color='var(--text-gray)' />
+                  </span>
+                </div>
+              ))}
 
-          {/* <Link href={`/call/${headerOffer.category_slug}`} className='mobile-nav-single-link-container' onClick={handleNavbarClose}>
-            <div className='mobile-nav-single-item-name-anchor' >
-           
-                {!headerOffer?.mob_img
-                ? (
-                  <Image
-                    src="/Assets/mobile-nav-assets/living-room-set.png"
-                    width={70}
-                    height={60}
-                    alt="nav-icon"
-                  />
-                ) : (
-                  <Image
-                    src={url + headerOffer.mob_img}
-                    width={70}
-                    height={60}
-                    alt="nav-icon"
-                  />
-                )}
-
-              <p>{headerOffer.category} 🔥</p>
-            </div>
-            <span>
-              <MdKeyboardArrowRight size={20} color='#595959' />
-            </span>
-          </Link> */}
-
-          <Link href={`/sale/${sale_data.category_slug}`} className='mobile-nav-single-link-container' onClick={handleNavbarClose}>
-            <div className='mobile-nav-single-item-name-anchor' >
-              {/* {sale_data && sale_data?.mob_img === '' ? (
-                  <Image src={'/Assets/mobile-nav-assets/living-room-set.png'} width={70} height={60} alt='nav-icon' />
+            {headerOffer?.category && (
+              <Link href={`/call/${headerOffer?.category_slug}`} className='mobile-nav-single-link-container' onClick={handleNavbarClose}>
+                <div className='mobile-nav-single-item-name-anchor'>
+                  {!headerOffer?.mob_img ? (
+                    <Image src="/Assets/mobile-nav-assets/living-room-set.png" width={70} height={60} alt="nav-icon" />
                   ) : (
-                   <Image src={url+sale_data?.mob_img} width={70} height={60} alt='nav-icon' />
-                 )}  */}
+                    <Image src={url + headerOffer?.mob_img} width={70} height={60} alt="nav-icon" />
+                  )}
+                  <p>{headerOffer?.category} 🔥</p>
+                </div>
+                <span>
+                  <MdKeyboardArrowRight size={20} color='var(--text-gray)' />
+                </span>
+              </Link>
+            )}
 
-              {!sale_data?.mob_img
-                ? (
-                  <Image
-                    src="/Assets/mobile-nav-assets/living-room-set.png"
-                    width={70}
-                    height={60}
-                    alt="nav-icon"
-                  />
-                ) : (
-                  <Image
-                    src={url + sale_data?.mob_img}
-                    width={70}
-                    height={60}
-                    alt="nav-icon"
-                  />
-                )}
+            {sale_data?.category && (
+              <Link href={`/sale/${sale_data?.category_slug}`} className='mobile-nav-single-link-container' onClick={handleNavbarClose}>
+                <div className='mobile-nav-single-item-name-anchor'>
+                  {!sale_data?.mob_img ? (
+                    <Image src="/Assets/mobile-nav-assets/living-room-set.png" width={70} height={60} alt="nav-icon" />
+                  ) : (
+                    <Image src={url + sale_data?.mob_img} width={70} height={60} alt="nav-icon" />
+                  )}
+                  <p>{sale_data?.category}</p>
+                </div>
+                <span>
+                  <MdKeyboardArrowRight size={20} color='var(--text-gray)' />
+                </span>
+              </Link>
+            )}
+          </div>
 
-              <p>{sale_data.category}</p>
+          {/* SUBCATEGORY OVERLAY PANEL — sibling of the scrollable list, not inside it */}
+          <div className={`mobile-subcat-panel ${activeCategory ? 'show-subcat-panel' : ''}`}>
+            <div className='mobile-subcat-header'>
+              <MdKeyboardArrowLeft size={26} color='#000' className='mobile-subcat-back' onClick={() => setActiveCategory(null)} />
+              <Link href={`/${activeCategory?.category_slug}`} onClick={handleNavbarClose}> <h3 className='mobile-subcat-title'>{activeCategory?.category}</h3></Link>
+              {/* <Image src={'/icons/close-charcoal.svg'} width={15} height={15} alt='close' className='mobile-subcat-close' onClick={handleNavbarClose} /> */}
             </div>
-            <span>
-              <MdKeyboardArrowRight size={20} color='#595959' />
-            </span>
-          </Link>
+
+            <div className='mobile-subcat-links-container'>
+              {activeCategory && (
+                <Link href={`/${activeCategory?.category_slug}/shop-all-${activeCategory?.category_slug}`} className='mobile-subcat-shop-all' onClick={handleNavbarClose}>
+                  <span>Shop All {activeCategory.category}</span>
+                  {/* <MdKeyboardArrowRight size={18} color='var(--primary-color)' /> */}
+                </Link>
+              )}
+              {activeCategory?.subCategories?.map((sub) => (
+                <Link
+                  key={sub._id}
+                  href={`/${activeCategory?.category_slug}/${sub.slug}`}
+                  className='mobile-subcat-single-link'
+                  onClick={handleNavbarClose}
+                >
+                  <p>{sub.name}</p>
+                  {/* <MdKeyboardArrowRight size={18} color='var(--text-gray)' /> */}
+                </Link>
+              ))}
+            </div>
+          </div>
+
         </div>
+
 
         <div className='mobile-nav-footer-buttons'>
           {menuFooterIcons.map((item, index) => (

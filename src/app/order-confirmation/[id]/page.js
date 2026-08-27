@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./OrderConfirmationPage.css";
-import DeliveryLocationMap from "./DeliveryLocationMap";
 import axios from "axios";
 import { formatedPrice } from "../../../utils/api";
 import { url } from "../../../utils/api";

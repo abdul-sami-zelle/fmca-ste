@@ -534,27 +534,47 @@ export default function RootLayout({ children }) {
           `}
         </Script>
 
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-GQL4WY726N"
-          strategy="afterInteractive"
-        />
+{/* Google Analytics + Google Ads */}
+<Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-GQL4WY726N"
+  strategy="afterInteractive"
+/>
 
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
+<Script id="google-tags" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
 
-            function gtag() {
-              dataLayer.push(arguments);
-            }
+    function gtag() {
+      dataLayer.push(arguments);
+    }
 
-            gtag('js', new Date());
+    gtag('js', new Date());
 
-            gtag('config', 'G-GQL4WY726N', {
-              page_path: window.location.pathname,
-            });
-          `}
-        </Script>
+    // Google Analytics 4
+    gtag('config', 'G-GQL4WY726N', {
+      page_path: window.location.pathname,
+    });
+
+    // Google Ads
+    gtag('config', 'AW-985619704');
+  `}
+</Script>
+
+{/* Google Tag Manager */}
+<Script id="google-tag-manager" strategy="afterInteractive">
+  {`
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),
+          dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K24JR7X4');
+  `}
+</Script>
 
         {/* Facebook Pixel NoScript */}
         <noscript>

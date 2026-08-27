@@ -115,6 +115,7 @@
 }
 
 .progress-bar-container{
+	position: relative;
     width: 170px;
     background-color: #D9D9D9;
     border-radius: 20px;

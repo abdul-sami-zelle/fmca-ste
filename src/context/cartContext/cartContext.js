@@ -629,6 +629,142 @@ export const CartProvider = ({ children }) => {
         }
     };
 
+    const addMetaProductsToCart = async (metaProducts) => {
+    if (!Array.isArray(metaProducts) || metaProducts.length === 0) {
+        return;
+    }
+
+    setIsCartLoading(true);
+
+    try {
+        const newCart = await new Promise((resolve) => {
+
+            setCartProducts((prevCart) => {
+
+                const existingProducts = [
+                    ...(prevCart?.products || [])
+                ];
+
+                let updatedProducts = [...existingProducts];
+
+                metaProducts.forEach((newProduct) => {
+
+                    const existingIndex = updatedProducts.findIndex((item) => {
+
+                        // Variation product
+                        if (
+                            newProduct.variation_uid &&
+                            newProduct.variation_uid !== 0
+                        ) {
+                            return (
+                                item.variation_uid ===
+                                newProduct.variation_uid
+                            );
+                        }
+
+                        // Simple product
+                        return (
+                            item.product_uid ===
+                            newProduct.product_uid
+                        );
+                    });
+
+
+                    // =========================================
+                    // PRODUCT ALREADY EXISTS
+                    // =========================================
+                    if (existingIndex !== -1) {
+
+                        const existingProduct =
+                            updatedProducts[existingIndex];
+
+                        // Same quantity → DO NOTHING
+                        if (
+                            existingProduct.quantity ===
+                            newProduct.quantity
+                        ) {
+                            return;
+                        }
+
+
+                        // Different quantity
+                        // Replace entire product
+                        updatedProducts[existingIndex] = {
+                            ...newProduct,
+
+                            quantity: newProduct.quantity,
+
+                            variation_uid:
+                                newProduct.variation_uid || 0,
+
+                            attributes:
+                                newProduct.attributes || [],
+
+                            outSource:
+                                newProduct.outSource ?? false,
+
+                            is_protected:
+                                newProduct.is_protected ?? 0
+                        };
+
+                        return;
+                    }
+
+
+                    // =========================================
+                    // NEW PRODUCT
+                    // =========================================
+                    updatedProducts.push({
+                        ...newProduct,
+
+                        variation_uid:
+                            newProduct.variation_uid || 0,
+
+                        attributes:
+                            newProduct.attributes || [],
+
+                        quantity:
+                            newProduct.quantity,
+
+                        outSource:
+                            newProduct.outSource ?? false,
+
+                        is_protected:
+                            newProduct.is_protected ?? 0
+                    });
+                });
+
+
+                const updatedCart = {
+                    ...prevCart,
+                    products: updatedProducts
+                };
+
+                resolve(updatedCart);
+
+                return updatedCart;
+            });
+        });
+
+
+        await updateCartDB(newCart);
+
+        return newCart;
+
+    } catch (error) {
+
+        console.error(
+            "Error adding Meta products to cart:",
+            error
+        );
+
+        throw error;
+
+    } finally {
+        setIsCartLoading(false);
+    }
+};
+
     // const calculateTotalPrice = () => {
     //     if (!Array.isArray(cartProducts.products)) {
     //         console.error("Invalid Array", cartProducts);
@@ -712,6 +848,10 @@ export const CartProvider = ({ children }) => {
         }));
     }, []);
 
+
+    
+
+  
     return (
         <CartContext.Provider value={
             {
@@ -758,6 +898,7 @@ export const CartProvider = ({ children }) => {
                 isCartLoading, setIsCartLoading,
                 isCardAddLoading, setISCardAddLoading,
                 addToCartListSimple,
+                addMetaProductsToCart
             }
         }>
             {children}

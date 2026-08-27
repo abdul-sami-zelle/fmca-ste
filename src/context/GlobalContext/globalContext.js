@@ -504,23 +504,52 @@ export const GlobalContextProvider = ({ children }) => {
   //   return subTotal + calculateTotalTax((subTotal1+deliveySetup), taxValue) + getShippingInfo(selectedOption)?.cost  + deliveySetup;
   // }
 
-  function CalculateGrandTotal() {
-    const subTotal1 = parseFloat(subTotal) || 0; // safe number
-    const taxValue = parseFloat(totalTax?.tax_value) || 0; // safe number
-    const deliverySetup =
-      (selectedOption?.id !== "METHOD-3" && !isProfessionalAssembly)
-        ? parseFloat(furnitureAssemblyValue) || 0
-        : 0;
+//   function CalculateGrandTotal() {
+//     const subTotal1 = parseFloat(subTotal) || 0; // safe number
+//     const taxValue = parseFloat(totalTax?.tax_value) || 0; // safe number
+//     const deliverySetup =
+//       (selectedOption?.id !== "METHOD-3" && !isProfessionalAssembly)
+//         ? parseFloat(furnitureAssemblyValue) || 0
+//         : 0;
 
-     const shippingCost = parseFloat(getShippingInfo(selectedOption)?.cost) || 0;
-    return (
-      subTotal1 +
-      calculateTotalTax(subTotal1 + deliverySetup + shippingCost, taxValue) +
-      shippingCost +
-      deliverySetup
-    );
+//      const shippingCost = parseFloat(getShippingInfo(selectedOption)?.cost) || 0;
+//     return (
+//       subTotal1 +
+//       calculateTotalTax(subTotal1 + deliverySetup + shippingCost, taxValue) +
+//       shippingCost +
+//       deliverySetup
+//     );
+//   }
+
+  function CalculateGrandTotal() {
+  const subTotal1 = parseFloat(subTotal) || 0; // safe number
+  const taxValue = parseFloat(totalTax?.tax_value) || 0; // safe number
+
+  // If subtotal is 0, return 0
+  if (subTotal1 === 0) {
+    return 0;
   }
 
+  const deliverySetup =
+    (selectedOption?.id !== "METHOD-3" && !isProfessionalAssembly)
+      ? parseFloat(furnitureAssemblyValue) || 0
+      : 0;
+
+  const shippingCost =
+    parseFloat(getShippingInfo(selectedOption)?.cost) || 0;
+
+  return Number(
+    (
+      subTotal1 +
+      calculateTotalTax(
+        subTotal1 + deliverySetup + shippingCost,
+        taxValue
+      ) +
+      shippingCost +
+      deliverySetup
+    ).toFixed(2)
+  );
+}
 
 
   return (
