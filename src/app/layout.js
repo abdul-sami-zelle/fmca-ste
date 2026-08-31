@@ -372,7 +372,7 @@ export default function RootLayout({ children }) {
         "telephone": "+1-609-392-2800",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "1600 N Olden Ave",
+          "streetAddress": "1661 N Olden Ave Ext",
           "addressLocality": "Ewing Township",
           "addressRegion": "NJ",
           "postalCode": "08638",
@@ -380,8 +380,8 @@ export default function RootLayout({ children }) {
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 40.2441288,
-          "longitude": -74.7573557
+          "latitude": 40.2455194,
+          "longitude": -74.7638397
         },
         "openingHoursSpecification": [
           {

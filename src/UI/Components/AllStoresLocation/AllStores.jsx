@@ -24,7 +24,7 @@ const AllStores = () => {
         {img: upperDarbyStoreImage, address: '501 S. 69th Street Upper Darby', number: '+161 0352 3500', direction: 'Direction', directionLink: '#'},
         {img: baltimoreStoreImage, address: '130 E Baltimore Ave, Lansdowne PA', number: '+148 4462 0281', direction: 'Direction', directionLink: '#'},
         {img: delmarStoreImage, address: '1830 Delmar Drive, Folcroft PA', number: '+121 5422 3883', direction: 'Direction', directionLink: '#'},
-        {img: oldenStoreImage, address: '1600 N Olden Ave. Ewing', number: '+160 9392 2800', direction: 'Direction', directionLink: '#'},
+        {img: oldenStoreImage, address: '1661 N Olden Ave Ext, Ewing', number: '+160 9392 2800', direction: 'Direction', directionLink: '#'},
         {img: pennStoreImage, address: '408 Penn St Reading', number: '+148 4869 5337', direction: 'Direction', directionLink: '#'},
         {img: lancasterStoreImage, address: '5648 Lancaster Ave Philadelphia,', number: '+121 5877 1200', direction: 'Direction', directionLink: '#'},
         {img: brookdaleStoreImage, address: '611 W Brookdale St, Allentown', number: '+148 4221 8230', direction: 'Direction', directionLink: '#'},
