@@ -80,7 +80,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
 
 
-  const FurnitureStoreSchema = {
+ const FurnitureStoreSchema = {
     "@type": "FurnitureStore",
     "@id": "https://www.myfurnituremecca.com/#localbusiness",
     "name": "Furniture Mecca",
@@ -135,8 +135,8 @@ export default function RootLayout({ children }) {
           {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            "opens": "09:00",
-            "closes": "19:00"
+            "opens": "09:30",
+            "closes": "19:30"
           },
           {
             "@type": "OpeningHoursSpecification",
@@ -146,7 +146,7 @@ export default function RootLayout({ children }) {
           }
         ]
       },
-
+ 
       {
         "@type": "FurnitureStore",
         "name": "Furniture Mecca - Hunting Park Store",
@@ -169,7 +169,7 @@ export default function RootLayout({ children }) {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
             "opens": "09:30",
-            "closes": "19:00"
+            "closes": "19:30"
           },
           {
             "@type": "OpeningHoursSpecification",
@@ -179,7 +179,7 @@ export default function RootLayout({ children }) {
           }
         ]
       },
-
+ 
       {
         "@type": "FurnitureStore",
         "name": "Furniture Mecca - Upper Darby Store",
@@ -208,11 +208,11 @@ export default function RootLayout({ children }) {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": "Sunday",
             "opens": "10:00",
-            "closes": "18:30"
+            "closes": "18:00"
           }
         ]
       },
-
+ 
       {
         "@type": "FurnitureStore",
         "name": "Furniture Mecca - Lansdowne Store",
@@ -234,12 +234,12 @@ export default function RootLayout({ children }) {
           {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            "opens": "09:00",
-            "closes": "19:00"
+            "opens": "09:30",
+            "closes": "19:30"
           }
         ]
       },
-
+ 
       {
         "@type": "FurnitureStore",
         "name": "Furniture Mecca - Allentown Store",
@@ -260,14 +260,8 @@ export default function RootLayout({ children }) {
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": "Monday",
-            "opens": "09:30",
-            "closes": "19:30"
-          },
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            "opens": "09:30",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "10:00",
             "closes": "19:00"
           },
           {
@@ -278,7 +272,7 @@ export default function RootLayout({ children }) {
           }
         ]
       },
-
+ 
       {
         "@type": "FurnitureStore",
         "name": "Furniture Mecca - Folcroft Store",
@@ -305,7 +299,7 @@ export default function RootLayout({ children }) {
           }
         ]
       },
-
+ 
       {
         "@type": "FurnitureStore",
         "name": "Furniture Mecca - Lancaster Store",
@@ -338,7 +332,7 @@ export default function RootLayout({ children }) {
           }
         ]
       },
-
+ 
       {
         "@type": "FurnitureStore",
         "name": "Furniture Mecca - Reading Store",
@@ -360,19 +354,19 @@ export default function RootLayout({ children }) {
           {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            "opens": "09:30",
+            "opens": "09:00",
             "closes": "19:00"
           }
         ]
       },
-
+ 
       {
         "@type": "FurnitureStore",
         "name": "Furniture Mecca - Ewing Township Store",
         "telephone": "+1-609-392-2800",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "1661 N Olden Ave Ext",
+          "streetAddress": "1600 N Olden Ave",
           "addressLocality": "Ewing Township",
           "addressRegion": "NJ",
           "postalCode": "08638",
@@ -380,8 +374,8 @@ export default function RootLayout({ children }) {
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 40.2455194,
-          "longitude": -74.7638397
+          "latitude": 40.2441288,
+          "longitude": -74.7573557
         },
         "openingHoursSpecification": [
           {
